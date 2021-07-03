@@ -43,12 +43,16 @@ public class Service {
 	)
     private List <Pet> servicepets;
  // CONSTRUCTOR
+	public Service() {
+}
+    
 	public Service(Long id, @NotNull @Size(min = 2, max = 10) String name, List<Pet> servicepets) {
 		
 		this.id = id;
 		this.name = name;
 		this.servicepets = servicepets;
 	}
+
 	// GETTERS AND SETTERS
 	public Long getId() {
 		return id;

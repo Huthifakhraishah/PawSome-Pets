@@ -61,7 +61,8 @@ public class Pet {
 	@JoinColumn(name="pets_user")
 	private User user;
  // CONSTRUCTOR
-
+	public Pet() {
+}
 
 	public Pet(Long id, @NotNull @Size(min = 2, max = 10) String name, @NotNull @Size(min = 1, max = 20) String gender,
 			@NotNull @Range(min = 5, max = 20) Integer age, List<Service> petservice, Category category, User user) {
@@ -74,6 +75,7 @@ public class Pet {
 		this.category = category;
 		this.user = user;
 	}
+
 	// GETTERS AND SETTERS
 
 	public Long getId() {
