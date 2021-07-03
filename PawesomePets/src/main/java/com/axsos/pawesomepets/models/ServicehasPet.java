@@ -29,5 +29,12 @@ public class ServicehasPet {
 	    @ManyToOne(fetch = FetchType.LAZY)
 	    @JoinColumn(name="pet_id")
 	    private Pet pet;
+
+		public ServicehasPet() {
+		}
+	    
+	    
 	    
 }
+
+
