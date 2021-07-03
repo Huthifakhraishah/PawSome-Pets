@@ -58,14 +58,16 @@ public class Users {
     // ******************************************************************************
     
     @RequestMapping("/login")
-    public String login(@RequestParam(value="error", required=false) String error, @RequestParam(value="logout", required=false) String logout, Model model) {
-        if(error != null) {
+    public String login(@RequestParam(value="error", required=false) String error, @RequestParam(value="logout", required=false) String logout, Model model, @Valid @ModelAttribute(value="user") User user, BindingResult result) {
+        if(result.hasErrors()) {
+    	if(error != null) {
             model.addAttribute("errorMessage", "Invalid Credentials, Please try again.");
         }
         if(logout != null) {
             model.addAttribute("logoutMessage", "Logout Successful!");
         }
-        return "loginPage.jsp";
+        }
+        return "logreg.jsp";
     }
     
     
