@@ -16,11 +16,13 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    //Relationships
     @ManyToMany(mappedBy = "roles")
     private List<User> users;
     
     public Role() {
     }
+ // GETTERS AND SETTERS
     
     public Long getId() {
         return id;
@@ -40,4 +42,5 @@ public class Role {
     public void setUsers(List<User> users) {
         this.users = users;
     }
+    
 }
