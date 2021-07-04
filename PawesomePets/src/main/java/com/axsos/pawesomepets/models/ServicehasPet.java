@@ -13,28 +13,23 @@ import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-
 @Entity
-@Table(name="services_has_pets")
+@Table(name = "services_has_pets")
 public class ServicehasPet {
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-	@DateTimeFormat(pattern="yyyy-MM-dd")
-    private Date appointment;
-	 @ManyToOne(fetch = FetchType.LAZY)
-	    @JoinColumn(name="service_id")
-	    private Service service;
-	    
-	    @ManyToOne(fetch = FetchType.LAZY)
-	    @JoinColumn(name="pet_id")
-	    private Pet pet;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date appointment;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "service_id")
+	private Service service;
 
-		public ServicehasPet() {
-		}
-	    
-	    
-	    
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "pet_id")
+	private Pet pet;
+
+	public ServicehasPet() {
+	}
+
 }
-
-

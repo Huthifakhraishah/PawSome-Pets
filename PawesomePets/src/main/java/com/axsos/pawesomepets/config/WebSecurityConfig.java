@@ -24,7 +24,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
     
-    @Override
+    // ***********************************************
+    // ***********************************************
+    //Do we have to add "logreg"???
+    // ***********************************************
+    // ***********************************************
+    @Override 
     protected void configure(HttpSecurity http) throws Exception {
         http.
             authorizeRequests()

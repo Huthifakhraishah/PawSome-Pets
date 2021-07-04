@@ -17,27 +17,22 @@ import com.axsos.pawesomepets.services.UserService;
 import com.axsos.pawesomepets.validator.UserValidator;
 
 @Controller
-public class Users {
+public class MainController {
 	private UserService userService;
 	private UserValidator userValidator;
     
-    public Users(UserService userService,UserValidator userValidator) {
+    public MainController(UserService userService,UserValidator userValidator) {
         this.userService = userService;
         this.userValidator = userValidator;
     }
-    
-    @RequestMapping("/registration")
-    public String registerForm(@Valid @ModelAttribute("user") User user) {
-        return "registrationPage.jsp";
-    }
-    
+       
     // ******************************************************************************
     // This method is only commented when you want to comment out the following method
     @PostMapping("/registration")
     public String registration(@Valid @ModelAttribute("user") User user, BindingResult result, Model model) {
         userValidator.validate(user, result);
         if (result.hasErrors()) {
-            return "registrationPage.jsp";
+            return "logreg.jsp";
         }
         
         userService.saveWithUserRole(user);
@@ -50,7 +45,7 @@ public class Users {
 //    public String registration(@Valid @ModelAttribute("user") User user, BindingResult result, Model model) {
 //        userValidator.validate(user, result);
 //        if (result.hasErrors()) {
-//            return "registrationPage.jsp";
+//            return "logreg.jsp";
 //        }
 //        userService.saveUserWithAdminRole(user);
 //        return "redirect:/login";
@@ -59,17 +54,14 @@ public class Users {
     
     @RequestMapping("/login")
     public String login(@RequestParam(value="error", required=false) String error, @RequestParam(value="logout", required=false) String logout, Model model, @Valid @ModelAttribute(value="user") User user, BindingResult result) {
-        if(result.hasErrors()) {
-    	if(error != null) {
-            model.addAttribute("errorMessage", "Invalid Credentials, Please try again.");
-        }
-        if(logout != null) {
-            model.addAttribute("logoutMessage", "Logout Successful!");
-        }
-        }
+	    	if(error != null) {
+	            model.addAttribute("errorMessage", "Invalid Credentials, Please try again.");
+	        }
+	        if(logout != null) {
+	            model.addAttribute("logoutMessage", "Logout Successful!");
+	        }    
         return "logreg.jsp";
-    }
-    
+    }    
     
     @RequestMapping("/admin")
     public String adminPage(Principal principal, Model model) {
