@@ -77,7 +77,7 @@ public class MainController {
         return "homePage.jsp";
     }
 
-    @RequestMapping("/aboutus")
+    @RequestMapping("/about")
     public String aboutUs () {
     	return "aboutus.jsp";	
     }
