@@ -13,17 +13,19 @@
 <script src="/js/logreg.js"></script>
 </head>
 <body> 
+	<div>
+		
 	<div class="form-structor">
 	<div class="signup">
 		<h2 class="form-title" id="signup"><span>or</span>Sign up</h2>
-		<div class="form-holder">		
-		<p><form:errors path="user.*"/></p>
-		<c:if test="${logoutMessage != null}">
+		<p class="errorMessages"><form:errors path="user.*"/></p>
+		<p class="errorMessages"><c:if test="${logoutMessage != null}">
         <c:out value="${logoutMessage}"></c:out>
-    </c:if>
-    <c:if test="${errorMessage != null}">
+    	</c:if>
+    	<c:if test="${errorMessage != null}">
         <c:out value="${errorMessage}"></c:out>
-    </c:if>
+	    </c:if></p>
+		<div class="form-holder">		
     	<form:form method="POST" action="/registration" modelAttribute="user">
         <p>
             <form:input path="fullName" class="input" placeholder="Full Name"/>
@@ -41,7 +43,7 @@
 		<input type="submit" value="Sign up" class="submit-btn"/>
 		</div>
     </form:form>
-	
+
 	<div class="login slide-up">
 		<div class="center">
 			<h2 class="form-title" id="login"><span>or</span>Log in</h2>
@@ -59,6 +61,7 @@
 			</div>
 		</div>
 	</div>
+</div>
 </div>
 	
 </body>
