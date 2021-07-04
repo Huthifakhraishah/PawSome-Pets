@@ -9178,7 +9178,30 @@ html {
 .section_main .type>:not(div) a:hover {
 	color: #9ea428
 }
+.adminforms{
+	margin: auto auto;
+	text-align: center;
+}
+.adminform{
+	margin: auto auto;
+	padding: 20px;	
+	width: 600px;
+	border: 1px solid black;
+	border-radius: 10px;
+	box-shadow: #000;
+	background-color: black;
+	opacity: 0.8;
 
+}
+.section__intro>.section__title{
+	color: black;
+}
+.adminform>.section__title{
+	margin: auto auto;
+	color: red;
+	text-align: center;
+	font-size: larger;
+}
 
 /*# sourceMappingURL=styles.min.css.map */
 

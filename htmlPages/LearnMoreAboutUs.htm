@@ -31,6 +31,33 @@
          user-select: none;
          }
       </style>
+         <style type="text/css">
+            /* Set the size of the div element that contains the map */
+            #map {
+            height: 400px;
+            /* The height is 400 pixels */
+            width: 100%;
+            /* The width is the width of the web page */
+            }
+         </style>
+         <script>
+            // Initialize and add the map
+            function initMap() {
+            // The location of Uluru
+            const uluru = { lat: -25.344, lng: 131.036 };
+            // The map, centered at Uluru
+            const map = new google.maps.Map(document.getElementById("map"), {
+               zoom: 4,
+               center: uluru,
+            });
+            // The marker, positioned at Uluru
+            const marker = new google.maps.Marker({
+               position: uluru,
+               map: map,
+            });
+            }
+         </script>
+      
       <meta http-equiv="origin-trial" content="A41wt2Lsq30A9Ox/WehogvJckPI4aY9RoSxhb8FMtVnqaUle1AtI6Yf7Wk+7+Wm0AfDDOkMX+Wn6wnDpBWYgWwYAAAB8eyJvcmlnaW4iOiJodHRwczovL2Fkcm9sbC5jb206NDQzIiwiZmVhdHVyZSI6IkludGVyZXN0Q29ob3J0QVBJIiwiZXhwaXJ5IjoxNjI2MjIwNzk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ==">
       <script id="adroll_scr_exp" onerror="window.adroll_exp_list = [];" type="text/javascript" src="Pet%20Care%20Center%20-%20Chalmette,%20Jefferson,%20Metairie,%20New%20Orleans,%20and%20Slidell_files/index.js"></script><script type="text/javascript" src="Pet%20Care%20Center%20-%20Chalmette,%20Jefferson,%20Metairie,%20New%20Orleans,%20and%20Slidell_files/EI6XV6ENDBHQDN6UH2XHJO"></script>
       <div style="width: 1px; height: 1px; display: inline; position: absolute;"><img style="border-style:none;" alt="" src="Pet%20Care%20Center%20-%20Chalmette,%20Jefferson,%20Metairie,%20New%20Orleans,%20and%20Slidell_files/out_002.gif" width="1" height="1"><img style="border-style:none;" alt="" src="Pet%20Care%20Center%20-%20Chalmette,%20Jefferson,%20Metairie,%20New%20Orleans,%20and%20Slidell_files/out_004.gif" width="1" height="1"><img style="border-style:none;" alt="" src="Pet%20Care%20Center%20-%20Chalmette,%20Jefferson,%20Metairie,%20New%20Orleans,%20and%20Slidell_files/out_006.gif" width="1" height="1"><img style="border-style:none;" alt="" src="Pet%20Care%20Center%20-%20Chalmette,%20Jefferson,%20Metairie,%20New%20Orleans,%20and%20Slidell_files/out_003.gif" width="1" height="1"><img style="border-style:none;" alt="" src="Pet%20Care%20Center%20-%20Chalmette,%20Jefferson,%20Metairie,%20New%20Orleans,%20and%20Slidell_files/out_005.gif" width="1" height="1"><img style="border-style:none;" alt="" src="Pet%20Care%20Center%20-%20Chalmette,%20Jefferson,%20Metairie,%20New%20Orleans,%20and%20Slidell_files/out.gif" width="1" height="1"><img style="border-style:none;" alt="" src="Pet%20Care%20Center%20-%20Chalmette,%20Jefferson,%20Metairie,%20New%20Orleans,%20and%20Slidell_files/out_007.gif" width="1" height="1"></div>
@@ -70,7 +97,7 @@
          <header class="section section_size_sm section_header" id="header">
             <div class="section__container">
                <div class="header">
-                  <div class="header__item"><a href="" class="logo"> <img alt="Pet Care Center" src="Pet%20Care%20Center%20-%20Chalmette,%20Jefferson,%20Metairie,%20New%20Orleans,%20and%20Slidell_files/logo.svg"></a></div>
+                  <div class="header__item"><a href="" class="logo"> <img alt="Pet Care Center" src="Pet%20Care%20Center%20-%20Chalmette,%20Jefferson,%20Metairie,%20New%20Orleans,%20and%20Slidell_files/logo.jpg"></a></div>
                   <div class="header__item level">
                      <ul class="header__menu menu">
                         <li class="menu__item"><a class="menu__link" href="/home/">
@@ -121,6 +148,15 @@
                </div>
             </div>
          </section>
+         <!--The div element for the map -->
+         <div id="map"></div>
+
+         <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+         <script
+            src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap&libraries=&v=weekly"
+            async
+         ></script>
+         remember to say somthing about somthing too say aobut 
          <div class="section section_widget_action section_size_lg section_theme_dark">
             <div class="section__container">
                <div class="section__intro">
@@ -135,7 +171,7 @@
          <footer class="section section_footer">
             <div class="section__container">
                <div class="grid grid_stack_lg">
-                  <div class="grid__item"><a href="" class="logo"> <img alt="Pet Care Center" src="Pet%20Care%20Center%20-%20Chalmette,%20Jefferson,%20Metairie,%20New%20Orleans,%20and%20Slidell_files/logo.svg"></a></div>
+                  <div class="grid__item"><a href="" class="logo"> <img alt="Pet Care Center" src="Pet%20Care%20Center%20-%20Chalmette,%20Jefferson,%20Metairie,%20New%20Orleans,%20and%20Slidell_files/logo.jpg"></a></div>
                   <div class="grid__item grid__item_fill span-auto">
                      <ul class="menu flex-wrap flex-justify-center">
                         <li class="menu__item"><a class="menu__link" href="/home/">
@@ -166,7 +202,7 @@
             </div>
          </footer>
          <div class="sticky-navbar onscroll is-active" data-trigger="#header">
-            <div class="sticky-navbar__item"><a href="" class="logo"> <img alt="Pet Care Center" src="Pet%20Care%20Center%20-%20Chalmette,%20Jefferson,%20Metairie,%20New%20Orleans,%20and%20Slidell_files/logo-small.svg"></a></div>
+            <div class="sticky-navbar__item"><a href="" class="logo"> <img alt="Pet Care Center" src="Pet%20Care%20Center%20-%20Chalmette,%20Jefferson,%20Metairie,%20New%20Orleans,%20and%20Slidell_files/logo-small.jpg"></a></div>
             <div class="sticky-navbar__item">
                <a class="header__action button button_color_accent" href="https://petcarecenterinc.com/locations/" onclick="gtag('event', 'Click', {'event_category' : 'Sticky Nav CTA', 'event_label' : 'Request an Appointment button', 'event_value' : '375'});">
                Request an Appointment </a> <a class="header__action button button_color_primary" href="https://petcarecenterinc.com/contact/" onclick="gtag('event', 'Click', {'event_category' : 'Sticky Nav CTA', 'event_label' : 'Contact button', 'event_value' : '375'});">
