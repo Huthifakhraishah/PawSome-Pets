@@ -6931,7 +6931,9 @@ img:not([src]) {
 .card__footer,
 .card__image {
 	position: relative;
-	z-index: 3
+	z-index: 3;
+	color: white;
+	background-color: #432d27;
 }
 
 .card__body,
@@ -7077,7 +7079,7 @@ img:not([src]) {
 .card__title {
 	font-size: 1em;
 	font-weight: 700;
-	color: #9ea428
+	color: white;
 }
 
 .card__title_size_lg {
