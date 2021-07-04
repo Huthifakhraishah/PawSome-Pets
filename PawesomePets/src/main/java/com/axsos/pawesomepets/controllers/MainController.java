@@ -76,4 +76,14 @@ public class MainController {
         model.addAttribute("currentUser", userService.findByUsername(username));
         return "homePage.jsp";
     }
+
+    @RequestMapping("/aboutus")
+    public String aboutUs () {
+    	return "aboutus.jsp";	
+    }
+    @RequestMapping("/ourteam")
+    public String ourTeam () {
+    	return "ourteam.jsp";	
+    }
+    
 }
