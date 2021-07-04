@@ -9202,6 +9202,24 @@ html {
 	text-align: center;
 	font-size: larger;
 }
-
+.adminform label{
+	color: white;
+}
+.appluibutton{
+	text-align: center;
+	margin-left:38%;
+}
+.servicebutton{
+	text-align: center;
+	margin-left:41%;
+}
+.applubutton{
+	text-align: center;
+	margin:auto;
+}
+.categorybutton{
+	text-align: center;
+	margin-left:40%;
+}
 /*# sourceMappingURL=styles.min.css.map */
 
