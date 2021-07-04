@@ -9221,5 +9221,11 @@ html {
 	text-align: center;
 	margin-left:40%;
 }
+.petbutton{
+	margin-left: 45%;
+}
+.form-group>select{
+	width: 310px;
+}
 /*# sourceMappingURL=styles.min.css.map */
 
