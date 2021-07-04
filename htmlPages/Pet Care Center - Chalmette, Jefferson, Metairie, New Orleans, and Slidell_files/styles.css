@@ -6949,7 +6949,7 @@ img:not([src]) {
 .card__image {
 	flex: 0 1 auto;
 	width: 100%;
-	height: auto
+	height: 180px;
 }
 
 .card__image:first-child {
@@ -7214,7 +7214,7 @@ img:not([src]) {
 
 @media(min-width: 760px) {
 	.card_tall {
-		min-height: 18em
+		min-height: 10px;
 	}
 }
 
@@ -9177,6 +9177,17 @@ html {
 .section_main .type>a:hover,
 .section_main .type>:not(div) a:hover {
 	color: #9ea428
+}
+
+
+
+.spanimg{
+	color: red;
+}
+
+.serviceimg{
+	width: 244;
+	height:150;
 }
 
 
