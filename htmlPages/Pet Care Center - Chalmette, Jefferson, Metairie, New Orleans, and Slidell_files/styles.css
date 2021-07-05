@@ -2455,6 +2455,11 @@ input::-moz-placeholder {
 	}
 }
 
+.spanimg{
+	color: red;
+}
+
+
 .span-auto {
 	flex: 0 0 auto
 }
@@ -7214,7 +7219,7 @@ img:not([src]) {
 
 @media(min-width: 760px) {
 	.card_tall {
-		min-height: 10px;
+		min-height: 10px
 	}
 }
 
@@ -9178,26 +9183,10 @@ html {
 .section_main .type>:not(div) a:hover {
 	color: #9ea428
 }
-.adminforms{
-	margin: auto auto;
-	text-align: center;
-}
-.adminform{
-	margin: auto auto;
-	padding: 20px;	
-	width: 600px;
-	border: 1px solid black;
-	border-radius: 10px;
-	box-shadow: #000;
-	background-color: black;
-	opacity: 0.8;
-
-<<<<<<< HEAD
 
 
-.spanimg{
-	color: red;
-}
+
+
 
 .serviceimg{
 	width: 244;
@@ -9205,36 +9194,8 @@ html {
 }
 
 
-=======
-}
-.section__intro>.section__title{
-	color: black;
-}
-.adminform>.section__title{
-	margin: auto auto;
-	color: red;
-	text-align: center;
-	font-size: larger;
-}
-.adminform label{
-	color: white;
-}
-.appluibutton{
-	text-align: center;
-	margin-left:38%;
-}
-.servicebutton{
-	text-align: center;
-	margin-left:41%;
-}
-.applubutton{
-	text-align: center;
-	margin:auto;
-}
-.categorybutton{
-	text-align: center;
-	margin-left:40%;
-}
->>>>>>> 62d367c9ff8d5d16eece72c830ea3bd03dd6bea8
+
+
+
 /*# sourceMappingURL=styles.min.css.map */
 
