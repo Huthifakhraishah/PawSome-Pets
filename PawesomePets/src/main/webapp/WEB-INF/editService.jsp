@@ -174,8 +174,8 @@
                         <li class="menu__item"><a class="menu__link" href="/about">
                            About Us </a>
                         </li>
-                        <li class="menu__item"><a class="menu__link" href="/login">
-                           Login </a>
+                        <li class="menu__item"><a class="menu__link" href="/logout">
+                           Logout </a>
                         </li>
                      </ul>
                   </div>
@@ -237,8 +237,8 @@
                         <li class="menu__item"><a class="menu__link" href="/about">
                            About Us </a>
                         </li>
-                        <li class="menu__item"><a class="menu__link" href="/login">
-                           Login </a>
+                        <li class="menu__item"><a class="menu__link" href="/logout">
+                           Logout </a>
                         </li>
                   </ul>
                </div>

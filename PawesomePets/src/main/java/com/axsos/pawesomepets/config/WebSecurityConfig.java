@@ -24,11 +24,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
     
-    // ***********************************************
-    // ***********************************************
-    //Do we have to add "logreg"???
-    // ***********************************************
-    // ***********************************************
     @Override 
     protected void configure(HttpSecurity http) throws Exception {
         http.
@@ -39,6 +34,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
             .formLogin()
                 .loginPage("/login")
+                .defaultSuccessUrl("/home")
                 .permitAll()
                 .and()
             .logout()

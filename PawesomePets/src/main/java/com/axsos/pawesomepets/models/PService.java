@@ -20,43 +20,43 @@ import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-@Table(name="services")
+@Table(name = "services")
 @Entity
 public class PService {
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @NotNull
-    @Size(min = 2, max = 50)
-    private String name;
-    private String links;
-	@Column(updatable=false)
-    @DateTimeFormat(pattern="yyyy-MM-dd")
-    private Date createdAt;
-    @DateTimeFormat(pattern="yyyy-MM-dd")
-    private Date updatedAt;
-    //Relationships
-    @ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(
-		name = "services_has_pets",
-		joinColumns = @JoinColumn(name = "service_id"),
-		inverseJoinColumns = @JoinColumn(name = "pet_id")
-	)
-    private List <Pet> servicepets;
- // CONSTRUCTOR
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	@NotNull
+	@Size(min = 2, max = 50)
+	private String name;
+	private String links;
+	private String description;
+	@Column(updatable = false)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date createdAt;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date updatedAt;
+	// Relationships
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "services_has_pets", joinColumns = @JoinColumn(name = "service_id"), inverseJoinColumns = @JoinColumn(name = "pet_id"))
+	private List<Pet> servicepets;
+
+	// CONSTRUCTOR
 	public PService() {
-}
-	public PService(String name) {
-		this.name=name;
 	}
-	
-	public PService(@NotNull @Size(min = 2, max = 10) String name, String links) {
-		super();
+
+	public PService(String name) {
+		this.name = name;
+	}
+
+	public PService(@NotNull @Size(min = 2, max = 50) String name, String links, String description) {
 		this.name = name;
 		this.links = links;
+		this.description = description;
 	}
+
 	public PService(Long id, @NotNull @Size(min = 2, max = 10) String name, List<Pet> servicepets) {
-		
+
 		this.id = id;
 		this.name = name;
 		this.servicepets = servicepets;
@@ -66,39 +66,52 @@ public class PService {
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public List<Pet> getServicepets() {
 		return servicepets;
 	}
+
 	public void setServicepets(List<Pet> servicepets) {
 		this.servicepets = servicepets;
 	}
-    public String getLinks() {
+
+	public String getLinks() {
 		return links;
 	}
+
 	public void setLinks(String links) {
 		this.links = links;
 	}
 
-	 // Methods
-		@PrePersist
-	    protected void onCreate(){
-	        this.createdAt = new Date();
-	    }
+	public String getDescription() {
+		return description;
+	}
 
-		@PreUpdate
-	    protected void onUpdate(){
-	        this.updatedAt = new Date();
-	    }
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-   
-	
+	// Methods
+	@PrePersist
+	protected void onCreate() {
+		this.createdAt = new Date();
+	}
+
+	@PreUpdate
+	protected void onUpdate() {
+		this.updatedAt = new Date();
+	}
+
 }

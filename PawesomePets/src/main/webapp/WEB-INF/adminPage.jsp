@@ -161,6 +161,10 @@
                             <label for="service">Service Picture URL</label><br><br>
                             <input type="text" class="form-control" placeholder="Enter URL" name="links">
                             </div><br>
+                            <div class="form-group">
+                            <label for="service">Service description</label><br><br>
+                            <textarea class="form-control" placeholder="Enter Description" name="description"></textarea>
+                            </div><br>
                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                             <input type="submit" value="Add Service" class="button button_color_accent">
                         </form>
@@ -204,8 +208,8 @@
                         <li class="menu__item"><a class="menu__link" href="/about">
                             About Us </a>
                         </li>
-                        <li class="menu__item"><a class="menu__link" href="/login">
-                            Login </a>
+                        <li class="menu__item"><a class="menu__link" href="/logout">
+                            Logout </a>
                         </li>
                         </ul>
                     </div>
@@ -267,8 +271,8 @@
                         <li class="menu__item"><a class="menu__link" href="/about">
                             About Us </a>
                         </li>
-                        <li class="menu__item"><a class="menu__link" href="/login">
-                            Login </a>
+                        <li class="menu__item"><a class="menu__link" href="/logout">
+                            Logout </a>
                         </li>
                     </ul>
                 </div>

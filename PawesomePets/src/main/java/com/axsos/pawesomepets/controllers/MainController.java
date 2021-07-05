@@ -133,12 +133,12 @@ public class MainController {
 	}
 
 	@RequestMapping(value = "/admin/createPService", method = RequestMethod.POST)
-	public String createServiceProcess(Model model, @RequestParam("name") String name,@RequestParam("links")String links) {
+	public String createServiceProcess(Model model, @RequestParam("name") String name,@RequestParam("links")String links,@RequestParam(value="description")String description) {
 		if (name.length() < 2 || name.length() > 50) {
 			model.addAttribute("addingPServicesErrorMessage", "Service Name must be between 2 and 50");
 			return "adminPage.jsp";
 		} else {
-			pserviceService.createPService(name,links);
+			pserviceService.createPService(name,links,description);
 			return "redirect:/admin";
 		}
 	}
@@ -276,7 +276,20 @@ public class MainController {
 	}
 
 	@RequestMapping("/services")
-	public String services(Model model) {
+	public String services(Model model,Principal principal) {
+		if(principal!=null) {
+			User currentUser = userService.findByUsername(principal.getName());
+			List<Role> allRolesForCurrentUser = currentUser.getRoles();
+			List<Long> allRolesIdsForCurrentUser = new ArrayList<Long>();
+			for (Role role : allRolesForCurrentUser) {
+				allRolesIdsForCurrentUser.add(role.getId());
+			}
+			if(allRolesIdsForCurrentUser.get(0) == 2 || allRolesIdsForCurrentUser.get(0) == 1) {
+				model.addAttribute("isGuest",false);
+			}
+			}else {
+				model.addAttribute("isGuest",true);
+			}
 		List<PService> allPServices=pserviceService.findAll();
 		model.addAttribute("allPServices",allPServices);
 		return "services.jsp";
@@ -346,8 +359,8 @@ public class MainController {
 	}
 =======
 
-	@RequestMapping("/test")
-	public String test(Model model, Principal principal) {
+	@RequestMapping("/services/{id}")
+	public String test(Model model, Principal principal,@PathVariable(value="id")Long id) {
 		User currentUser = userService.findByUsername(principal.getName());
 		List<Role> allRolesForCurrentUser = currentUser.getRoles();
 		List<Long> allRolesIdsForCurrentUser = new ArrayList<Long>();
@@ -366,6 +379,8 @@ public class MainController {
 			model.addAttribute("isGuest",true);
 		}
 		
+		PService pservice=pserviceService.findPServiceById(id);
+		model.addAttribute("pservice",pservice);
 		return "serviceInfo.jsp";
 	}
 

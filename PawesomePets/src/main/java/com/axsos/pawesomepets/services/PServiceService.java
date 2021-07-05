@@ -16,14 +16,21 @@ public class PServiceService {
 		this.pserviceRepository=pserviceRepository;
 	}
 	
-	public PService createPService(String name,String links) {
-		PService myPService=new PService(name,links);
+	public PService createPService(String name,String links,String description) {
+		PService myPService=new PService(name,links,description);
 		return pserviceRepository.save(myPService);
 	}
 	
 	public List<PService> findAll() {
 		return pserviceRepository.findAll();
 	}
+<<<<<<< HEAD
+	
+	public PService findPServiceById(Long id) {
+		return pserviceRepository.findPServiceById(id);
+	}
+}
+=======
 	public PService findServiceById(Long id) {
 		Optional<PService> myService = pserviceRepository.findById(id);
 		if(myService.isPresent()) {
@@ -40,3 +47,4 @@ public class PServiceService {
 		pserviceRepository.delete(service);
 	}
 }
+>>>>>>> 764660b94311c3b1a62cf96b292371698bd9a265
