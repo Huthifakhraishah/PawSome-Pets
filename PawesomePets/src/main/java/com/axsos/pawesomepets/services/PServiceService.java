@@ -24,13 +24,12 @@ public class PServiceService {
 	public List<PService> findAll() {
 		return pserviceRepository.findAll();
 	}
-<<<<<<< HEAD
 	
 	public PService findPServiceById(Long id) {
 		return pserviceRepository.findPServiceById(id);
 	}
-}
-=======
+
+
 	public PService findServiceById(Long id) {
 		Optional<PService> myService = pserviceRepository.findById(id);
 		if(myService.isPresent()) {
@@ -47,4 +46,3 @@ public class PServiceService {
 		pserviceRepository.delete(service);
 	}
 }
->>>>>>> 764660b94311c3b1a62cf96b292371698bd9a265

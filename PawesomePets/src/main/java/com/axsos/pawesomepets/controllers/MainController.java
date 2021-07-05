@@ -94,8 +94,8 @@ public class MainController {
 	@RequestMapping("/login")
 	public String login(@RequestParam(value = "error", required = false) String error,
 			@RequestParam(value = "logout", required = false) String logout, Model model,
-			@Valid @ModelAttribute(value = "user") User user, BindingResult result,Principal principal) {
-		if(principal!=null) {
+			@Valid @ModelAttribute(value = "user") User user, BindingResult result, Principal principal) {
+		if (principal != null) {
 			return "redirect:/home";
 		}
 		if (error != null) {
@@ -106,7 +106,7 @@ public class MainController {
 		}
 		return "logreg.jsp";
 	}
-	
+
 	@RequestMapping("/logout")
 	public String logout() {
 		SecurityContextHolder.clearContext();
@@ -133,12 +133,13 @@ public class MainController {
 	}
 
 	@RequestMapping(value = "/admin/createPService", method = RequestMethod.POST)
-	public String createServiceProcess(Model model, @RequestParam("name") String name,@RequestParam("links")String links,@RequestParam(value="description")String description) {
+	public String createServiceProcess(Model model, @RequestParam("name") String name,
+			@RequestParam("links") String links, @RequestParam(value = "description") String description) {
 		if (name.length() < 2 || name.length() > 50) {
 			model.addAttribute("addingPServicesErrorMessage", "Service Name must be between 2 and 50");
 			return "adminPage.jsp";
 		} else {
-			pserviceService.createPService(name,links,description);
+			pserviceService.createPService(name, links, description);
 			return "redirect:/admin";
 		}
 	}
@@ -169,27 +170,27 @@ public class MainController {
 
 	@RequestMapping("/apply")
 	public String apply(Model model, Principal principal) {
-		if(principal!=null) {
-		String currentEmail = principal.getName();
-		User currentUser = userService.findByUsername(currentEmail);
-		model.addAttribute("pets", currentUser.getPets());
+		if (principal != null) {
+			String currentEmail = principal.getName();
+			User currentUser = userService.findByUsername(currentEmail);
+			model.addAttribute("pets", currentUser.getPets());
 
-		List<PService> allPServices = pserviceService.findAll();
-		model.addAttribute("allPServices", allPServices);
+			List<PService> allPServices = pserviceService.findAll();
+			model.addAttribute("allPServices", allPServices);
 
-		List<Appointment> allAppointments = appointmentService.findAll();
-		model.addAttribute("allAppointments", allAppointments);
-		
-		List<Role> allRolesForCurrentUser = currentUser.getRoles();
-		List<Long> allRolesIdsForCurrentUser = new ArrayList<Long>();
-		for (Role role : allRolesForCurrentUser) {
-			allRolesIdsForCurrentUser.add(role.getId());
-		}
-		if(allRolesIdsForCurrentUser.get(0) == 2 || allRolesIdsForCurrentUser.get(0) == 1) {
-			model.addAttribute("isGuest",false);
-		}
-		}else {
-			model.addAttribute("isGuest",true);
+			List<Appointment> allAppointments = appointmentService.findAll();
+			model.addAttribute("allAppointments", allAppointments);
+
+			List<Role> allRolesForCurrentUser = currentUser.getRoles();
+			List<Long> allRolesIdsForCurrentUser = new ArrayList<Long>();
+			for (Role role : allRolesForCurrentUser) {
+				allRolesIdsForCurrentUser.add(role.getId());
+			}
+			if (allRolesIdsForCurrentUser.get(0) == 2 || allRolesIdsForCurrentUser.get(0) == 1) {
+				model.addAttribute("isGuest", false);
+			}
+		} else {
+			model.addAttribute("isGuest", true);
 		}
 		return "apply.jsp";
 	}
@@ -205,57 +206,57 @@ public class MainController {
 
 	@RequestMapping(value = { "/", "/home" })
 	public String home(Principal principal, Model model) {
-		if(principal!=null) {
-		String username = principal.getName();
-		model.addAttribute("currentUser", userService.findByUsername(username));
-		User currentUser = userService.findByUsername(principal.getName());
-		List<Role> allRolesForCurrentUser = currentUser.getRoles();
-		List<Long> allRolesIdsForCurrentUser = new ArrayList<Long>();
-		for (Role role : allRolesForCurrentUser) {
-			allRolesIdsForCurrentUser.add(role.getId());
-		}
-		if(allRolesIdsForCurrentUser.get(0) == 2 || allRolesIdsForCurrentUser.get(0) == 1) {
-			model.addAttribute("isGuest",false);
-		}
-		}else {
-			model.addAttribute("isGuest",true);
+		if (principal != null) {
+			String username = principal.getName();
+			model.addAttribute("currentUser", userService.findByUsername(username));
+			User currentUser = userService.findByUsername(principal.getName());
+			List<Role> allRolesForCurrentUser = currentUser.getRoles();
+			List<Long> allRolesIdsForCurrentUser = new ArrayList<Long>();
+			for (Role role : allRolesForCurrentUser) {
+				allRolesIdsForCurrentUser.add(role.getId());
+			}
+			if (allRolesIdsForCurrentUser.get(0) == 2 || allRolesIdsForCurrentUser.get(0) == 1) {
+				model.addAttribute("isGuest", false);
+			}
+		} else {
+			model.addAttribute("isGuest", true);
 		}
 		return "homePage.jsp";
 	}
 
 	@RequestMapping("/about")
-	public String aboutUs(Model model,Principal principal) {
-		if(principal!=null) {
-		User currentUser = userService.findByUsername(principal.getName());
-		List<Role> allRolesForCurrentUser = currentUser.getRoles();
-		List<Long> allRolesIdsForCurrentUser = new ArrayList<Long>();
-		for (Role role : allRolesForCurrentUser) {
-			allRolesIdsForCurrentUser.add(role.getId());
+	public String aboutUs(Model model, Principal principal) {
+		if (principal != null) {
+			User currentUser = userService.findByUsername(principal.getName());
+			List<Role> allRolesForCurrentUser = currentUser.getRoles();
+			List<Long> allRolesIdsForCurrentUser = new ArrayList<Long>();
+			for (Role role : allRolesForCurrentUser) {
+				allRolesIdsForCurrentUser.add(role.getId());
+			}
+			if (allRolesIdsForCurrentUser.get(0) == 2 || allRolesIdsForCurrentUser.get(0) == 1) {
+				model.addAttribute("isGuest", false);
+			}
+		} else {
+			model.addAttribute("isGuest", true);
 		}
-		if(allRolesIdsForCurrentUser.get(0) == 2 || allRolesIdsForCurrentUser.get(0) == 1) {
-			model.addAttribute("isGuest",false);
-		}
-		}else {
-			model.addAttribute("isGuest",true);
-		}
-		
+
 		return "aboutus.jsp";
 	}
 
 	@RequestMapping("/ourteam")
-	public String ourTeam(Model model,Principal principal) {
-		if(principal!=null) {
-		User currentUser = userService.findByUsername(principal.getName());
-		List<Role> allRolesForCurrentUser = currentUser.getRoles();
-		List<Long> allRolesIdsForCurrentUser = new ArrayList<Long>();
-		for (Role role : allRolesForCurrentUser) {
-			allRolesIdsForCurrentUser.add(role.getId());
-		}
-		if(allRolesIdsForCurrentUser.get(0) == 2 || allRolesIdsForCurrentUser.get(0) == 1) {
-			model.addAttribute("isGuest",false);
-		}
-		}else {
-			model.addAttribute("isGuest",true);
+	public String ourTeam(Model model, Principal principal) {
+		if (principal != null) {
+			User currentUser = userService.findByUsername(principal.getName());
+			List<Role> allRolesForCurrentUser = currentUser.getRoles();
+			List<Long> allRolesIdsForCurrentUser = new ArrayList<Long>();
+			for (Role role : allRolesForCurrentUser) {
+				allRolesIdsForCurrentUser.add(role.getId());
+			}
+			if (allRolesIdsForCurrentUser.get(0) == 2 || allRolesIdsForCurrentUser.get(0) == 1) {
+				model.addAttribute("isGuest", false);
+			}
+		} else {
+			model.addAttribute("isGuest", true);
 		}
 		return "ourteam.jsp";
 	}
@@ -276,37 +277,34 @@ public class MainController {
 	}
 
 	@RequestMapping("/services")
-	public String services(Model model,Principal principal) {
-		if(principal!=null) {
+	public String services(Model model, Principal principal) {
+		if (principal != null) {
 			User currentUser = userService.findByUsername(principal.getName());
 			List<Role> allRolesForCurrentUser = currentUser.getRoles();
 			List<Long> allRolesIdsForCurrentUser = new ArrayList<Long>();
 			for (Role role : allRolesForCurrentUser) {
 				allRolesIdsForCurrentUser.add(role.getId());
 			}
-			if(allRolesIdsForCurrentUser.get(0) == 2 || allRolesIdsForCurrentUser.get(0) == 1) {
-				model.addAttribute("isGuest",false);
+			if (allRolesIdsForCurrentUser.get(0) == 2 || allRolesIdsForCurrentUser.get(0) == 1) {
+				model.addAttribute("isGuest", false);
 			}
-			}else {
-				model.addAttribute("isGuest",true);
-			}
-		List<PService> allPServices=pserviceService.findAll();
-		model.addAttribute("allPServices",allPServices);
+		} else {
+			model.addAttribute("isGuest", true);
+		}
+		List<PService> allPServices = pserviceService.findAll();
+		model.addAttribute("allPServices", allPServices);
 		return "services.jsp";
 	}
-<<<<<<< HEAD
-	
-	@RequestMapping("/test")
-	public String test() {
-		return "serviceInfo.jsp";
-	}
+
 	@RequestMapping("/services/{id}/edit")
-	public String editService(@ModelAttribute("service") PService myService, @PathVariable("id") Long myId, Model model) {
+	public String editService(@ModelAttribute("service") PService myService, @PathVariable("id") Long myId,
+			Model model) {
 		PService service = pserviceService.findServiceById(myId);
 		model.addAttribute("service", service);
-		
+
 		return "editservice.jsp";
 	}
+
 	@RequestMapping("/services/delete/{id}")
 	public String deleteService(@PathVariable("id") Long id) {
 		PService myService = pserviceService.findServiceById(id);
@@ -319,13 +317,16 @@ public class MainController {
 		}
 
 	}
+
 	@RequestMapping("/categories/{id}/edit")
-	public String editCategory(@ModelAttribute("category") Category myCategory, @PathVariable("id") Long myId, Model model) {
-		Category category = categoryService.findCategoryById(myId) ;
+	public String editCategory(@ModelAttribute("category") Category myCategory, @PathVariable("id") Long myId,
+			Model model) {
+		Category category = categoryService.findCategoryById(myId);
 		model.addAttribute(" category", category);
-		
+
 		return "editcategory.jsp";
 	}
+
 	@RequestMapping("/categories/delete/{id}")
 	public String deleteCategory(@PathVariable("id") Long id) {
 		Category myCategory = categoryService.findCategoryById(id);
@@ -338,13 +339,16 @@ public class MainController {
 		}
 
 	}
+
 	@RequestMapping("/appointment/{id}/edit")
-	public String editAppointment(@ModelAttribute("appointment") Appointment myAppointment, @PathVariable("id") Long myId, Model model) {
+	public String editAppointment(@ModelAttribute("appointment") Appointment myAppointment,
+			@PathVariable("id") Long myId, Model model) {
 		Appointment appointment = appointmentService.findAppointmentById(myId);
 		model.addAttribute("appointment", appointment);
-		
+
 		return "editappointment.jsp";
 	}
+
 	@RequestMapping("/appointment/delete/{id}")
 	public String deleteAppointment(@PathVariable("id") Long id) {
 		PService myService = pserviceService.findServiceById(id);
@@ -355,12 +359,10 @@ public class MainController {
 			System.out.println("Appointment doesn't exist");
 			return "redirect:/appointment";
 		}
-
 	}
-=======
 
 	@RequestMapping("/services/{id}")
-	public String test(Model model, Principal principal,@PathVariable(value="id")Long id) {
+	public String test(Model model, Principal principal, @PathVariable(value = "id") Long id) {
 		User currentUser = userService.findByUsername(principal.getName());
 		List<Role> allRolesForCurrentUser = currentUser.getRoles();
 		List<Long> allRolesIdsForCurrentUser = new ArrayList<Long>();
@@ -372,17 +374,16 @@ public class MainController {
 		} else if (allRolesIdsForCurrentUser.get(0) == 1) {
 			model.addAttribute("isAdmin", false);
 		}
-		
-		if(allRolesIdsForCurrentUser.get(0) == 2 || allRolesIdsForCurrentUser.get(0) == 1) {
-			model.addAttribute("isGuest",false);
-		}else {
-			model.addAttribute("isGuest",true);
+
+		if (allRolesIdsForCurrentUser.get(0) == 2 || allRolesIdsForCurrentUser.get(0) == 1) {
+			model.addAttribute("isGuest", false);
+		} else {
+			model.addAttribute("isGuest", true);
 		}
-		
-		PService pservice=pserviceService.findPServiceById(id);
-		model.addAttribute("pservice",pservice);
+
+		PService pservice = pserviceService.findPServiceById(id);
+		model.addAttribute("pservice", pservice);
 		return "serviceInfo.jsp";
 	}
 
->>>>>>> 40207c382c803c8201c571a70c8634eb88063279
 }
