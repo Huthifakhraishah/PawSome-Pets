@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 
 <!DOCTYPE html>
@@ -119,11 +121,11 @@
                     <div class="sectionintro">
                         <h2 class="sectiontitle">Edit Appointment</h2>
                     </div><br>
-                    <c:forEach items="${allappontment}" var="allappontment">
+                    <c:forEach items="${allappontment}" var="x">
                     <form action="/action_page.php">
                     <div class="adminforms">
                         <div class="adminform">
-                            <h4 class="sectiontitle"> ${allappontment.id} Appointment</h4><br>
+                            <h4 class="sectiontitle"> ${x.id} Appointment</h4><br>
                                 <div class="form-group">
                                     <label for="appointment">Updated Appointment :</label>
                                     <input type="text" name="appointment">
@@ -136,12 +138,13 @@
                                 <input type="submit" value="Edit Appointment" class="button button_color_accent">
                             </li>
                             <li class="menuitem">
-                                <a class="header__action button display-none display-block-lg button_color_accent" href="https://petcarecenterinc.com/locations/" onclick="gtag('event', 'Click', {'event_category' : 'Header CTA', 'event_label' : 'Request an Appointment button', 'event_value' : '375'});">
+                                <a href="/appointment/delete/${x.id}" class="header__action button display-none display-block-lg button_color_accent" href="https://petcarecenterinc.com/locations/" onclick="gtag('event', 'Click', {'event_category' : 'Header CTA', 'event_label' : 'Request an Appointment button', 'event_value' : '375'});">
                                     Delete </a> 
                             </li>
                             </ul>
                         </div>
                     </form>
+                    <br><br>
                     </c:forEach>
             </div>
             </section>

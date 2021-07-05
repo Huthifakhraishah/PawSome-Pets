@@ -25,7 +25,6 @@ public class PServiceService {
 		return pserviceRepository.findAll();
 	}
 
-	
 	public PService findPServiceById(Long id) {
 		return pserviceRepository.findPServiceById(id);
 	}
@@ -47,4 +46,3 @@ public class PServiceService {
 		pserviceRepository.delete(service);
 	}
 }
-
