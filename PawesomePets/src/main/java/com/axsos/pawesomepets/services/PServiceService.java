@@ -2,6 +2,7 @@
 package com.axsos.pawesomepets.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -22,5 +23,20 @@ public class PServiceService {
 	
 	public List<PService> findAll() {
 		return pserviceRepository.findAll();
+	}
+	public PService findServiceById(Long id) {
+		Optional<PService> myService = pserviceRepository.findById(id);
+		if(myService.isPresent()) {
+			return myService.get();
+		}else {
+			return null;
+		}
+	}
+	public void updateService(PService myService) {
+		pserviceRepository.save(myService);
+	}
+
+	public void deleteService(PService service) {
+		pserviceRepository.delete(service);
 	}
 }

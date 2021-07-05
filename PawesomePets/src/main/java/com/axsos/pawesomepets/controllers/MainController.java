@@ -18,12 +18,14 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.axsos.pawesomepets.models.Appointment;
+import com.axsos.pawesomepets.models.Category;
 import com.axsos.pawesomepets.models.PService;
 import com.axsos.pawesomepets.models.ServicehasPet;
 import com.axsos.pawesomepets.models.User;
@@ -212,9 +214,65 @@ public class MainController {
 		return "services.jsp";
 	}
 	
-//	@RequestMapping("/test")
-//	public String test() {
-//		return "serviceInfo.jsp";
-//	}
-	
+	@RequestMapping("/test")
+	public String test() {
+		return "serviceInfo.jsp";
+	}
+	@RequestMapping("/services/{id}/edit")
+	public String editService(@ModelAttribute("service") PService myService, @PathVariable("id") Long myId, Model model) {
+		PService service = pserviceService.findServiceById(myId);
+		model.addAttribute("service", service);
+		
+		return "editservice.jsp";
+	}
+	@RequestMapping("/services/delete/{id}")
+	public String deleteService(@PathVariable("id") Long id) {
+		PService myService = pserviceService.findServiceById(id);
+		if (myService != null) {
+			pserviceService.deleteService(myService);
+			return "redirect:/services";
+		} else {
+			System.out.println("Service doesn't exist");
+			return "redirect:/services";
+		}
+
+	}
+	@RequestMapping("/categories/{id}/edit")
+	public String editCategory(@ModelAttribute("category") Category myCategory, @PathVariable("id") Long myId, Model model) {
+		Category category = categoryService.findCategoryById(myId) ;
+		model.addAttribute(" category", category);
+		
+		return "editcategory.jsp";
+	}
+	@RequestMapping("/categories/delete/{id}")
+	public String deleteCategory(@PathVariable("id") Long id) {
+		Category myCategory = categoryService.findCategoryById(id);
+		if (myCategory != null) {
+			categoryService.deleteCategory(myCategory);
+			return "redirect:/categories";
+		} else {
+			System.out.println("categories doesn't exist");
+			return "redirect:/categories";
+		}
+
+	}
+	@RequestMapping("/appointment/{id}/edit")
+	public String editAppointment(@ModelAttribute("appointment") Appointment myAppointment, @PathVariable("id") Long myId, Model model) {
+		Appointment appointment = appointmentService.findAppointmentById(myId);
+		model.addAttribute("appointment", appointment);
+		
+		return "editappointment.jsp";
+	}
+	@RequestMapping("/appointment/delete/{id}")
+	public String deleteAppointment(@PathVariable("id") Long id) {
+		PService myService = pserviceService.findServiceById(id);
+		if (myService != null) {
+			pserviceService.deleteService(myService);
+			return "redirect:/appointment";
+		} else {
+			System.out.println("Appointment doesn't exist");
+			return "redirect:/appointment";
+		}
+
+	}
 }
