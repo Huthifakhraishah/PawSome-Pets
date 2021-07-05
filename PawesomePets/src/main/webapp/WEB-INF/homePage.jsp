@@ -108,9 +108,17 @@
                            <a class="menu__link dropdown__trigger" href="/about">
                            About Us </a>
                         </li>
-                        <li class="menu__item"><a class="menu__link" href="/login">
+                     <c:choose>  
+				    <c:when test="${isGuest==true}">  
+						<li class="menu__item"><a class="menu__link" href="/login">
                            Login </a>
-                        </li>
+                                </li>		    
+	                </c:when>  
+	                  <c:when test="${isGuest==false}">  
+	                  <li class="menu__item"><a class="menu__link" href="/logout">
+                           Logout </a>
+				    </c:when>  		
+	                </c:choose>	
                      </ul>
                      <a class="header__action button display-none display-block-lg button_color_accent" href="/services" onclick="gtag('event', 'Click', {'event_category' : 'Header CTA', 'event_label' : 'Request an Appointment button', 'event_value' : '375'});">
                      Request an Appointment </a> <a class="header__action button display-none display-block-lg button_color_primary" href="/about" onclick="gtag('event', 'Click', {'event_category' : 'Header CTA', 'event_label' : 'Contact button', 'event_value' : '375'});">
@@ -299,13 +307,5 @@
       <div style="display: none; visibility: hidden;">
          <script type="text/javascript">var _stk="bd1fd58e5ef1e45c9c2648fe35b24c00c019b075";(function(){var a=document,b=a.createElement("script");b.type="text/javascript";b.async=!0;b.src=("https:"==document.location.protocol?"https://":"http://")+"d31y97ze264gaa.cloudfront.net/assets/st/js/st.js";a=a.getElementsByTagName("script")[0];a.parentNode.insertBefore(b,a)})();</script>
       </div>
-    <!-- *************************** -->
-    <!-- *************************** -->
-    <form id="logoutForm" method="POST" action="/logout">
-    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-	<input type="submit" value="Logout!" />
-    </form>
-    <!-- *************************** -->
-    <!-- *************************** -->
    </body>
 </html>

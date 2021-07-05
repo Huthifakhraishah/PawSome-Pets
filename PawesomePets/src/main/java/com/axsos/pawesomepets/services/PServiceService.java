@@ -16,8 +16,8 @@ public class PServiceService {
 		this.pserviceRepository=pserviceRepository;
 	}
 	
-	public PService createPService(String name) {
-		PService myPService=new PService(name);
+	public PService createPService(String name,String links) {
+		PService myPService=new PService(name,links);
 		return pserviceRepository.save(myPService);
 	}
 	

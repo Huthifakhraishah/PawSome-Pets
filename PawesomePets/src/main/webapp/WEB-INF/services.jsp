@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <!DOCTYPE html>
 
@@ -139,13 +140,13 @@
                             <li class="menu__item dropdown on-hover menu__link dropdown__trigger">
                                 Services
                                 <ul class="dropdown__menu">
-                                    <li class="dropdown__item"><a class="dropdown__link flex-justify-between" href="https://petcarecenterinc.com/services/wellness-prevention/"><span>Wellness &amp; Prevention</span></a></li>
-                                    <li class="dropdown__item"><a class="dropdown__link flex-justify-between" href="https://petcarecenterinc.com/services/testing-diagnosis/"><span>Testing &amp; Diagnosis</span></a></li>
-                                    <li class="dropdown__item"><a class="dropdown__link flex-justify-between" href="https://petcarecenterinc.com/services/specialized-care/"><span>Specialized Care</span></a></li>
-                                    <li class="dropdown__item"><a class="dropdown__link flex-justify-between" href="https://petcarecenterinc.com/services/surgical-procedures/"><span>Surgical Procedures</span></a></li>
-                                    <li class="dropdown__item"><a class="dropdown__link flex-justify-between" href="https://petcarecenterinc.com/services/urgent-care/"><span>Urgent Care</span></a></li>
-                                    <li class="dropdown__item"><a class="dropdown__link flex-justify-between" href="https://petcarecenterinc.com/services/pet-boarding/"><span>Pet Boarding</span></a></li>
-                                    <li class="dropdown__item"><a class="dropdown__link flex-justify-between" href="https://petcarecenterinc.com/services/grooming/"><span>Grooming</span></a></li>
+                                    <li class="dropdown__item"><a class="dropdown__link flex-justify-between" href="#"><span>Wellness &amp; Prevention</span></a></li>
+                                    <li class="dropdown__item"><a class="dropdown__link flex-justify-between" href="#"><span>Testing &amp; Diagnosis</span></a></li>
+                                    <li class="dropdown__item"><a class="dropdown__link flex-justify-between" href="#"><span>Specialized Care</span></a></li>
+                                    <li class="dropdown__item"><a class="dropdown__link flex-justify-between" href="#"><span>Surgical Procedures</span></a></li>
+                                    <li class="dropdown__item"><a class="dropdown__link flex-justify-between" href="#"><span>Urgent Care</span></a></li>
+                                    <li class="dropdown__item"><a class="dropdown__link flex-justify-between" href="#"><span>Pet Boarding</span></a></li>
+                                    <li class="dropdown__item"><a class="dropdown__link flex-justify-between" href="#"><span>Grooming</span></a></li>
                                 </ul>
                             </li>
                             <li class="menu__item"><a class="menu__link" href="/ourteam">
@@ -160,7 +161,7 @@
                             </li>
                         </ul>
                         <a class="header__action button display-none display-block-lg button_color_accent" href="/services" onclick="gtag('event', 'Click', {'event_category' : 'Header CTA', 'event_label' : 'Request an Appointment button', 'event_value' : '375'});">
-                     Request an Appointment </a> <a class="header__action button display-none display-block-lg button_color_primary" href="https://petcarecenterinc.com/contact/" onclick="gtag('event', 'Click', {'event_category' : 'Header CTA', 'event_label' : 'Contact button', 'event_value' : '375'});">
+                     Request an Appointment </a> <a class="header__action button display-none display-block-lg button_color_primary" href="/about" onclick="gtag('event', 'Click', {'event_category' : 'Header CTA', 'event_label' : 'Contact button', 'event_value' : '375'});">
                      Contact </a>
                         <button data-modal-open="modal-menu" aria-label="menu" class="header__toggle button button_outline_primary button_icon">
                         <svg role="img" class="icon">
@@ -222,14 +223,17 @@
                             </a>
                         </div>
 
+                        
+                        <c:forEach items="${allPServices}" var="pservice">
                         <div class="grid__item grid__item_fill imgmar2">
-                            <a href="https://petcarecenterinc.com/about-us/team/dr-erica-capshaw-brooks/" class="card card_provider-full card_link card_zoom card_tall text-align-center">
-                                <img class="lazy card__image loaded" src="/images/pt-1.jpg" data-was-processed="true">
+                            <a href="/services/${pservice.id}" class="card card_provider-full card_link card_zoom card_tall text-align-center">
+                                <img class="lazy card__image loaded" src="${pservice.links}" data-was-processed="true">
                                 <div class="card__body gap-y-xs">
-                                    <h3 class="card__title"><span>rehabilitation</span></h3>
+                                    <h3 class="card__title"><span><c:out value="${pservice.name}"/></span></h3>
                                 </div>
                             </a>
                         </div>
+                        </c:forEach>
 
 
 

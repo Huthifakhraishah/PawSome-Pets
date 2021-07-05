@@ -99,8 +99,8 @@
                            <a class="menu__link dropdown__trigger" href="/about">
                            About Us </a>
                         </li>
-                        <li class="menu__item"><a class="menu__link" href="/login">
-                           Login </a>
+                        <li class="menu__item"><a class="menu__link" href="/logout">
+                           Logout </a>
                         </li>
                      </ul>
                      <a class="header__action button display-none display-block-lg button_color_accent" href="/services" onclick="gtag('event', 'Click', {'event_category' : 'Header CTA', 'event_label' : 'Request an Appointment button', 'event_value' : '375'});">
