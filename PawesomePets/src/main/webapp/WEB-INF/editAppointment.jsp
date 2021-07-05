@@ -114,15 +114,16 @@
                </div>
             </div>
          </header>
-            <section class="section section_widget_highlight-grid section_theme_shade ">
-                <div class="section__container">
-                    <div class="section__intro">
-                        <h2 class="section__title">Edit Appointment</h2>
+           <section class="section section_widget_highlight-grid section_theme_shade ">
+                <div class="sectioncontainer">
+                    <div class="sectionintro">
+                        <h2 class="sectiontitle">Edit Appointment</h2>
                     </div><br>
+                    <c:forEach items="${allappontment}" var="allappontment">
                     <form action="/action_page.php">
                     <div class="adminforms">
                         <div class="adminform">
-                            <h4 class="section__title">The Name of the Appointment</h4><br>
+                            <h4 class="sectiontitle"> ${allappontment.id} Appointment</h4><br>
                                 <div class="form-group">
                                     <label for="appointment">Updated Appointment :</label>
                                     <input type="text" name="appointment">
@@ -131,16 +132,17 @@
                     </div><br>
                         <div class="appluibutton">
                             <ul class="menu toolbar-cta">
-                            <li class="menu__item">
+                            <li class="menuitem">
                                 <input type="submit" value="Edit Appointment" class="button button_color_accent">
                             </li>
-                            <li class="menu__item">
+                            <li class="menuitem">
                                 <a class="header__action button display-none display-block-lg button_color_accent" href="https://petcarecenterinc.com/locations/" onclick="gtag('event', 'Click', {'event_category' : 'Header CTA', 'event_label' : 'Request an Appointment button', 'event_value' : '375'});">
                                     Delete </a> 
                             </li>
                             </ul>
                         </div>
-                </form>
+                    </form>
+                    </c:forEach>
             </div>
             </section>
             <div class="section section_widget_action section_size_lg section_theme_dark">

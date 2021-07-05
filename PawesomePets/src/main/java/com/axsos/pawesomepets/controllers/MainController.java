@@ -270,11 +270,17 @@ public class MainController {
 		return "editCategory.jsp";
 	}
 
+//	@RequestMapping("/editappointment")
+//	public String editAppointment() {
+//		return "editAppointment.jsp";
+//	}
 	@RequestMapping("/editappointment")
-	public String editAppointment() {
-		return "editAppointment.jsp";
-	}
-
+    public String editAppointment(Model model) {
+        List<Appointment> appontment=appointmentService.findAll();
+        model.addAttribute("allappontment", appontment);
+        return "editAppointment.jsp";
+    }
+	
 	@RequestMapping("/services")
 	public String services(Model model,Principal principal) {
 		if(principal!=null) {
@@ -294,12 +300,9 @@ public class MainController {
 		model.addAttribute("allPServices",allPServices);
 		return "services.jsp";
 	}
-<<<<<<< HEAD
+
 	
-	@RequestMapping("/test")
-	public String test() {
-		return "serviceInfo.jsp";
-	}
+	
 	@RequestMapping("/services/{id}/edit")
 	public String editService(@ModelAttribute("service") PService myService, @PathVariable("id") Long myId, Model model) {
 		PService service = pserviceService.findServiceById(myId);
@@ -357,7 +360,7 @@ public class MainController {
 		}
 
 	}
-=======
+
 
 	@RequestMapping("/services/{id}")
 	public String test(Model model, Principal principal,@PathVariable(value="id")Long id) {
@@ -384,5 +387,5 @@ public class MainController {
 		return "serviceInfo.jsp";
 	}
 
->>>>>>> 40207c382c803c8201c571a70c8634eb88063279
+
 }
