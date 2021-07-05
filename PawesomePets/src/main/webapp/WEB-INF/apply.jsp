@@ -201,9 +201,17 @@
                         <li class="menu__item"><a class="menu__link" href="/about">
                             About Us </a>
                         </li>
-                        <li class="menu__item"><a class="menu__link" href="/login">
-                            Login </a>
-                        </li>
+                        <c:choose>  
+				    <c:when test="${isGuest==true}">  
+						<li class="menu__item"><a class="menu__link" href="/login">
+                           Login </a>
+                                </li>		    
+	                </c:when>  
+	                  <c:when test="${isGuest==false}">  
+	                  <li class="menu__item"><a class="menu__link" href="/logout">
+                           Logout </a>
+				    </c:when>  		
+	                </c:choose>	
                         </ul>
                     </div>
                 </div>
@@ -264,9 +272,17 @@
                         <li class="menu__item"><a class="menu__link" href="/about">
                             About Us </a>
                         </li>
-                        <li class="menu__item"><a class="menu__link" href="/login">
-                            Login </a>
-                        </li>
+                       <c:choose>  
+				    <c:when test="${isGuest==true}">  
+						<li class="menu__item"><a class="menu__link" href="/login">
+                           Login </a>
+                                </li>		    
+	                </c:when>  
+	                  <c:when test="${isGuest==false}">  
+	                  <li class="menu__item"><a class="menu__link" href="/logout">
+                           Logout </a>
+				    </c:when>  		
+	                </c:choose>	
                     </ul>
                 </div>
             </div>

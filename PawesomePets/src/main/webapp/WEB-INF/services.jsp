@@ -156,9 +156,17 @@
                                 <a class="menu__link dropdown__trigger" href="/about">
                            About Us </a>
                             </li>
-                            <li class="menu__item"><a class="menu__link" href="/login">
+                     <c:choose>  
+				    <c:when test="${isGuest==true}">  
+						<li class="menu__item"><a class="menu__link" href="/login">
                            Login </a>
-                            </li>
+                                </li>		    
+	                </c:when>  
+	                  <c:when test="${isGuest==false}">  
+	                  <li class="menu__item"><a class="menu__link" href="/logout">
+                           Logout </a>
+				    </c:when>  		
+	                </c:choose>	
                         </ul>
                         <a class="header__action button display-none display-block-lg button_color_accent" href="/services" onclick="gtag('event', 'Click', {'event_category' : 'Header CTA', 'event_label' : 'Request an Appointment button', 'event_value' : '375'});">
                      Request an Appointment </a> <a class="header__action button display-none display-block-lg button_color_primary" href="/about" onclick="gtag('event', 'Click', {'event_category' : 'Header CTA', 'event_label' : 'Contact button', 'event_value' : '375'});">
@@ -177,53 +185,8 @@
             <div class="secton__container ">
                 <div class="section__intro">
                     <h2 class="section__title">Your Full-Service Veterinarian</h2>
-                </div>
-                <div class="grid grid_tile flex-justify-center ">
-                    <div class="grid__item grid__item_fill ">
-                        <a href="https://petcarecenterinc.com/about-us/team/dr-erica-capshaw-brooks/" class="card card_provider-full card_link card_zoom card_tall text-align-center">
-                            <img class="lazy card__image loaded " src="/images/Grooming.jpg" data-was-processed="true">
-                            <div class="card__body gap-y-xs">
-                                <h3 class="card__title"><span>Grooming <span class="spanimg">&</span> Showring</span>
-                                </h3>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="grid__item grid__item_fill ">
-                        <a href="https://petcarecenterinc.com/about-us/team/dr-alexandra-carter/" class="card card_provider-full card_link card_zoom card_tall text-align-center">
-                            <img class="lazy card__image loaded" alt="Alexandra Carter, DVM" src="/images/surgery.jpg" data-was-processed="true">
-                            <div class="card__body gap-y-xs">
-                                <h3 class="card__title"><span>Surgical Operations </span></h3>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="grid__item grid__item_fill ">
-                        <a href="https://petcarecenterinc.com/about-us/team/dr-kristen-rought/" class="card card_provider-full card_link card_zoom card_tall text-align-center">
-                            <img class="lazy card__image loaded" alt="Kristen Rought, DVM" src="/images/med.jpg" data-was-processed="true">
-                            <div class="card__body gap-y-xs">
-                                <h3 class="card__title"><span>Medication</span></h3>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="grid__item grid__item_fill ">
-                        <a href="https://petcarecenterinc.com/about-us/team/dr-tiffany-killian/" class="card card_provider-full card_link card_zoom card_tall text-align-center">
-                            <img class="lazy card__image loaded" src="/images/vaccinations.jpg" data-was-processed="true">
-                            <div class="card__body gap-y-xs">
-                                <h3 class="card__title"><span>Vaccine</span></h3>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="grid grid_tile flex-justify-center">
-                        <div class="grid__item grid__item_fill imgmar1">
-                            <a href="https://petcarecenterinc.com/about-us/team/dr-erica-capshaw-brooks/" class="card card_provider-full card_link card_zoom card_tall text-align-center">
-                                <img class="lazy card__image loaded" src="/images/well.jpg" data-was-processed="true">
-                                <div class="card__body gap-y-xs">
-                                    <h3 class="card__title"><span>Wellness <span class="spanimg">&</span> Preventive Care</span>
-                                    </h3>
-                                </div>
-                            </a>
-                        </div>
-
-                        
+                </div>           
+                                                                                    
                         <c:forEach items="${allPServices}" var="pservice">
                         <div class="grid__item grid__item_fill imgmar2">
                             <a href="/services/${pservice.id}" class="card card_provider-full card_link card_zoom card_tall text-align-center">
@@ -234,8 +197,6 @@
                             </a>
                         </div>
                         </c:forEach>
-
-
 
                     </div>
                 </div>
@@ -260,9 +221,17 @@
                                 <li class="menu__item"><a class="menu__link" href="/about">
                             About Us </a>
                                 </li>
-                                <li class="menu__item"><a class="menu__link" href="/login">
+                                <c:choose>  
+				    <c:when test="${isGuest==true}">  
+						<li class="menu__item"><a class="menu__link" href="/login">
                            Login </a>
-                                </li>
+                                </li>		    
+	                </c:when>  
+	                  <c:when test="${isGuest==false}">  
+	                  <li class="menu__item"><a class="menu__link" href="/logout">
+                           Logout </a>
+				    </c:when>  		
+	                </c:choose>	
                             </ul>
                         </div>
                     </div>
@@ -325,9 +294,17 @@
                             <li class="menu__item"><a class="menu__link" href="/about">
                          About Us </a>
                             </li>
-                            <li class="menu__item"><a class="menu__link" href="/login">
-                        Login </a>
-                            </li>
+                                        <c:choose>  
+				    <c:when test="${isGuest==true}">  
+						<li class="menu__item"><a class="menu__link" href="/login">
+                           Login </a>
+                                </li>		    
+	                </c:when>  
+	                  <c:when test="${isGuest==false}">  
+	                  <li class="menu__item"><a class="menu__link" href="/logout">
+                           Logout </a>
+				    </c:when>  		
+	                </c:choose>	
                         </ul>
                     </div>
                 </div>

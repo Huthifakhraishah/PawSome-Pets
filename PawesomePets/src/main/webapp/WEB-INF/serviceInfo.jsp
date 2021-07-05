@@ -6,7 +6,7 @@
 <html lang="en">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<title>Service Info</title>
+<title><c:out value="${pservice.name}"/></title>
 <link rel="canonical" href="https://petcarecenterinc.com/">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -85,7 +85,7 @@
     </style>
     <meta http-equiv="origin-trial" content="A41wt2Lsq30A9Ox/WehogvJckPI4aY9RoSxhb8FMtVnqaUle1AtI6Yf7Wk+7+Wm0AfDDOkMX+Wn6wnDpBWYgWwYAAAB8eyJvcmlnaW4iOiJodHRwczovL2Fkcm9sbC5jb206NDQzIiwiZmVhdHVyZSI6IkludGVyZXN0Q29ob3J0QVBJIiwiZXhwaXJ5IjoxNjI2MjIwNzk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ==">
     <script id="adroll_scr_exp" onerror="window.adroll_exp_list = [];" type="text/javascript" src="/js/index.js"></script>
-    <script type="text/javascript" src="Pet%20Care%20Center%20-%20Chalmette,%20Jefferson,%20Metairie,%20New%20Orleans,%20and%20Slidell_files/EI6XV6ENDBHQDN6UH2XHJO"></script>
+    <script type="text/javascript" src="/js/EI6XV6ENDBHQDN6UH2XHJO"></script>
     <div style="width: 1px; height: 1px; display: inline; position: absolute;"><img style="border-style:none;" alt="" src="Pet%20Care%20Center%20-%20Chalmette,%20Jefferson,%20Metairie,%20New%20Orleans,%20and%20Slidell_files/out_002.gif" width="1" height="1"><img style="border-style:none;" alt="" src="Pet%20Care%20Center%20-%20Chalmette,%20Jefferson,%20Metairie,%20New%20Orleans,%20and%20Slidell_files/out_004.gif"
             width="1" height="1"><img style="border-style:none;" alt="" src="Pet%20Care%20Center%20-%20Chalmette,%20Jefferson,%20Metairie,%20New%20Orleans,%20and%20Slidell_files/out_006.gif" width="1" height="1"><img style="border-style:none;" alt="" src="Pet%20Care%20Center%20-%20Chalmette,%20Jefferson,%20Metairie,%20New%20Orleans,%20and%20Slidell_files/out_003.gif"
             width="1" height="1"><img style="border-style:none;" alt="" src="Pet%20Care%20Center%20-%20Chalmette,%20Jefferson,%20Metairie,%20New%20Orleans,%20and%20Slidell_files/out_005.gif" width="1" height="1"><img style="border-style:none;" alt="" src="Pet%20Care%20Center%20-%20Chalmette,%20Jefferson,%20Metairie,%20New%20Orleans,%20and%20Slidell_files/out.gif"
@@ -203,13 +203,12 @@
                     <div style="width: 55%;">
                         <img class="radius align_right lazy service_img loaded" alt="Kristen Rought, DVM" src="/images/grooming2.jpg" data-was-processed="true" id="thumbnailForService"">
                         <div style="font-size: xx-large;">
-                            <h2>Grooming & Showering</h2>
+                            <h2><c:out value="${pservice.name}"/></h2>
                         </div>
                         <br>
                         <br>
-                        <p style="margin-bottom: 5%;">Regular grooming is essential to your pet's health as it helps prevent skin issues such as matting. We’ll suds away dirt, oil and debris to help skin & coats of all types look and feel great. Help care for your pet with essential
-                            services such as nail trimming, teeth-brushing and gland expressions. >Regular grooming is essential to your pet's health as it helps prevent skin issues such as matting. We’ll suds away dirt, oil and debris to help skin &
-                            coats of all types look and feel great. Help care for your pet with essential services such as nail trimming, teeth-brushing and gland expressions.
+                        <p style="margin-bottom: 5%;">
+                        <c:out value="${pservice.description}"/>
                         </p>
                     </div>
                 </div>
@@ -235,7 +234,7 @@
                 </c:choose>							
 								
 									
-                                    <a class="button button_color_accent" href="/make-an-appointment/" onclick="gtag('event', 'Click', {'event_category' : 'Erica Capshaw Brooks, DVM Section CTA', 'event_label' : 'Find a Location button', 'event_value' : '375'})">
+                                    <a class="button button_color_accent" href="/apply" onclick="gtag('event', 'Click', {'event_category' : 'Erica Capshaw Brooks, DVM Section CTA', 'event_label' : 'Find a Location button', 'event_value' : '375'})">
                 Apply</a>
                                 </div>
                             </div>
@@ -265,9 +264,17 @@
                                         <li class="menu__item"><a class="menu__link" href="/about">
                             About Us </a>
                                         </li>
-                                        <li class="menu__item"><a class="menu__link" href="/login">
+                    <c:choose>  
+				    <c:when test="${isGuest==true}">  
+						<li class="menu__item"><a class="menu__link" href="/login">
                            Login </a>
-                                        </li>
+                                </li>		    
+	                </c:when>  
+	                  <c:when test="${isGuest==false}">  
+	                  <li class="menu__item"><a class="menu__link" href="/logout">
+                           Logout </a>
+				    </c:when>  		
+	                </c:choose>	
                                     </ul>
                                 </div>
                             </div>
