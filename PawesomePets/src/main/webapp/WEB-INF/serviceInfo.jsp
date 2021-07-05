@@ -1,10 +1,11 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <link rel="canonical" href="https://petcarecenterinc.com/">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Service Info</title>
+<link rel="canonical" href="https://petcarecenterinc.com/">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -88,7 +89,9 @@
             width="1" height="1"><img style="border-style:none;" alt="" src="Pet%20Care%20Center%20-%20Chalmette,%20Jefferson,%20Metairie,%20New%20Orleans,%20and%20Slidell_files/out_005.gif" width="1" height="1"><img style="border-style:none;" alt="" src="Pet%20Care%20Center%20-%20Chalmette,%20Jefferson,%20Metairie,%20New%20Orleans,%20and%20Slidell_files/out.gif"
             width="1" height="1"><img style="border-style:none;" alt="" src="Pet%20Care%20Center%20-%20Chalmette,%20Jefferson,%20Metairie,%20New%20Orleans,%20and%20Slidell_files/out_007.gif" width="1" height="1"></div>
     <div style="width: 1px; height: 1px; display: inline; position: absolute;"></div>
+
 </head>
+<body>
 
 <body id="top" class="home">
     <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-NZ6WKBM" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -145,7 +148,7 @@
                         </div>
                         <div class="header__item level">
                             <ul class="header__menu menu">
-                                <li class="menu__item"><a class="menu__link" href="https://www.google.com/"> Home </a>
+                                <li class="menu__item"><a class="menu__link" href="/home"> Home </a>
                                 </li>
                                 <li class="menu__item dropdown on-hover menu__link dropdown__trigger">
                                     Services
@@ -188,7 +191,7 @@
             <div>
                 <div class="grid grid_tile flex-justify-center" style=" margin: auto;">
                     <div style="width: 55%;">
-                        <img class="radius align_right lazy service_img loaded" alt="Kristen Rought, DVM" src="/images/grooming2.jpg" data-was-processed="true" style="border: solid;">
+                        <img class="radius align_right lazy service_img loaded" alt="Kristen Rought, DVM" src="/images/grooming2.jpg" data-was-processed="true" id="thumbnailForService"">
                         <div style="font-size: xx-large;">
                             <h2>Grooming & Showering</h2>
                         </div>
@@ -219,7 +222,7 @@
                             </div>
                         </div>
 
-                        <img class="lazy section__background loaded" alt="" data-src="/site/assets/files/5470/cta.jpg" src="/images/larg.jpg" data-was-processed="true">
+                        <img class="lazy section__background loaded" alt="" data-src="/images/cta.jpg" src="/images/larg.jpg" data-was-processed="true">
                     </div>
                 </div>
                 <div>
@@ -259,26 +262,6 @@
                         </div>
                     </footer>
                 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
                 <script src="/js/scripts.js"></script>
                 <script src="/js//svgxuse.js"></script>
@@ -329,9 +312,8 @@
                         })();
                     </script>
                 </div>
-
-
-
 </body>
 
+</html>
+</body>
 </html>
