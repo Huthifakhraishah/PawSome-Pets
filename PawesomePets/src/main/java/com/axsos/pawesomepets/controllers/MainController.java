@@ -271,10 +271,6 @@ public class MainController {
 		return "editCategory.jsp";
 	}
 
-//	@RequestMapping("/editappointment")
-//	public String editAppointment() {
-//		return "editAppointment.jsp";
-//	}
 	@RequestMapping("/editappointment")
     public String editAppointment(Model model) {
         List<Appointment> appontment=appointmentService.findAll();
@@ -302,18 +298,12 @@ public class MainController {
 		return "services.jsp";
 	}
 
-<<<<<<< HEAD
-=======
-	
-	
->>>>>>> 63094c13859fe87be70ec9814d13b4fdac6da730
 	@RequestMapping("/services/{id}/edit")
 	public String editService(@ModelAttribute("service") PService myService, @PathVariable("id") Long myId,
 			Model model) {
 		PService service = pserviceService.findServiceById(myId);
 		model.addAttribute("service", service);
-
-		return "editservice.jsp";
+		return "editService.jsp";
 	}
 
 	@RequestMapping("/services/delete/{id}")
@@ -335,7 +325,7 @@ public class MainController {
 		Category category = categoryService.findCategoryById(myId);
 		model.addAttribute(" category", category);
 
-		return "editcategory.jsp";
+		return "editCategory.jsp";
 	}
 
 	@RequestMapping("/categories/delete/{id}")
@@ -343,10 +333,9 @@ public class MainController {
 		Category myCategory = categoryService.findCategoryById(id);
 		if (myCategory != null) {
 			categoryService.deleteCategory(myCategory);
-			return "redirect:/categories";
+			return "redirect:/editcategory";
 		} else {
-			System.out.println("categories doesn't exist");
-			return "redirect:/categories";
+			return "redirect:/editcategory";
 		}
 
 	}
@@ -357,24 +346,19 @@ public class MainController {
 		Appointment appointment = appointmentService.findAppointmentById(myId);
 		model.addAttribute("appointment", appointment);
 
-		return "editappointment.jsp";
+		return "editAppointment.jsp";
 	}
 
 	@RequestMapping("/appointment/delete/{id}")
 	public String deleteAppointment(@PathVariable("id") Long id) {
-		PService myService = pserviceService.findServiceById(id);
-		if (myService != null) {
-			pserviceService.deleteService(myService);
-			return "redirect:/appointment";
+		Appointment myAppointment = appointmentService.findAppointmentById(id);
+		if (myAppointment != null) {
+			appointmentService.deleteAppointment(myAppointment);
+			return "redirect:/editappointment";
 		} else {
-			System.out.println("Appointment doesn't exist");
-			return "redirect:/appointment";
+			return "redirect:/editappointment";
 		}
 	}
-<<<<<<< HEAD
-=======
-
->>>>>>> 63094c13859fe87be70ec9814d13b4fdac6da730
 
 	@RequestMapping("/services/{id}")
 	public String test(Model model, Principal principal, @PathVariable(value = "id") Long id) {
@@ -389,6 +373,7 @@ public class MainController {
 		} else if (allRolesIdsForCurrentUser.get(0) == 1) {
 			model.addAttribute("isAdmin", false);
 		}
+	
 
 		if (allRolesIdsForCurrentUser.get(0) == 2 || allRolesIdsForCurrentUser.get(0) == 1) {
 			model.addAttribute("isGuest", false);
@@ -401,8 +386,4 @@ public class MainController {
 		return "serviceInfo.jsp";
 	}
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 63094c13859fe87be70ec9814d13b4fdac6da730
 }

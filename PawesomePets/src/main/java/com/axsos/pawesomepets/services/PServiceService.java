@@ -24,11 +24,7 @@ public class PServiceService {
 	public List<PService> findAll() {
 		return pserviceRepository.findAll();
 	}
-<<<<<<< HEAD
-=======
 
->>>>>>> 63094c13859fe87be70ec9814d13b4fdac6da730
-	
 	public PService findPServiceById(Long id) {
 		return pserviceRepository.findPServiceById(id);
 	}
@@ -50,7 +46,3 @@ public class PServiceService {
 		pserviceRepository.delete(service);
 	}
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 63094c13859fe87be70ec9814d13b4fdac6da730
