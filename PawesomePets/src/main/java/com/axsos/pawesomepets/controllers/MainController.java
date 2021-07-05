@@ -212,9 +212,9 @@ public class MainController {
 		return "services.jsp";
 	}
 	
-	@RequestMapping("/test")
-	public String test() {
-		return "serviceInfo.jsp";
-	}
+//	@RequestMapping("/test")
+//	public String test() {
+//		return "serviceInfo.jsp";
+//	}
 	
 }
