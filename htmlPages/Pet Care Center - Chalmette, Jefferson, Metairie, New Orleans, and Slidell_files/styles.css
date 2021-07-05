@@ -2455,6 +2455,11 @@ input::-moz-placeholder {
 	}
 }
 
+.spanimg{
+	color: red;
+}
+
+
 .span-auto {
 	flex: 0 0 auto
 }
@@ -7214,7 +7219,7 @@ img:not([src]) {
 
 @media(min-width: 760px) {
 	.card_tall {
-		min-height: 10px;
+		min-height: 10px
 	}
 }
 
@@ -9178,26 +9183,10 @@ html {
 .section_main .type>:not(div) a:hover {
 	color: #9ea428
 }
-.adminforms{
-	margin: auto auto;
-	text-align: center;
-}
-.adminform{
-	margin: auto auto;
-	padding: 20px;	
-	width: 600px;
-	border: 1px solid black;
-	border-radius: 10px;
-	box-shadow: #000;
-	background-color: black;
-	opacity: 0.8;
-
-<<<<<<< HEAD
 
 
-.spanimg{
-	color: red;
-}
+
+
 
 .serviceimg{
 	width: 244;
@@ -9205,6 +9194,11 @@ html {
 }
 
 
+<<<<<<< HEAD
+
+
+
+=======
 =======
 }
 .section__intro>.section__title{
@@ -9245,5 +9239,6 @@ html {
 =======
 >>>>>>> 62d367c9ff8d5d16eece72c830ea3bd03dd6bea8
 >>>>>>> 46e26510d73f9de6ec7b78f3560ca642392d30fe
+>>>>>>> ef51ea78267140f73fe16835313e07a27858a1bc
 /*# sourceMappingURL=styles.min.css.map */
 
