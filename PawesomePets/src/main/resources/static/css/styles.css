@@ -5693,13 +5693,13 @@ html[xmlns] .flexslider .slides {
 	font-size: 40px;
 	line-height: 40px;
 	display: inline-block;
-	content: "";
+	content: "ï€�";
 	color: rgba(0, 0, 0, .8);
 	text-shadow: 1px 1px 0 rgba(255, 255, 255, .3)
 }
 
 .flex-direction-nav a.flex-next:before {
-	content: ""
+	content: "ï€‚"
 }
 
 .flex-direction-nav .flex-prev {
@@ -5754,7 +5754,7 @@ html[xmlns] .flexslider .slides {
 	font-family: "flexslider-icon";
 	font-size: 20px;
 	display: inline-block;
-	content: ""
+	content: "ï€„"
 }
 
 .flex-pauseplay a:hover {
@@ -5762,7 +5762,7 @@ html[xmlns] .flexslider .slides {
 }
 
 .flex-pauseplay a.flex-play:before {
-	content: ""
+	content: "ï€ƒ"
 }
 
 .flex-control-nav {
@@ -6949,7 +6949,7 @@ img:not([src]) {
 .card__image {
 	flex: 0 1 auto;
 	width: 100%;
-	height: auto
+	height: 180px;
 }
 
 .card__image:first-child {
@@ -7214,7 +7214,7 @@ img:not([src]) {
 
 @media(min-width: 760px) {
 	.card_tall {
-		min-height: 18em
+		min-height: 10px;
 	}
 }
 
@@ -9178,7 +9178,68 @@ html {
 .section_main .type>:not(div) a:hover {
 	color: #9ea428
 }
+.adminforms{
+	margin: auto auto;
+	text-align: center;
+}
+.adminform{
+	margin: auto auto;
+	padding: 20px;	
+	width: 600px;
+	border: 1px solid black;
+	border-radius: 10px;
+	box-shadow: #000;
+	background-color: black;
+	opacity: 0.8;
 
+}
+.spanimg{
+	color: red;
+}
+
+.serviceimg{
+	width: 244;
+	height:150;
+}
+
+
+
+
+.section__intro>.section__title{
+	color: black;
+}
+.adminform>.section__title{
+	margin: auto auto;
+	color: red;
+	text-align: center;
+	font-size: larger;
+}
+.adminform label{
+	color: white;
+}
+.appluibutton{
+	text-align: center;
+	margin-left:38%;
+}
+.servicebutton{
+	text-align: center;
+	margin-left:41%;
+}
+.applubutton{
+	text-align: center;
+	margin:auto;
+}
+.categorybutton{
+	text-align: center;
+	margin-left:40%;
+}
+
+.petbutton{
+	margin-left: 45%;
+}
+.form-group>select{
+	width: 310px;
+}
 
 /*# sourceMappingURL=styles.min.css.map */
 
