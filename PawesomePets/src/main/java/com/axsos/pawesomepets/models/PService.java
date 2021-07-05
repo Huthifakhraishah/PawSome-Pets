@@ -27,9 +27,10 @@ public class PService {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotNull
-    @Size(min = 2, max = 10)
+    @Size(min = 2, max = 50)
     private String name;
-    @Column(updatable=false)
+    private String links;
+	@Column(updatable=false)
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date createdAt;
     @DateTimeFormat(pattern="yyyy-MM-dd")
@@ -48,7 +49,12 @@ public class PService {
 	public PService(String name) {
 		this.name=name;
 	}
-    
+	
+	public PService(@NotNull @Size(min = 2, max = 10) String name, String links) {
+		super();
+		this.name = name;
+		this.links = links;
+	}
 	public PService(Long id, @NotNull @Size(min = 2, max = 10) String name, List<Pet> servicepets) {
 		
 		this.id = id;
@@ -75,6 +81,13 @@ public class PService {
 	public void setServicepets(List<Pet> servicepets) {
 		this.servicepets = servicepets;
 	}
+    public String getLinks() {
+		return links;
+	}
+	public void setLinks(String links) {
+		this.links = links;
+	}
+
 	 // Methods
 		@PrePersist
 	    protected void onCreate(){

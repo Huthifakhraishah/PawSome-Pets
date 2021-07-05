@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -104,7 +106,7 @@
                 </div>
                 <div class="sticky-navbar__item">
                     <a class="header__action button button_color_accent" href="/services" onclick="gtag('event', 'Click', {'event_category' : 'Sticky Nav CTA', 'event_label' : 'Request an Appointment button', 'event_value' : '375'});">
-               Request an Appointment </a> <a class="header__action button button_color_primary" href="https://petcarecenterinc.com/contact/" onclick="gtag('event', 'Click', {'event_category' : 'Sticky Nav CTA', 'event_label' : 'Contact button', 'event_value' : '375'});">
+               Request an Appointment </a> <a class="header__action button button_color_primary" href="/about" onclick="gtag('event', 'Click', {'event_category' : 'Sticky Nav CTA', 'event_label' : 'Contact button', 'event_value' : '375'});">
                Contact </a>
                     <button data-modal-open="modal-menu" aria-label="Open Menu" class="button button_color_primary button_icon">
                   <svg role="img" class="icon">
@@ -153,13 +155,13 @@
                                 <li class="menu__item dropdown on-hover menu__link dropdown__trigger">
                                     Services
                                     <ul class="dropdown__menu">
-                                        <li class="dropdown__item"><a class="dropdown__link flex-justify-between" href="https://petcarecenterinc.com/services/wellness-prevention/"><span>Wellness &amp; Prevention</span></a></li>
-                                        <li class="dropdown__item"><a class="dropdown__link flex-justify-between" href="https://petcarecenterinc.com/services/testing-diagnosis/"><span>Testing &amp; Diagnosis</span></a></li>
-                                        <li class="dropdown__item"><a class="dropdown__link flex-justify-between" href="https://petcarecenterinc.com/services/specialized-care/"><span>Specialized Care</span></a></li>
-                                        <li class="dropdown__item"><a class="dropdown__link flex-justify-between" href="https://petcarecenterinc.com/services/surgical-procedures/"><span>Surgical Procedures</span></a></li>
-                                        <li class="dropdown__item"><a class="dropdown__link flex-justify-between" href="https://petcarecenterinc.com/services/urgent-care/"><span>Urgent Care</span></a></li>
-                                        <li class="dropdown__item"><a class="dropdown__link flex-justify-between" href="https://petcarecenterinc.com/services/pet-boarding/"><span>Pet Boarding</span></a></li>
-                                        <li class="dropdown__item"><a class="dropdown__link flex-justify-between" href="https://petcarecenterinc.com/services/grooming/"><span>Grooming</span></a></li>
+                                        <li class="dropdown__item"><a class="dropdown__link flex-justify-between" href="#"><span>Wellness &amp; Prevention</span></a></li>
+                                        <li class="dropdown__item"><a class="dropdown__link flex-justify-between" href="#"><span>Testing &amp; Diagnosis</span></a></li>
+                                        <li class="dropdown__item"><a class="dropdown__link flex-justify-between" href="#"><span>Specialized Care</span></a></li>
+                                        <li class="dropdown__item"><a class="dropdown__link flex-justify-between" href="#"><span>Surgical Procedures</span></a></li>
+                                        <li class="dropdown__item"><a class="dropdown__link flex-justify-between" href="#"><span>Urgent Care</span></a></li>
+                                        <li class="dropdown__item"><a class="dropdown__link flex-justify-between" href="#"><span>Pet Boarding</span></a></li>
+                                        <li class="dropdown__item"><a class="dropdown__link flex-justify-between" href="#"><span>Grooming</span></a></li>
                                     </ul>
                                 </li>
                                 <li class="menu__item"><a class="menu__link" href="/ourteam">
@@ -169,12 +171,20 @@
                                     <a class="menu__link dropdown__trigger" href="/about">
                            About Us </a>
                                 </li>
-                                <li class="menu__item"><a class="menu__link" href="/login">
+                    <c:choose>  
+				    <c:when test="${isGuest==true}">  
+						<li class="menu__item"><a class="menu__link" href="/login">
                            Login </a>
-                                </li>
+                                </li>		    
+	                </c:when>  
+	                  <c:when test="${isGuest==false}">  
+	                  <li class="menu__item"><a class="menu__link" href="/logout">
+                           Logout </a>
+				    </c:when>  		
+	                </c:choose>	
                             </ul>
                             <a class="header__action button display-none display-block-lg button_color_accent" href="/services" onclick="gtag('event', 'Click', {'event_category' : 'Header CTA', 'event_label' : 'Request an Appointment button', 'event_value' : '375'});">
-                     Request an Appointment </a> <a class="header__action button display-none display-block-lg button_color_primary" href="https://petcarecenterinc.com/contact/" onclick="gtag('event', 'Click', {'event_category' : 'Header CTA', 'event_label' : 'Contact button', 'event_value' : '375'});">
+                     Request an Appointment </a> <a class="header__action button display-none display-block-lg button_color_primary" href="/about" onclick="gtag('event', 'Click', {'event_category' : 'Header CTA', 'event_label' : 'Contact button', 'event_value' : '375'});">
                      Contact </a>
                             <button data-modal-open="modal-menu" aria-label="menu" class="header__toggle button button_outline_primary button_icon">
                         <svg role="img" class="icon">
@@ -215,7 +225,16 @@
 
                                 <div class="action-group">
 
-
+					<c:choose>  
+				    <c:when test="${isAdmin==true}">  
+<a class="button button_color_accent" href="/make-an-appointment/" onclick="gtag('event', 'Click', {'event_category' : 'Erica Capshaw Brooks, DVM Section CTA', 'event_label' : 'Find a Location button', 'event_value' : '375'})">
+                Edit/Delete</a>				    
+                </c:when>  
+                  <c:when test="${isAdmin==false}">  
+			    </c:when>  		
+                </c:choose>							
+								
+									
                                     <a class="button button_color_accent" href="/make-an-appointment/" onclick="gtag('event', 'Click', {'event_category' : 'Erica Capshaw Brooks, DVM Section CTA', 'event_label' : 'Find a Location button', 'event_value' : '375'})">
                 Apply</a>
                                 </div>
