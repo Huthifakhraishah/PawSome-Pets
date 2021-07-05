@@ -188,4 +188,31 @@ public class MainController {
 	
 	
 
+<<<<<<< HEAD
+=======
+    @RequestMapping("/about")
+    public String aboutUs () {
+    	return "aboutus.jsp";	
+    }
+    @RequestMapping("/ourteam")
+    public String ourTeam () {
+    	return "ourteam.jsp";	
+    }
+    @RequestMapping("/editservice")
+    public String editService () {
+    	return "editService.jsp";	
+    }
+    @RequestMapping("/editcategory")
+    public String editCategory () {
+    	return "editCategory.jsp";	
+    }
+    @RequestMapping("/editappointment")
+    public String editAppointment () {
+    	return "editAppointment.jsp";	
+    }
+    @RequestMapping("/services")
+    public String services () {
+    	return "services.jsp";	
+    }
+>>>>>>> ef51ea78267140f73fe16835313e07a27858a1bc
 }

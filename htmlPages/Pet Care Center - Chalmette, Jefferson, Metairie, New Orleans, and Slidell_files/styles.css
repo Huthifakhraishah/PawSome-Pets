@@ -6949,7 +6949,7 @@ img:not([src]) {
 .card__image {
 	flex: 0 1 auto;
 	width: 100%;
-	height: auto
+	height: 180px;
 }
 
 .card__image:first-child {
@@ -7214,7 +7214,7 @@ img:not([src]) {
 
 @media(min-width: 760px) {
 	.card_tall {
-		min-height: 18em
+		min-height: 10px;
 	}
 }
 
@@ -9192,6 +9192,20 @@ html {
 	background-color: black;
 	opacity: 0.8;
 
+<<<<<<< HEAD
+
+
+.spanimg{
+	color: red;
+}
+
+.serviceimg{
+	width: 244;
+	height:150;
+}
+
+
+=======
 }
 .section__intro>.section__title{
 	color: black;
@@ -9221,5 +9235,15 @@ html {
 	text-align: center;
 	margin-left:40%;
 }
+<<<<<<< HEAD
+.petbutton{
+	margin-left: 45%;
+}
+.form-group>select{
+	width: 310px;
+}
+=======
+>>>>>>> 62d367c9ff8d5d16eece72c830ea3bd03dd6bea8
+>>>>>>> 46e26510d73f9de6ec7b78f3560ca642392d30fe
 /*# sourceMappingURL=styles.min.css.map */
 
