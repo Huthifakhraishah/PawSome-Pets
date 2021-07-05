@@ -271,11 +271,17 @@ public class MainController {
 		return "editCategory.jsp";
 	}
 
+//	@RequestMapping("/editappointment")
+//	public String editAppointment() {
+//		return "editAppointment.jsp";
+//	}
 	@RequestMapping("/editappointment")
-	public String editAppointment() {
-		return "editAppointment.jsp";
-	}
-
+    public String editAppointment(Model model) {
+        List<Appointment> appontment=appointmentService.findAll();
+        model.addAttribute("allappontment", appontment);
+        return "editAppointment.jsp";
+    }
+	
 	@RequestMapping("/services")
 	public String services(Model model, Principal principal) {
 		if (principal != null) {
@@ -296,6 +302,11 @@ public class MainController {
 		return "services.jsp";
 	}
 
+<<<<<<< HEAD
+=======
+	
+	
+>>>>>>> 63094c13859fe87be70ec9814d13b4fdac6da730
 	@RequestMapping("/services/{id}/edit")
 	public String editService(@ModelAttribute("service") PService myService, @PathVariable("id") Long myId,
 			Model model) {
@@ -360,6 +371,10 @@ public class MainController {
 			return "redirect:/appointment";
 		}
 	}
+<<<<<<< HEAD
+=======
+
+>>>>>>> 63094c13859fe87be70ec9814d13b4fdac6da730
 
 	@RequestMapping("/services/{id}")
 	public String test(Model model, Principal principal, @PathVariable(value = "id") Long id) {
@@ -386,4 +401,8 @@ public class MainController {
 		return "serviceInfo.jsp";
 	}
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 63094c13859fe87be70ec9814d13b4fdac6da730
 }
