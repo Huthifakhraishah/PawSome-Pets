@@ -45,14 +45,17 @@ public class MainController {
 	private final AppointmentService appointmentService;
 	private final ServicehasPethasAppointmentService servicehasPethasAppointmentService;
 
-	public MainController(UserService userService, UserValidator userValidator,CategoryService categoryService,PServiceService pserviceService,ServicehasPetService servicehasPetService,AppointmentService appointmentService,ServicehasPethasAppointmentService servicehasPethasAppointmentService) {
+	public MainController(UserService userService, UserValidator userValidator, CategoryService categoryService,
+			PServiceService pserviceService, ServicehasPetService servicehasPetService,
+			AppointmentService appointmentService,
+			ServicehasPethasAppointmentService servicehasPethasAppointmentService) {
 		this.userService = userService;
 		this.userValidator = userValidator;
-		this.categoryService=categoryService;
-		this.pserviceService=pserviceService;
-		this.servicehasPetService=servicehasPetService;
-		this.appointmentService=appointmentService;
-		this.servicehasPethasAppointmentService=servicehasPethasAppointmentService;
+		this.categoryService = categoryService;
+		this.pserviceService = pserviceService;
+		this.servicehasPetService = servicehasPetService;
+		this.appointmentService = appointmentService;
+		this.servicehasPethasAppointmentService = servicehasPethasAppointmentService;
 	}
 
 	// ******************************************************************************
@@ -72,15 +75,15 @@ public class MainController {
 	// ******************************************************************************
 	// This method is only commented out when you want to add an admin, and the
 	// previous method shall be commented
-    @PostMapping("/registration")
-    public String registration(@Valid @ModelAttribute("user") User user, BindingResult result, Model model) {
-        userValidator.validate(user, result);
-        if (result.hasErrors()) {
-            return "logreg.jsp";
-        }
-        userService.saveUserWithAdminRole(user);
-        return "redirect:/login";
-    }
+	@PostMapping("/registration")
+	public String registration(@Valid @ModelAttribute("user") User user, BindingResult result, Model model) {
+		userValidator.validate(user, result);
+		if (result.hasErrors()) {
+			return "logreg.jsp";
+		}
+		userService.saveUserWithAdminRole(user);
+		return "redirect:/login";
+	}
 	// ******************************************************************************
 
 	@RequestMapping("/login")
@@ -102,69 +105,72 @@ public class MainController {
 		model.addAttribute("currentUser", userService.findByUsername(username));
 		return "adminPage.jsp";
 	}
-	
-	@RequestMapping(value="/admin/createCategory",method=RequestMethod.POST)
-	public String createCategoryProcess(Model model,@RequestParam(value="type") String type) {
-		if(type.length()<2 || type.length()>10) {
-			model.addAttribute("addingCategoriesErrorMessage","Category must be between 2 and 10");
+
+	@RequestMapping(value = "/admin/createCategory", method = RequestMethod.POST)
+	public String createCategoryProcess(Model model, @RequestParam(value = "type") String type) {
+		if (type.length() < 2 || type.length() > 10) {
+			model.addAttribute("addingCategoriesErrorMessage", "Category must be between 2 and 10");
 			return "adminPage.jsp";
-		}else {
-		categoryService.createCategory(type);
-		return "redirect:/admin";
+		} else {
+			categoryService.createCategory(type);
+			return "redirect:/admin";
 		}
 	}
-	
-	@RequestMapping(value="/admin/createPService",method=RequestMethod.POST)
-	public String createServiceProcess(Model model,@RequestParam("name") String name) {
-		if(name.length()<2 || name.length()>10) {
-			model.addAttribute("addingPServicesErrorMessage","Service must be between 2 and 10");
+
+	@RequestMapping(value = "/admin/createPService", method = RequestMethod.POST)
+	public String createServiceProcess(Model model, @RequestParam("name") String name) {
+		if (name.length() < 2 || name.length() > 10) {
+			model.addAttribute("addingPServicesErrorMessage", "Service must be between 2 and 10");
 			return "adminPage.jsp";
-		}else {
+		} else {
 			pserviceService.createPService(name);
 			return "redirect:/admin";
 		}
 	}
-	
-	@RequestMapping(value="/admin/createAppointment",method=RequestMethod.POST)
-	public String createAppointmentProcess(Model model,@RequestParam("appointment") Date appointment) throws ParseException {
+
+	@RequestMapping(value = "/admin/createAppointment", method = RequestMethod.POST)
+	public String createAppointmentProcess(Model model, @RequestParam("appointment") Date appointment)
+			throws ParseException {
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Calendar cal = Calendar.getInstance();
-		String today=dateFormat.format(cal.getTime());	
-		SimpleDateFormat formatter=new SimpleDateFormat("yyyy-MM-dd");  
-		Date todayDate=formatter.parse(today); 
-		if(appointment.compareTo(todayDate)<0) {
-			model.addAttribute("addingAppointmentsErrorMessage","Appointment must be a future date!");
+		String today = dateFormat.format(cal.getTime());
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		Date todayDate = formatter.parse(today);
+		if (appointment.compareTo(todayDate) < 0) {
+			model.addAttribute("addingAppointmentsErrorMessage", "Appointment must be a future date!");
 			return "adminPage.jsp";
-		}else {
+		} else {
 			appointmentService.createAppointment(appointment);
 			return "redirect:/admin";
 		}
 	}
+
 	@InitBinder
 	protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
-	    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");   
-	    dateFormat.setLenient(false);
-	    binder.registerCustomEditor(Date.class, null,  new CustomDateEditor(dateFormat, true));
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		dateFormat.setLenient(false);
+		binder.registerCustomEditor(Date.class, null, new CustomDateEditor(dateFormat, true));
 	}
-	
+
 	@RequestMapping("/apply")
-	public String apply(Model model,Principal principal) {
-		String currentEmail=principal.getName();
-		User currentUser=userService.findByUsername(currentEmail);
-		model.addAttribute("pets",currentUser.getPets());
-		
-		List<PService> allPServices=pserviceService.findAll();
-		model.addAttribute("allPServices",allPServices);
-		
-		List<Appointment> allAppointments=appointmentService.findAll();
-		model.addAttribute("allAppointments",allAppointments);
+	public String apply(Model model, Principal principal) {
+		String currentEmail = principal.getName();
+		User currentUser = userService.findByUsername(currentEmail);
+		model.addAttribute("pets", currentUser.getPets());
+
+		List<PService> allPServices = pserviceService.findAll();
+		model.addAttribute("allPServices", allPServices);
+
+		List<Appointment> allAppointments = appointmentService.findAll();
+		model.addAttribute("allAppointments", allAppointments);
 		return "apply.jsp";
 	}
-	
-	@RequestMapping(value="/applyProcess",method=RequestMethod.POST)
-	public String applyProcess(@RequestParam("petId") Long petId,@RequestParam("serviceId")Long serviceId, @RequestParam("appointmentId") Long appointmentId ) {
-		servicehasPetService.fillTable(petId,serviceId);
-		ServicehasPet myServiceHasPetService=servicehasPetService.findByTwoIds(petId,serviceId);
+
+	@RequestMapping(value = "/applyProcess", method = RequestMethod.POST)
+	public String applyProcess(@RequestParam("petId") Long petId, @RequestParam("serviceId") Long serviceId,
+			@RequestParam("appointmentId") Long appointmentId) {
+		servicehasPetService.fillTable(petId, serviceId);
+		ServicehasPet myServiceHasPetService = servicehasPetService.findByTwoIds(petId, serviceId);
 		servicehasPethasAppointmentService.fillTable(myServiceHasPetService.getId(), appointmentId);
 		return "redirect:/apply";
 	}
@@ -185,34 +191,30 @@ public class MainController {
 	public String ourTeam() {
 		return "ourteam.jsp";
 	}
-	
-	
 
-<<<<<<< HEAD
-=======
-    @RequestMapping("/about")
-    public String aboutUs () {
-    	return "aboutus.jsp";	
-    }
-    @RequestMapping("/ourteam")
-    public String ourTeam () {
-    	return "ourteam.jsp";	
-    }
-    @RequestMapping("/editservice")
-    public String editService () {
-    	return "editService.jsp";	
-    }
-    @RequestMapping("/editcategory")
-    public String editCategory () {
-    	return "editCategory.jsp";	
-    }
-    @RequestMapping("/editappointment")
-    public String editAppointment () {
-    	return "editAppointment.jsp";	
-    }
-    @RequestMapping("/services")
-    public String services () {
-    	return "services.jsp";	
-    }
->>>>>>> ef51ea78267140f73fe16835313e07a27858a1bc
+	@RequestMapping("/editservice")
+	public String editService() {
+		return "editService.jsp";
+	}
+
+	@RequestMapping("/editcategory")
+	public String editCategory() {
+		return "editCategory.jsp";
+	}
+
+	@RequestMapping("/editappointment")
+	public String editAppointment() {
+		return "editAppointment.jsp";
+	}
+
+	@RequestMapping("/services")
+	public String services() {
+		return "services.jsp";
+	}
+	
+	@RequestMapping("/test")
+	public String test() {
+		return "serviceInfo.jsp";
+	}
+	
 }
