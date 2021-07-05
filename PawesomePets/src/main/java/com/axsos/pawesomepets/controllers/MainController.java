@@ -85,5 +85,20 @@ public class MainController {
     public String ourTeam () {
     	return "ourteam.jsp";	
     }
-    
+    @RequestMapping("/editservice")
+    public String editService () {
+    	return "editService.jsp";	
+    }
+    @RequestMapping("/editcategory")
+    public String editCategory () {
+    	return "editCategory.jsp";	
+    }
+    @RequestMapping("/editappointment")
+    public String editAppointment () {
+    	return "editAppointment.jsp";	
+    }
+    @RequestMapping("/services")
+    public String services () {
+    	return "services.jsp";	
+    }
 }
