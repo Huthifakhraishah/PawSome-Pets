@@ -26,7 +26,7 @@ public class Category {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@NotNull
-	@Size(min = 2, max = 10)
+	@Size(min = 2, max = 50)
 	private String type;
 	@Column(updatable = false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -36,15 +36,15 @@ public class Category {
 	// Relationships
 	@OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
 	private List<Pet> pets;
-
+	
 	// CONSTRUCTOR
 	public Category() {
 	}
-	
+
 	public Category(String type) {
-		this.type=type;
+		this.type = type;
 	}
-	
+
 	public Category(Long id, @NotNull @Size(min = 2, max = 10) String type, List<Pet> pets) {
 
 		this.id = id;
