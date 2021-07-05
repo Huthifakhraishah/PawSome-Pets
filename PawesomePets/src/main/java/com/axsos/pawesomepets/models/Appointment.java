@@ -12,35 +12,31 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+import javax.validation.constraints.Future;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name = "services_has_pets")
-public class ServicehasPet {
+@Table(name = "appointments")
+public class Appointment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "service_id")
-	private PService service;
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "pet_id")
-	private Pet pet;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@Future
+	private Date appointment;
 	
 	@ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
         name = "services_has_pets_has_appointments", 
-        joinColumns = @JoinColumn(name = "service_has_pet_id"), 
-        inverseJoinColumns = @JoinColumn(name = "appointment_id")
+        joinColumns = @JoinColumn(name = "appointment_id"), 
+        inverseJoinColumns = @JoinColumn(name = "service_has_pet_id")
     )
-    private List<Appointment> appointments;
+    private List<ServicehasPet> serviceshaspets;
 	
 	@Column(updatable = false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -48,28 +44,40 @@ public class ServicehasPet {
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date updatedAt;
-
-	public ServicehasPet() {
+	
+	public Appointment() {
 	}
 	
-	public PService getService() {
-		return service;
+	public Appointment(Date appointment) {
+		this.appointment=appointment;
 	}
 
-	public void setService(PService service) {
-		this.service = service;
+	public Date getAppointment() {
+		return appointment;
 	}
 
-	public Pet getPet() {
-		return pet;
+	public void setAppointment(Date appointment) {
+		this.appointment = appointment;
 	}
 
-	public void setPet(Pet pet) {
-		this.pet = pet;
+	public List<ServicehasPet> getServiceshaspets() {
+		return serviceshaspets;
+	}
+
+	public void setServiceshaspets(List<ServicehasPet> serviceshaspets) {
+		this.serviceshaspets = serviceshaspets;
 	}
 
 	public Long getId() {
 		return id;
+	}
+
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+
+	public Date getUpdatedAt() {
+		return updatedAt;
 	}
 	
 	@PrePersist
@@ -81,5 +89,4 @@ public class ServicehasPet {
 	protected void onUpdate() {
 		this.updatedAt = new Date();
 	}
-
 }

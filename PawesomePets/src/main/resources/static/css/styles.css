@@ -9191,6 +9191,38 @@ html {
 	box-shadow: #000;
 	background-color: black;
 	opacity: 0.8;
+<<<<<<< HEAD
+
+}
+.section__intro>.section__title{
+	color: black;
+}
+.adminform>.section__title{
+	margin: auto auto;
+	color: red;
+	text-align: center;
+	font-size: larger;
+}
+.adminform label{
+	color: white;
+}
+.appluibutton{
+	text-align: center;
+	margin-left:38%;
+}
+.servicebutton{
+	text-align: center;
+	margin-left:41%;
+}
+.applubutton{
+	text-align: center;
+	margin:auto;
+}
+.categorybutton{
+	text-align: center;
+	margin-left:40%;
+}
+=======
 
 }
 .spanimg{
@@ -9241,5 +9273,6 @@ html {
 	width: 310px;
 }
 
+>>>>>>> ef51ea78267140f73fe16835313e07a27858a1bc
 /*# sourceMappingURL=styles.min.css.map */
 
