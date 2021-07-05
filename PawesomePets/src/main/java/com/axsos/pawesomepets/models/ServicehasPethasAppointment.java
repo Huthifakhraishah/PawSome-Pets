@@ -1,7 +1,6 @@
 package com.axsos.pawesomepets.models;
 
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,8 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
@@ -20,58 +17,58 @@ import javax.persistence.Table;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name = "services_has_pets")
-public class ServicehasPet {
+@Table(name = "services_has_pets_has_appointments")
+public class ServicehasPethasAppointment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "service_id")
-	private PService service;
+	@JoinColumn(name = "service_has_pet_id")
+	private ServicehasPet ServicehasPet;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "pet_id")
-	private Pet pet;
-	
-	@ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-        name = "services_has_pets_has_appointments", 
-        joinColumns = @JoinColumn(name = "service_has_pet_id"), 
-        inverseJoinColumns = @JoinColumn(name = "appointment_id")
-    )
-    private List<Appointment> appointments;
+	@JoinColumn(name = "appointment_id")
+	private Appointment appointment;
 	
 	@Column(updatable = false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date createdAt;
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date updatedAt;
-
-	public ServicehasPet() {
-	}
+	private Date updatedAt;	
 	
-	public PService getService() {
-		return service;
+	public ServicehasPethasAppointment() {
 	}
 
-	public void setService(PService service) {
-		this.service = service;
+	public ServicehasPet getServicehasPet() {
+		return ServicehasPet;
 	}
 
-	public Pet getPet() {
-		return pet;
+	public void setServicehasPet(ServicehasPet servicehasPet) {
+		ServicehasPet = servicehasPet;
 	}
 
-	public void setPet(Pet pet) {
-		this.pet = pet;
+	public Appointment getAppointment() {
+		return appointment;
+	}
+
+	public void setAppointment(Appointment appointment) {
+		this.appointment = appointment;
 	}
 
 	public Long getId() {
 		return id;
 	}
-	
+
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+
+	public Date getUpdatedAt() {
+		return updatedAt;
+	}
+
 	@PrePersist
 	protected void onCreate() {
 		this.createdAt = new Date();
@@ -81,5 +78,4 @@ public class ServicehasPet {
 	protected void onUpdate() {
 		this.updatedAt = new Date();
 	}
-
 }

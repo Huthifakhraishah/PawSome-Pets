@@ -121,6 +121,14 @@ public class User {
 		this.roles = roles;
 	}
 
+	public List<Pet> getPets() {
+		return pets;
+	}
+
+	public void setPets(List<Pet> pets) {
+		this.pets = pets;
+	}
+
 	@PrePersist
 	protected void onCreate() {
 		this.createdAt = new Date();

@@ -22,7 +22,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 @Table(name="services")
 @Entity
-public class Service {
+public class PService {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -43,10 +43,13 @@ public class Service {
 	)
     private List <Pet> servicepets;
  // CONSTRUCTOR
-	public Service() {
+	public PService() {
 }
+	public PService(String name) {
+		this.name=name;
+	}
     
-	public Service(Long id, @NotNull @Size(min = 2, max = 10) String name, List<Pet> servicepets) {
+	public PService(Long id, @NotNull @Size(min = 2, max = 10) String name, List<Pet> servicepets) {
 		
 		this.id = id;
 		this.name = name;

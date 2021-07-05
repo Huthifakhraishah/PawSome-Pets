@@ -41,6 +41,10 @@ public class Category {
 	public Category() {
 	}
 	
+	public Category(String type) {
+		this.type=type;
+	}
+	
 	public Category(Long id, @NotNull @Size(min = 2, max = 10) String type, List<Pet> pets) {
 
 		this.id = id;

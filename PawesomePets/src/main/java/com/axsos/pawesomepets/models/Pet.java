@@ -50,7 +50,7 @@ public class Pet {
 		joinColumns = @JoinColumn(name = "pet_id"),
 		inverseJoinColumns = @JoinColumn(name = "service_id")
 	)
-	private List<Service> petservice;
+	private List<PService> petservice;
     
     @ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="pets_category")
@@ -65,7 +65,7 @@ public class Pet {
 }
 
 	public Pet(Long id, @NotNull @Size(min = 2, max = 10) String name, @NotNull @Size(min = 1, max = 20) String gender,
-			@NotNull @Range(min = 5, max = 20) Integer age, List<Service> petservice, Category category, User user) {
+			@NotNull @Range(min = 5, max = 20) Integer age, List<PService> petservice, Category category, User user) {
 	
 		this.id = id;
 		this.name = name;
@@ -118,12 +118,12 @@ public class Pet {
 	}
 
 
-	public List<Service> getPetservice() {
+	public List<PService> getPetservice() {
 		return petservice;
 	}
 
 
-	public void setPetservice(List<Service> petservice) {
+	public void setPetservice(List<PService> petservice) {
 		this.petservice = petservice;
 	}
 
