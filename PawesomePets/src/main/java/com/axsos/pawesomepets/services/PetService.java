@@ -28,4 +28,8 @@ public class PetService {
 	public List<Pet> findAll() {
 		return petRepository.findAll();
 	}
+	
+	public void delete(Long id) {
+		petRepository.delete(id);
+	}
 }

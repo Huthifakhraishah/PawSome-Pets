@@ -35,7 +35,6 @@ public class Pet {
     @Size(min = 1, max = 20)
     private String gender;
     @NotNull
-    @Range(min = 5, max = 20)
     private Integer age;
     private String links;
     @Column(updatable=false)

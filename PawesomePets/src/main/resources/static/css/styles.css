@@ -9251,10 +9251,7 @@ html {
 .errorMessagesInYellow{
 	color:yellow;
 }
-/*# sourceMappingURL=styles.min.css.map */
 
-/* Always set the map height explicitly to define the size of the div
-       * element that contains the map. /
 #map {
       height: 400px;
     width: 100%;
@@ -9263,9 +9260,10 @@ html {
     border-color:#613f6d;
 }
 
-/ Optional: Makes the sample page fill the window. /
+.ourphotos{
+	height:230px;
+}
 
-/# sourceMappingURL=styles.min.css.map */
 .servicebutton {
     text-align: center;
     margin-left: 41%;
