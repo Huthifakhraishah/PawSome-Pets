@@ -15,10 +15,12 @@
       <link rel="preload" href=/css/styles.css" as="style">
       <link rel="preconnect" href="https://www.googletagmanager.com/">
       <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
       <script type="text/javascript" async="" src="/js/locations"></script><script type="text/javascript" async="" src="/js/a"></script><script type="text/javascript" async="" src="/js/roundtrip.js"></script><script src="/js/2511126609209221.js" async=""></script><script src="/js/2805927892859774.js" async=""></script><script async="" src="/js/fbevents.js"></script><script type="text/javascript" async="" src="/js/analytics.js"></script><script async="" src="/js/gtm.js"></script><script async="" src="/js/gtm_002.js"></script><script type="application/ld+json">{"@context":"https://schema.org","@type":"VeterinaryCare","name":"Pet Care Center","url":"https://petcarecenterinc.com/","sameAs":["https://www.linkedin.com/company/pet-care-center-veterinary-hospitals/about/"]}</script>
       <link rel="icon" type="image/png" sizes="32x32" href="https://petcarecenterinc.com/site/templates/custom/svp-pcmet/dist/img/favicon.png">
       <link rel="stylesheet" href="/css/styles.css">
       <link rel="preconnect" href="https://fonts.gstatic.com/">
+      <script src="/js/index.js"></script>
       <link href="/css/css2.css" rel="stylesheet">
       <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=!0;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f)})(window,document,'script','dataLayer','GTM-NZ6WKBM')</script><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=!0;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f)})(window,document,'script','dataLayer','GTM-PHXGT5T')</script>
       <style id="inert-style">
@@ -97,17 +99,9 @@
                            <a class="menu__link dropdown__trigger" href="/about">
                            About Us </a>
                         </li>
-                            <c:choose>  
-				    <c:when test="${isGuest==true}">  
-						<li class="menu__item"><a class="menu__link" href="/login">
+                        <li class="menu__item"><a class="menu__link" href="/login">
                            Login </a>
-                                </li>		    
-	                </c:when>  
-	                  <c:when test="${isGuest==false}">  
-	                  <li class="menu__item"><a class="menu__link" href="/logout">
-                           Logout </a>
-				    </c:when>  		
-	                </c:choose>	
+                        </li>
                      </ul>
                      <a class="header__action button display-none display-block-lg button_color_accent" href="/services" onclick="gtag('event', 'Click', {'event_category' : 'Header CTA', 'event_label' : 'Request an Appointment button', 'event_value' : '375'});">
                      Request an Appointment </a> <a class="header__action button display-none display-block-lg button_color_primary" href="/about" onclick="gtag('event', 'Click', {'event_category' : 'Header CTA', 'event_label' : 'Contact button', 'event_value' : '375'});">
@@ -126,7 +120,26 @@
          <section class="section section_widget_highlight-grid section_theme_shade ">
             <div class="section__container">
                <div class="section__intro">
-                  <h2 class="section__title">Learn More About Us</h2>
+                  <h2 class="section__title">Know More About Us</h2>
+                  <br>
+                  <br>
+                  <section class="section section_widget_highlight-grid section_theme_shade " id="map"> <script
+				      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&libraries=&v=weekly"
+				      async></script></section><br>
+				      <div class="aboutpets"><p >Pawsome Pets is a hospital to keep more animals in loving homes by protecting them from harmful situations through community engagement,<br>
+
+               preventative action and providing resources and care when needed. So we decide to make a website that helps all pets owners,<br>
+
+               and provide them all the care and requirements they need. We care about pets and want them to be safe in wherever they are, whether ist their home or shelter.<br>
+
+              At Pawsome Pets Care Center, we provide a varity of veterinary care for pets in our community.<br>
+
+              Our staff treats you like family and each pet like our own. We are honored and proud to be a partner in your pet's good health. <br>
+
+              As pet owners ourselves, we believe that preventative care with wellness exams are the keys to your pet living a longer, healthier, and happier life.<br>
+
+              As a full-service veterinary office, Our team includs four highly recommended doctors.</p> 
+              </div>
                </div>
             </div>
          </section>
@@ -134,7 +147,7 @@
             <div class="section__container">
                <div class="section__intro">
                   <div class="action-group"><a class="button button_color_accent" href="/services" onclick="gtag('event', 'Click', {'event_category' : 'Home Section CTA', 'event_label' : 'Find a Location button', 'event_value' : '375'})">
-                     Request an Appointment</a>
+                     Apply For Service</a>
                   </div>
                </div>
             </div>
@@ -159,17 +172,9 @@
                         <li class="menu__item"><a class="menu__link" href="/about">
                            About Us </a>
                         </li>
-                        <c:choose>  
-				    <c:when test="${isGuest==true}">  
-						<li class="menu__item"><a class="menu__link" href="/login">
+                        <li class="menu__item"><a class="menu__link" href="/login">
                            Login </a>
-                                </li>		    
-	                </c:when>  
-	                  <c:when test="${isGuest==false}">  
-	                  <li class="menu__item"><a class="menu__link" href="/logout">
-                           Logout </a>
-				    </c:when>  		
-	                </c:choose>	
+                        </li>
                      </ul>
                   </div>
                </div>
@@ -230,17 +235,9 @@
                         <li class="menu__item"><a class="menu__link" href="/about">
                            About Us </a>
                         </li>
-                       <c:choose>  
-				    <c:when test="${isGuest==true}">  
-						<li class="menu__item"><a class="menu__link" href="/login">
+                        <li class="menu__item"><a class="menu__link" href="/login">
                            Login </a>
-                                </li>		    
-	                </c:when>  
-	                  <c:when test="${isGuest==false}">  
-	                  <li class="menu__item"><a class="menu__link" href="/logout">
-                           Logout </a>
-				    </c:when>  		
-	                </c:choose>	
+                        </li>
                   </ul>
                </div>
             </div>

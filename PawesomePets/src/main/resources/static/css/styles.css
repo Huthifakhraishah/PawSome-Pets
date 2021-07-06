@@ -9244,5 +9244,60 @@ html {
     margin: 0px 108px;
 }
 
+/* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+#map {
+  	height: 400px;
+	width: 100%;
+	align-items: center;
+	border:solid;
+	border-color:#613f6d;
+}
+
+/* Optional: Makes the sample page fill the window. */
+
+/*# sourceMappingURL=styles.min.css.map */
+.servicebutton {
+    text-align: center;
+    margin-left: 41%;
+}
+.applubutton {
+    text-align: center;
+    margin: auto;
+}
+.categorybutton {
+    text-align: center;
+    margin-left: 40%;
+}
+.petbutton {
+    margin-left: 45%;
+}
+.form-group>select {
+    width: 310px;
+}
+.qamar{
+    display: flex;
+}
+.qamar1{
+    flex: 1;
+    text-align: center;
+}
+.qamar2{
+    flex: 1;
+    text-align: center;
+}
+.aboutpets{
+    text-align: center;
+    padding: 20px;
+    margin: auto;
+    color: white;
+    background-color: #613f6d;
+    opacity: 0.8;
+    border-radius: 5px;
+}
+
+
+
+
 /*# sourceMappingURL=styles.min.css.map */
 
