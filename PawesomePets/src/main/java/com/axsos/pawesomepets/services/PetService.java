@@ -32,4 +32,8 @@ public class PetService {
 	public void delete(Long id) {
 		petRepository.delete(id);
 	}
+	
+	public Pet findPetById(Long id) {
+		return petRepository.findPetById(id);
+	}
 }

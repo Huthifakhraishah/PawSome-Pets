@@ -46,7 +46,7 @@
       <meta http-equiv="origin-trial" content="A41wt2Lsq30A9Ox/WehogvJckPI4aY9RoSxhb8FMtVnqaUle1AtI6Yf7Wk+7+Wm0AfDDOkMX+Wn6wnDpBWYgWwYAAAB8eyJvcmlnaW4iOiJodHRwczovL2Fkcm9sbC5jb206NDQzIiwiZmVhdHVyZSI6IkludGVyZXN0Q29ob3J0QVBJIiwiZXhwaXJ5IjoxNjI2MjIwNzk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ==">
       <script id="adroll_scr_exp" onerror="window.adroll_exp_list = [];" type="text/javascript" src="/js/index.js"></script>
       <script type="text/javascript" src="/js/EI6XV6ENDBHQDN6UH2XHJO"></script>
-      <div style="width: 1px; height: 1px; display: inline; position: absolute;"><img style="border-style:none;" alt="" src="Pet%20Care%20Center%20-%20Chalmette,%20Jefferson,%20Metairie,%20New%20Orleans,%20and%20Slidell_files/out_002.gif" width="1" height="1"><img style="border-style:none;" alt="" src="Pet%20Care%20Center%20-%20Chalmette,%20Jefferson,%20Metairie,%20New%20Orleans,%20and%20Slidell_files/out_004.gif" width="1" height="1"><img style="border-style:none;" alt="" src="Pet%20Care%20Center%20-%20Chalmette,%20Jefferson,%20Metairie,%20New%20Orleans,%20and%20Slidell_files/out_006.gif" width="1" height="1"><img style="border-style:none;" alt="" src="Pet%20Care%20Center%20-%20Chalmette,%20Jefferson,%20Metairie,%20New%20Orleans,%20and%20Slidell_files/out_003.gif" width="1" height="1"><img style="border-style:none;" alt="" src="Pet%20Care%20Center%20-%20Chalmette,%20Jefferson,%20Metairie,%20New%20Orleans,%20and%20Slidell_files/out_005.gif" width="1" height="1"><img style="border-style:none;" alt="" src="Pet%20Care%20Center%20-%20Chalmette,%20Jefferson,%20Metairie,%20New%20Orleans,%20and%20Slidell_files/out.gif" width="1" height="1"><img style="border-style:none;" alt="" src="Pet%20Care%20Center%20-%20Chalmette,%20Jefferson,%20Metairie,%20New%20Orleans,%20and%20Slidell_files/out_007.gif" width="1" height="1"></div>
+      <div style="width: 1px; height: 1px; display: inline; position: absolute;"></div>
       <div style="width: 1px; height: 1px; display: inline; position: absolute;"></div>
 </head>
    <body id="top" class="home">
@@ -71,7 +71,7 @@
                         <li class="menu__item">
                            <a class="menu__link" href="/services" onclick="gtag('event', 'Click', {'event_category' : 'Toolbar CTA', 'event_label' : 'Request an Appointment button', 'event_value' : '375'})">
                               <svg role="img" class="icon icon_size_small">
-                                 <use xlink:href="site/templates/dist/svg/symbols.svg#icon-chevron-right"></use>
+                                 
                               </svg>
                               <span>Request an Appointment</span> 
                            </a>
@@ -81,7 +81,7 @@
                         <li class="menu__item">
                            <a class="menu__link" href="mailto:petcareclientservices@gmail.com" onclick="gtag('event', 'Click', {'event_category' : 'Toolbar CTA', 'event_label' : 'Call Us button', 'event_value' : '375'})">
                               <svg role="img" class="icon icon_size_small">
-                                 <use xlink:href="site/templates/dist/svg/symbols.svg#icon-chevron-right"></use>
+                              
                               </svg>
                               <span>Call Us</span> 
                            </a>
@@ -89,7 +89,7 @@
                         <li class="menu__item">
                            <a class="menu__link" href="/login" onclick="gtag('event', 'Click', {'event_category' : 'Toolbar CTA', 'event_label' : 'Request an Appointment button', 'event_value' : '375'})">
                               <svg role="img" class="icon icon_size_small">
-                                 <use xlink:href="site/templates/dist/svg/symbols.svg#icon-chevron-right"></use>
+                                 
                               </svg>
                               <span>Request an Appointment</span> 
                            </a>
@@ -114,17 +114,11 @@
 				    	<c:when test="${isAdmin!=true && isGuest==false}"> 
 				    	<li class="menu__item">
                            <a class="menu__link" href="mailto:petcareclientservices@gmail.com" onclick="gtag('event', 'Click', {'event_category' : 'Toolbar CTA', 'event_label' : 'Call Us button', 'event_value' : '375'})">
-                              <svg role="img" class="icon icon_size_small">
-                                 <use xlink:href="site/templates/dist/svg/symbols.svg#icon-chevron-right"></use>
-                              </svg>
                               <span>Call Us</span> 
                            </a>
                         </li>
                         <li class="menu__item">
                            <a class="menu__link" href="/services" onclick="gtag('event', 'Click', {'event_category' : 'Toolbar CTA', 'event_label' : 'Request an Appointment button', 'event_value' : '375'})">
-                              <svg role="img" class="icon icon_size_small">
-                                 <use xlink:href="site/templates/dist/svg/symbols.svg#icon-chevron-right"></use>
-                              </svg>
                               <span>Request an Appointment</span> 
                            </a>
                         </li>

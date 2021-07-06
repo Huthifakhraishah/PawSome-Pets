@@ -1,6 +1,6 @@
 package com.axsos.pawesomepets.services;
 
-import java.util.Date;
+import java.util.List;
 
 import org.springframework.stereotype.Service;
 
@@ -21,5 +21,5 @@ public class ServicehasPetService {
 	public ServicehasPet findByTwoIds(Long petId,Long serviceId) {
 		return servicehasPetRepository.findByTwoIds(petId,serviceId);
 	}
-
+	
 }

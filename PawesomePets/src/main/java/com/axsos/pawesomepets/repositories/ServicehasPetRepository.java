@@ -1,5 +1,7 @@
 package com.axsos.pawesomepets.repositories;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.data.jpa.repository.Modifying;
@@ -18,4 +20,5 @@ public interface ServicehasPetRepository extends CrudRepository<ServicehasPet, L
 	
 	@Query(value="SELECT * FROM services_has_pets WHERE services_has_pets.pet_id=?1 AND services_has_pets.service_id=?2 LIMIT 1",nativeQuery=true)
 	ServicehasPet findByTwoIds(Long petId,Long serviceId);
+	
 }
