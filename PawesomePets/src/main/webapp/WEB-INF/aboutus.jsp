@@ -141,15 +141,11 @@
                         </li>
                         <li class="menu__item dropdown on-hover menu__link dropdown__trigger">
                            Services 
-                           <ul class="dropdown__menu">
-                              <li class="dropdown__item"><a class="dropdown__link flex-justify-between" href="https://petcarecenterinc.com/services/wellness-prevention/"><span>Wellness &amp; Prevention</span></a></li>
-                              <li class="dropdown__item"><a class="dropdown__link flex-justify-between" href="https://petcarecenterinc.com/services/testing-diagnosis/"><span>Testing &amp; Diagnosis</span></a></li>
-                              <li class="dropdown__item"><a class="dropdown__link flex-justify-between" href="https://petcarecenterinc.com/services/specialized-care/"><span>Specialized Care</span></a></li>
-                              <li class="dropdown__item"><a class="dropdown__link flex-justify-between" href="https://petcarecenterinc.com/services/surgical-procedures/"><span>Surgical Procedures</span></a></li>
-                              <li class="dropdown__item"><a class="dropdown__link flex-justify-between" href="https://petcarecenterinc.com/services/urgent-care/"><span>Urgent Care</span></a></li>
-                              <li class="dropdown__item"><a class="dropdown__link flex-justify-between" href="https://petcarecenterinc.com/services/pet-boarding/"><span>Pet Boarding</span></a></li>
-                              <li class="dropdown__item"><a class="dropdown__link flex-justify-between" href="https://petcarecenterinc.com/services/grooming/"><span>Grooming</span></a></li>
-                           </ul>
+                             <ul class="dropdown__menu">
+                           <c:forEach items="${allServices}" var="x" >
+                              <li class="dropdown__item"><a class="dropdown__link flex-justify-between" href="/services/${x.id}"><c:out value="${x.name}"/></a></li>
+                            </c:forEach>
+                            </ul>
                         </li>
                         <li class="menu__item"><a class="menu__link" href="/ourteam">
                            Our Team </a>

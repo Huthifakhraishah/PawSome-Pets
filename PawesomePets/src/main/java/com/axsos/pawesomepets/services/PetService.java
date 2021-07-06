@@ -1,8 +1,11 @@
 package com.axsos.pawesomepets.services;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.axsos.pawesomepets.models.Category;
+import com.axsos.pawesomepets.models.PService;
 import com.axsos.pawesomepets.models.Pet;
 import com.axsos.pawesomepets.models.User;
 import com.axsos.pawesomepets.repositories.CategoryRepository;
@@ -22,5 +25,7 @@ public class PetService {
 		Pet myPet=new Pet(currentUser,name,gender,age,category,links);
 		return petRepository.save(myPet);
 	}
-	
+	public List<Pet> findAll() {
+		return petRepository.findAll();
+	}
 }

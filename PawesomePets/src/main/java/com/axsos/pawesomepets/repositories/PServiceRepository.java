@@ -14,4 +14,6 @@ public interface PServiceRepository extends CrudRepository<PService, Long> {
 	
 	@Query(value="SELECT * FROM services WHERE services.id=?1",nativeQuery=true)
 	PService findPServiceById(Long id);
+	
+
 }

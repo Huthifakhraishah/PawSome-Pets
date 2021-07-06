@@ -31,8 +31,12 @@ public class CategoryService {
 			return null;
 		}
 	}
-	public void updateCategory(Category myCategory) {
-		categoryRepository.save(myCategory);
+	public Category updateCategory(String type , Long myId) {
+		
+		Category mycategory = categoryRepository.findCategoryById(myId);
+		mycategory.setType(type);
+		return categoryRepository.save(mycategory);
+		
 	}
 
 	public void deleteCategory(Category category) {

@@ -1,3 +1,714 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 package com.axsos.pawesomepets.controllers;
 
 import java.security.Principal;
@@ -119,6 +830,8 @@ public class MainController {
 
 	@RequestMapping("/admin")
 	public String adminPage(Principal principal, Model model) {
+		List<PService> allServices=pserviceService.findAll();
+		model.addAttribute("allServices", allServices);
 		if (principal != null) {
 			String username = principal.getName();
 			model.addAttribute("currentUser", userService.findByUsername(username));
@@ -193,6 +906,8 @@ public class MainController {
 
 	@RequestMapping("/apply")
 	public String apply(Model model, Principal principal) {
+		List<PService> allServices=pserviceService.findAll();
+		model.addAttribute("allServices", allServices);
 		if (principal != null) {
 			String currentEmail = principal.getName();
 			User currentUser = userService.findByUsername(currentEmail);
@@ -236,6 +951,8 @@ public class MainController {
 
 	@RequestMapping(value = { "/", "/home" })
 	public String home(Principal principal, Model model) {
+		List<PService> allServices=pserviceService.findAll();
+		model.addAttribute("allServices", allServices);
 		if (principal != null) {
 			String username = principal.getName();
 			model.addAttribute("currentUser", userService.findByUsername(username));
@@ -263,6 +980,8 @@ public class MainController {
 
 	@RequestMapping("/about")
 	public String aboutUs(Model model, Principal principal) {
+		List<PService> allServices=pserviceService.findAll();
+		model.addAttribute("allServices", allServices);
 		if (principal != null) {
 			User currentUser = userService.findByUsername(principal.getName());
 			List<Role> allRolesForCurrentUser = currentUser.getRoles();
@@ -289,6 +1008,8 @@ public class MainController {
 
 	@RequestMapping("/ourteam")
 	public String ourTeam(Model model, Principal principal) {
+		List<PService> allServices=pserviceService.findAll();
+		model.addAttribute("allServices", allServices);
 		if (principal != null) {
 			User currentUser = userService.findByUsername(principal.getName());
 			List<Role> allRolesForCurrentUser = currentUser.getRoles();
@@ -314,6 +1035,8 @@ public class MainController {
 
 	@RequestMapping("/editservice")
 	public String editService(Model model,Principal principal) {
+		List<PService> allServices=pserviceService.findAll();
+		model.addAttribute("allServices", allServices);
         List<PService> service=pserviceService.findAll();
         model.addAttribute("service", service);
         if (principal != null) {
@@ -341,6 +1064,8 @@ public class MainController {
 
 	@RequestMapping("/editcategory")
 	public String editCategory(Model model, Principal principal) {
+		List<PService> allServices=pserviceService.findAll();
+		model.addAttribute("allServices", allServices);
         List<Category> category=categoryService.findAll();
         model.addAttribute("category", category);
         if (principal != null) {
@@ -368,6 +1093,8 @@ public class MainController {
 
 	@RequestMapping("/editappointment")
     public String editAppointment(Model model, Principal principal) {
+		List<PService> allServices=pserviceService.findAll();
+		model.addAttribute("allServices", allServices);
         List<Appointment> appontment=appointmentService.findAll();
         model.addAttribute("allappontment", appontment);
         if (principal != null) {
@@ -395,6 +1122,8 @@ public class MainController {
 	
 	@RequestMapping("/services")
 	public String services(Model model, Principal principal) {
+		List<PService> allServices=pserviceService.findAll();
+		model.addAttribute("allServices", allServices);
 		if (principal != null) {
 			User currentUser = userService.findByUsername(principal.getName());
 			List<Role> allRolesForCurrentUser = currentUser.getRoles();
@@ -420,11 +1149,12 @@ public class MainController {
 		return "services.jsp";
 	}
 
-	@RequestMapping("/services/{id}/edit")
-	public String editService(@ModelAttribute("service") PService myService, @PathVariable("id") Long myId,
+	@PostMapping("/services/{id}/edit")
+	public String editService(@RequestParam(value="name")String name, @PathVariable("id") Long myId,
 			Model model, Principal principal) {
-		PService service = pserviceService.findServiceById(myId);
-		model.addAttribute("service", service);
+		PService pservice= pserviceService.findPServiceById(myId);
+		model.addAttribute("service", pservice);
+		pserviceService.updateService(name, myId);
 		if (principal != null) {
 			User currentUser = userService.findByUsername(principal.getName());
 			List<Role> allRolesForCurrentUser = currentUser.getRoles();
@@ -445,7 +1175,7 @@ public class MainController {
 			model.addAttribute("isGuest", true);
 			model.addAttribute("isAdmin", false);
 		}
-		return "editService.jsp";
+		return "redirect:/editservice";
 	}
 
 	@RequestMapping("/services/delete/{id}")
@@ -461,11 +1191,12 @@ public class MainController {
 
 	}
 
-	@RequestMapping("/categories/{id}/edit")
-	public String editCategory(@ModelAttribute("category") Category myCategory, @PathVariable("id") Long myId,
+	@PostMapping("/categories/{id}/edit")
+	public String editCategory(@RequestParam(value="type")String type, @PathVariable("id") Long myId,
 			Model model, Principal principal) {
 		Category category = categoryService.findCategoryById(myId);
-		model.addAttribute(" category", category);
+		model.addAttribute("category", category);
+		categoryService.updateCategory(type,myId);
 		if (principal != null) {
 			User currentUser = userService.findByUsername(principal.getName());
 			List<Role> allRolesForCurrentUser = currentUser.getRoles();
@@ -487,7 +1218,7 @@ public class MainController {
 			model.addAttribute("isAdmin", false);
 		}
 
-		return "editCategory.jsp";
+		return "redirect:/editcategory";
 	}
 
 	@RequestMapping("/categories/delete/{id}")
@@ -503,10 +1234,11 @@ public class MainController {
 	}
 
 	@RequestMapping("/appointment/{id}/edit")
-	public String editAppointment(@ModelAttribute("appointment") Appointment myAppointment,
+	public String editAppointment(@RequestParam(value="appointment")Date myAppointment,
 			@PathVariable("id") Long myId, Model model, Principal principal) {
 		Appointment appointment = appointmentService.findAppointmentById(myId);
 		model.addAttribute("appointment", appointment);
+		appointmentService.updateService(myAppointment,myId);
 		if (principal != null) {
 			User currentUser = userService.findByUsername(principal.getName());
 			List<Role> allRolesForCurrentUser = currentUser.getRoles();
@@ -528,7 +1260,7 @@ public class MainController {
 			model.addAttribute("isAdmin", false);
 		}
 
-		return "editAppointment.jsp";
+		return "redirect:/editappointment";
 	}
 
 	@RequestMapping("/appointment/delete/{id}")
@@ -544,6 +1276,8 @@ public class MainController {
 
 	@RequestMapping("/services/{id}")
 	public String test(Model model, Principal principal, @PathVariable(value = "id") Long id) {
+		List<PService> allServices=pserviceService.findAll();
+		model.addAttribute("allServices", allServices);
 		if (principal != null) {
 			User currentUser = userService.findByUsername(principal.getName());
 			List<Role> allRolesForCurrentUser = currentUser.getRoles();
@@ -572,6 +1306,8 @@ public class MainController {
 	
 	@RequestMapping("/profile")
 	public String profile(Model model, Principal principal) {
+		List<PService> allServices=pserviceService.findAll();
+		model.addAttribute("allServices", allServices);
 		User currentUser = userService.findByUsername(principal.getName());
 		List<Role> allRolesForCurrentUser = currentUser.getRoles();
 		List<Long> allRolesIdsForCurrentUser = new ArrayList<Long>();
@@ -599,6 +1335,8 @@ public class MainController {
 	@RequestMapping(value="/createPet",method=RequestMethod.POST)
 	public String createPet(Model model,Principal principal,@RequestParam(value="name")String name,@RequestParam(value="gender")String gender,@RequestParam(value="age")Integer age,@RequestParam(value="category")Long categoryId, @RequestParam(value="links")String links) {
 		if(name.length()<2 || name.length()>10){
+			List<PService> allServices=pserviceService.findAll();
+			model.addAttribute("allServices", allServices);
 			model.addAttribute("petNameErrorMessage","Pet Name must be between 2 and 10 characters!");
 			return "profile.jsp";
 		}
