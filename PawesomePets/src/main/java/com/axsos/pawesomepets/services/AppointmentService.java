@@ -34,8 +34,10 @@ public class AppointmentService {
 			return null;
 		}
 	}
-	public void updateService(Appointment myAppointment) {
-		appointmentRepository.save(myAppointment);
+	public void updateService(Date myAppointment,Long id) {
+		Appointment appointment = appointmentRepository.findAppointmentById(id);
+		appointment.setAppointment(myAppointment);
+		appointmentRepository.save(appointment);
 	}
 
 	public void deleteAppointment(Appointment appointment) {

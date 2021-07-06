@@ -38,8 +38,10 @@ public class PServiceService {
 			return null;
 		}
 	}
-	public void updateService(PService myService) {
-		pserviceRepository.save(myService);
+	public PService updateService(String name,Long myId) {
+		PService service = pserviceRepository.findPServiceById(myId);
+		service.setName(name);
+		return pserviceRepository.save(service);
 	}
 
 	public void deleteService(PService service) {
