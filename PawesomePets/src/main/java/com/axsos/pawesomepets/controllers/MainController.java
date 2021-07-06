@@ -35,6 +35,7 @@ import com.axsos.pawesomepets.models.User;
 import com.axsos.pawesomepets.services.AppointmentService;
 import com.axsos.pawesomepets.services.CategoryService;
 import com.axsos.pawesomepets.services.PServiceService;
+import com.axsos.pawesomepets.services.PetService;
 import com.axsos.pawesomepets.services.ServicehasPetService;
 import com.axsos.pawesomepets.services.ServicehasPethasAppointmentService;
 import com.axsos.pawesomepets.services.UserService;
@@ -49,11 +50,12 @@ public class MainController {
 	private final ServicehasPetService servicehasPetService;
 	private final AppointmentService appointmentService;
 	private final ServicehasPethasAppointmentService servicehasPethasAppointmentService;
+	private final PetService petService;
 
 	public MainController(UserService userService, UserValidator userValidator, CategoryService categoryService,
 			PServiceService pserviceService, ServicehasPetService servicehasPetService,
 			AppointmentService appointmentService,
-			ServicehasPethasAppointmentService servicehasPethasAppointmentService) {
+			ServicehasPethasAppointmentService servicehasPethasAppointmentService,PetService petService) {
 		this.userService = userService;
 		this.userValidator = userValidator;
 		this.categoryService = categoryService;
@@ -61,6 +63,7 @@ public class MainController {
 		this.servicehasPetService = servicehasPetService;
 		this.appointmentService = appointmentService;
 		this.servicehasPethasAppointmentService = servicehasPethasAppointmentService;
+		this.petService=petService;
 	}
 
 	// ******************************************************************************
@@ -113,11 +116,7 @@ public class MainController {
 		return "redirect:/login";
 
 	}
-	@RequestMapping("/profile")
-	public String profile() {
-		return "profile.jsp";
 
-	}
 	@RequestMapping("/admin")
 	public String adminPage(Principal principal, Model model) {
 		if (principal != null) {
@@ -569,4 +568,45 @@ public class MainController {
 		model.addAttribute("pservice", pservice);
 		return "serviceInfo.jsp";
 	}
+	
+	
+	@RequestMapping("/profile")
+	public String profile(Model model, Principal principal) {
+		User currentUser = userService.findByUsername(principal.getName());
+		List<Role> allRolesForCurrentUser = currentUser.getRoles();
+		List<Long> allRolesIdsForCurrentUser = new ArrayList<Long>();
+		for (Role role : allRolesForCurrentUser) {
+			allRolesIdsForCurrentUser.add(role.getId());
+		}
+		if (allRolesIdsForCurrentUser.get(0) == 2) {
+			model.addAttribute("isAdmin", true);
+		} else if (allRolesIdsForCurrentUser.get(0) == 1) {
+			model.addAttribute("isAdmin", false);
+		}
+		if (allRolesIdsForCurrentUser.get(0) == 2 || allRolesIdsForCurrentUser.get(0) == 1) {
+			model.addAttribute("isGuest", false);
+		} else {
+			model.addAttribute("isGuest", true);
+		}
+		model.addAttribute("currentUser",currentUser.getFullName());
+		model.addAttribute("currentUserPets",currentUser.getPets());
+		List<Category> categories=categoryService.findAll();
+		model.addAttribute("categories",categories);
+		return "profile.jsp";
+	}
+	
+	
+	@RequestMapping(value="/createPet",method=RequestMethod.POST)
+	public String createPet(Model model,Principal principal,@RequestParam(value="name")String name,@RequestParam(value="gender")String gender,@RequestParam(value="age")Integer age,@RequestParam(value="category")Long categoryId, @RequestParam(value="links")String links) {
+		if(name.length()<2 || name.length()>10){
+			model.addAttribute("petNameErrorMessage","Pet Name must be between 2 and 10 characters!");
+			return "profile.jsp";
+		}
+		
+		
+		User currentUser=userService.findByUsername(principal.getName());
+		petService.createPet(currentUser,name,gender,age,categoryId,links);
+		return "redirect:/profile";
+	}
+	
 }

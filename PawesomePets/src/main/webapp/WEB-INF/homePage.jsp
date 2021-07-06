@@ -64,7 +64,6 @@
                         <li class="menu__item">
                            <a class="menu__link" href="mailto:petcareclientservices@gmail.com" onclick="gtag('event', 'Click', {'event_category' : 'Toolbar CTA', 'event_label' : 'Call Us button', 'event_value' : '375'})">
                               <svg role="img" class="icon icon_size_small">
-                                 <use xlink:href="site/templates/dist/svg/symbols.svg#icon-chevron-right"></use>
                               </svg>
                               <span>Call Us</span> 
                            </a>

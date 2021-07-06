@@ -52,17 +52,14 @@
          <div class="accentbar"></div>
          <div class="section section_toolbar">
             <div class="section__container">
-<<<<<<< HEAD
                 <div class="grid">
                     <div class="grid__item">
                      <ul class="menu toolbar-cta">
                      <c:choose> 
                      <c:when test="${isGuest==true}">
-=======
                <div class="grid">
                   <div class="grid__item">
                      <ul class="menu toolbar-cta">
->>>>>>> 0c7fff7660e2c5d9fbe2f96fda5ea5bdc8c07dde
                         <li class="menu__item">
                            <a class="menu__link" href="mailto:petcareclientservices@gmail.com" onclick="gtag('event', 'Click', {'event_category' : 'Toolbar CTA', 'event_label' : 'Call Us button', 'event_value' : '375'})">
                               <svg role="img" class="icon icon_size_small">
@@ -72,18 +69,14 @@
                            </a>
                         </li>
                         <li class="menu__item">
-<<<<<<< HEAD
                            <a class="menu__link" href="/login" onclick="gtag('event', 'Click', {'event_category' : 'Toolbar CTA', 'event_label' : 'Request an Appointment button', 'event_value' : '375'})">
-=======
                            <a class="menu__link" href="/services" onclick="gtag('event', 'Click', {'event_category' : 'Toolbar CTA', 'event_label' : 'Request an Appointment button', 'event_value' : '375'})">
->>>>>>> 0c7fff7660e2c5d9fbe2f96fda5ea5bdc8c07dde
                               <svg role="img" class="icon icon_size_small">
                                  <use xlink:href="site/templates/dist/svg/symbols.svg#icon-chevron-right"></use>
                               </svg>
                               <span>Request an Appointment</span> 
                            </a>
                         </li>
-<<<<<<< HEAD
                         </c:when> 
                      <c:when test="${isAdmin==false && isGuest==false}">
                         <li class="menu__item">
@@ -144,11 +137,9 @@
                      </ul>
                   </div>
                 </div>
-=======
                      </ul>
                   </div>
                </div>
->>>>>>> 0c7fff7660e2c5d9fbe2f96fda5ea5bdc8c07dde
             </div>
          </div>
          <header class="section section_size_sm section_header" id="header">
@@ -181,7 +172,6 @@
                         </li>
                         <li class="menu__item"><a class="menu__link" href="/login">
                            Login </a>
-<<<<<<< HEAD
                                 </li>		    
 	                </c:when>  
 	                  <c:when test="${isGuest==false}">  
@@ -198,14 +188,12 @@
                      </c:when>
                      </c:choose>
                         <button data-modal-open="modal-menu" aria-label="menu" class="header__toggle button button_outline_primary button_icon">
-=======
                         </li>
                      </ul>
                      <a class="header__action button display-none display-block-lg button_color_accent" href="/services" onclick="gtag('event', 'Click', {'event_category' : 'Header CTA', 'event_label' : 'Request an Appointment button', 'event_value' : '375'});">
                      Request an Appointment </a> <a class="header__action button display-none display-block-lg button_color_primary" href="/about" onclick="gtag('event', 'Click', {'event_category' : 'Header CTA', 'event_label' : 'Contact button', 'event_value' : '375'});">
                      Contact </a>
                      <button data-modal-open="modal-menu" aria-label="menu" class="header__toggle button button_outline_primary button_icon">
->>>>>>> 0c7fff7660e2c5d9fbe2f96fda5ea5bdc8c07dde
                         <svg role="img" class="icon">
                            <use xlink:href="site/templates/dist/svg/symbols.svg#icon-menu"></use>
                         </svg>
@@ -297,9 +285,9 @@
                         </li>
                         <li class="menu__item"><a class="menu__link" href="/login">
                            Login </a>
-<<<<<<< HEAD
-                                </li>		    
-	                </c:when>  
+                                </li>	
+                                <c:choose>
+                               
 	                  <c:when test="${isGuest==false}">  
 	                  <li class="menu__item"><a class="menu__link" href="/logout">
                            Logout </a>
@@ -330,7 +318,6 @@
                </c:when>
                </c:choose>
                     <button data-modal-open="modal-menu" aria-label="Open Menu" class="button button_color_primary button_icon">
-=======
                         </li>
                      </ul>
                   </div>
@@ -351,7 +338,6 @@
                Request an Appointment </a> <a class="header__action button button_color_primary" href="/about" onclick="gtag('event', 'Click', {'event_category' : 'Sticky Nav CTA', 'event_label' : 'Contact button', 'event_value' : '375'});">
                Contact </a>
                <button data-modal-open="modal-menu" aria-label="Open Menu" class="button button_color_primary button_icon">
->>>>>>> 0c7fff7660e2c5d9fbe2f96fda5ea5bdc8c07dde
                   <svg role="img" class="icon">
                      <use xlink:href="site/templates/dist/svg/symbols.svg#icon-menu"></use>
                   </svg>
