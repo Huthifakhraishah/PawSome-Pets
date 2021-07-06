@@ -9244,6 +9244,50 @@ html {
     margin: 0px 108px;
 }
 
+<<<<<<< HEAD
+.adminforms{
+	margin: auto auto;
+	text-align: center;
+}
+.adminform{
+	margin: auto auto;
+	padding: 20px;	
+	width: 600px;
+	border: 1px solid black;
+	border-radius: 10px;
+	box-shadow: #000;
+	background-color: black;
+	opacity: 0.8;
+
+}
+.section__intro>.section__title{
+	color: black;
+}
+.adminform>.section__title{
+	margin: auto auto;
+	color: red;
+	text-align: center;
+	font-size: larger;
+}
+
+}
+.section__intro>.section__title {
+    color: black;
+}
+.adminform>.section__title {
+    margin: auto auto;
+    color: red;
+    text-align: center;
+    font-size: larger;
+}
+.adminform label {
+    color: white;
+}
+.appluibutton {
+    text-align: center;
+    margin-left: 38%;
+}
+=======
 /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
 #map {
@@ -9257,6 +9301,7 @@ html {
 /* Optional: Makes the sample page fill the window. */
 
 /*# sourceMappingURL=styles.min.css.map */
+>>>>>>> 0c7fff7660e2c5d9fbe2f96fda5ea5bdc8c07dde
 .servicebutton {
     text-align: center;
     margin-left: 41%;
@@ -9275,6 +9320,8 @@ html {
 .form-group>select {
     width: 310px;
 }
+<<<<<<< HEAD
+=======
 .qamar{
     display: flex;
 }
@@ -9298,6 +9345,7 @@ html {
 
 
 
+>>>>>>> 0c7fff7660e2c5d9fbe2f96fda5ea5bdc8c07dde
 
 /*# sourceMappingURL=styles.min.css.map */
 

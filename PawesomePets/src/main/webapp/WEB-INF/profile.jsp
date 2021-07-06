@@ -152,17 +152,10 @@
                                 <a class="menu__link dropdown__trigger" href="/about">
                            About Us </a>
                             </li>
-                                         <c:choose>  
-				    <c:when test="${isGuest==true}">  
-						<li class="menu__item"><a class="menu__link" href="/login">
-                           Login </a>
-                                </li>		    
-	                </c:when>  
-	                  <c:when test="${isGuest==false}">  
+  
 	                  <li class="menu__item"><a class="menu__link" href="/logout">
                            Logout </a>
-				    </c:when>  		
-	                </c:choose>	
+						</li>
                         </ul>
                         <a class="header__action button display-none display-block-lg button_color_accent" href="/services" onclick="gtag('event', 'Click', {'event_category' : 'Header CTA', 'event_label' : 'Request an Appointment button', 'event_value' : '375'});">
                      Request an Appointment </a> <a class="header__action button display-none display-block-lg button_color_primary" href="/about" onclick="gtag('event', 'Click', {'event_category' : 'Header CTA', 'event_label' : 'Contact button', 'event_value' : '375'});">
@@ -239,12 +232,12 @@
                 <c:forEach items="${currentUserPets}" var="pet">
                 <div class="grid grid_tile flex-justify-center">
                     <div class="grid__item grid__item_fill ">
-                        <a href="https://petcarecenterinc.com/about-us/team/dr-erica-capshaw-brooks/" class="card card_provider-full card_link card_zoom card_tall text-align-center">
+                        <div class="card card_provider-full card_link card_zoom card_tall text-align-center">
                             <img class="lazy card__image loaded" data-src="${pet.links}" alt="${pet.name}" src="${pet.links}" data-was-processed="true">
                             <div class="card__body gap-y-xs">
                                 <h3 class="card__title"><span><c:out value="${pet.name}"/></span></h3>
                             </div>
-                        </a>
+                        </div>
                     </div>
                     </c:forEach>
                     

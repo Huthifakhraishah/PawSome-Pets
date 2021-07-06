@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +11,7 @@
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>Pet Care Center - Chalmette, Jefferson, Metairie, New Orleans, and Slidell</title>
+      <title>Pawsome Pets</title>
       <meta name="description" content="Comprehensive&nbsp;veterinary care, urgent pet care, pet boarding, and grooming in Chalmette, Jefferson, Metairie, New Orleans, and Slidell, LA.">
       <link rel="preload" href=/css/styles.css" as="style">
       <link rel="preconnect" href="https://www.googletagmanager.com/">
@@ -50,6 +49,8 @@
                <div class="grid">
                   <div class="grid__item">
                      <ul class="menu toolbar-cta">
+                     <c:choose> 
+                     <c:when test="${isAdmin==false}">
                         <li class="menu__item">
                            <a class="menu__link" href="mailto:petcareclientservices@gmail.com" onclick="gtag('event', 'Click', {'event_category' : 'Toolbar CTA', 'event_label' : 'Call Us button', 'event_value' : '375'})">
                               <svg role="img" class="icon icon_size_small">
@@ -66,6 +67,22 @@
                               <span>Request an Appointment</span> 
                            </a>
                         </li>
+                        </c:when> 
+                         <c:when test="${isAdmin==true}">  
+						<li class="menu__item"><a class="menu__link" href="/editservice">
+                           Edit Services </a>
+                        </li>		      
+	                 	 <li class="menu__item"><a class="menu__link" href="/editappointment">
+                           Edit Appointments </a>
+                           </li>
+                            <li class="menu__item"><a class="menu__link" href="/editcategory">
+                           Edit Categories </a>
+                           </li>
+                           <li class="menu__item"><a class="menu__link" href="/admin">
+                           Admin Page </a>
+                           </li>
+				    	</c:when>  	
+				    	</c:choose> 	
                      </ul>
                   </div>
                </div>
@@ -103,9 +120,13 @@
                            Logout </a>
                         </li>
                      </ul>
+                     <c:choose>
+                     <c:when test="${isAdmin!=true && isGuest==false}">
                      <a class="header__action button display-none display-block-lg button_color_accent" href="/services" onclick="gtag('event', 'Click', {'event_category' : 'Header CTA', 'event_label' : 'Request an Appointment button', 'event_value' : '375'});">
                      Request an Appointment </a> <a class="header__action button display-none display-block-lg button_color_primary" href="/about" onclick="gtag('event', 'Click', {'event_category' : 'Header CTA', 'event_label' : 'Contact button', 'event_value' : '375'});">
                      Contact </a>
+                     </c:when>
+                     </c:choose>
                      <button data-modal-open="modal-menu" aria-label="menu" class="header__toggle button button_outline_primary button_icon">
                         <svg role="img" class="icon">
                            <use xlink:href="site/templates/dist/svg/symbols.svg#icon-menu"></use>
@@ -121,10 +142,11 @@
                     <div class="section__intro">
                         <h2 class="section__title">Edit Service</h2>
                     </div><br>
+                    <c:forEach items="${service}" var="x">
                     <form action="/action_page.php">
                     <div class="adminforms">
                         <div class="adminform">
-                            <h4 class="section__title">The Name of the Service</h4><br>
+                            <h4 class="section__title">${x.name}</h4><br>
                                 <div class="form-group">
                                     <label for="appointment">Updated Service :</label>
                                     <input type="text" name="appointment">
@@ -137,20 +159,25 @@
                                 <input type="submit" value="Edit Service" class="button button_color_accent">
                             </li>
                             <li class="menu__item">
-                                <a class="header__action button display-none display-block-lg button_color_accent" href="/delete/service/{service.id}" onclick="gtag('event', 'Click', {'event_category' : 'Header CTA', 'event_label' : 'Request an Appointment button', 'event_value' : '375'});">
+                                <a href="services/delete/${x.id }"class="header__action button display-none display-block-lg button_color_accent" href="/delete/service/{service.id}" onclick="gtag('event', 'Click', {'event_category' : 'Header CTA', 'event_label' : 'Request an Appointment button', 'event_value' : '375'});">
                                     Delete </a> 
                             </li>
                             </ul>
                         </div>
-                </form>
+                </form><br><br>
+                </c:forEach>
             </div>
             </section>
             <div class="section section_widget_action section_size_lg section_theme_dark">
             <div class="section__container">
                <div class="section__intro">
+               <c:choose>
+                     <c:when test="${isAdmin!=true && isGuest==false}">
                   <div class="action-group"><a class="button button_color_accent" href="/services" onclick="gtag('event', 'Click', {'event_category' : 'Home Section CTA', 'event_label' : 'Find a Location button', 'event_value' : '375'})">
                      Request an Appointment</a>
                   </div>
+                  </c:when>
+                  </c:choose>
                </div>
             </div>
             <img class="lazy section__background loaded" alt="" data-src="/site/assets/files/5470/cta.jpg" src="/images/cta.jpg" data-was-processed="true">
