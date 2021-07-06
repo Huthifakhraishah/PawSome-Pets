@@ -27,28 +27,28 @@
 	    </c:if></p>
 		<div class="form-holder">		
     	<form:form method="POST" action="/registration" modelAttribute="user">
-        <p>
-            <form:input path="fullName" class="input" placeholder="Full Name"/>
-        </p>
-         <p>
-            <form:input type="email" path="username" class="input" placeholder="Email"/>
-        </p>
-        <p>
-            <form:password path="password"  class="input" placeholder="Password"/>
-        </p>
-        <p>
-            <form:password path="passwordConfirmation"  class="input" placeholder="Password Confirmation"/>
-        </p>
-		</div>
-		<input type="submit" value="Sign up" class="submit-btn"/>
-		</div>
-    </form:form>
+	        <p>
+	            <form:input path="fullName" class="input" placeholder="Full Name"/>
+	        </p>
+	         <p>
+	            <form:input type="email" path="username" class="input" placeholder="Email"/>
+	        </p>
+	        <p>
+	            <form:password path="password"  class="input" placeholder="Password"/>
+	        </p>
+	        <p>
+	            <form:password path="passwordConfirmation"  class="input" placeholder="Password Confirmation"/>
+	        </p>
+			</div>
+			<input type="submit" value="Sign up" class="submit-btn"/>
+			</div>
+    	</form:form>
 
 	<div class="login slide-up">
 		<div class="center">
 			<h2 class="form-title" id="login"><span>or</span>Log in</h2>
 			<div class="form-holder">
-		<form method="POST" action="/login">
+		<form:form method="POST" action="/login">
 	        <p>
 	            <input type="email" class="input" name="username" placeholder="Email"/>
 	        </p>
@@ -57,7 +57,7 @@
 	        </p>
 	        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 		<input type="submit" value="Login" class="submit-btn"/>
-    	</form>
+    	</form:form>
 			</div>
 		</div>
 	</div>
