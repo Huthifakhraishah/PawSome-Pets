@@ -101,135 +101,77 @@
     <div role="main">
         <div class="accentbar">
             <div class="sticky-navbar onscroll is-active" data-trigger="#header">
-            <div class="sticky-navbar__item"><a href="" class="logo"> <img alt="Pet Care Center" src="/images/logo-small.jpg"></a></div>
-            <div class="sticky-navbar__item">
-              <c:choose>
-                     <c:when test="${isAdmin!=true && isGuest==false}">
-               <a class="header__action button button_color_accent" href="/services" onclick="gtag('event', 'Click', {'event_category' : 'Sticky Nav CTA', 'event_label' : 'Request an Appointment button', 'event_value' : '375'});">
+                <div class="sticky-navbar__item">
+                    <a href="" class="logo"> <img alt="Pet Care Center" src="/images/logo-small.jpg"></a>
+                </div>
+                <div class="sticky-navbar__item">
+                    <a class="header__action button button_color_accent" href="/services" onclick="gtag('event', 'Click', {'event_category' : 'Sticky Nav CTA', 'event_label' : 'Request an Appointment button', 'event_value' : '375'});">
                Request an Appointment </a> <a class="header__action button button_color_primary" href="/about" onclick="gtag('event', 'Click', {'event_category' : 'Sticky Nav CTA', 'event_label' : 'Contact button', 'event_value' : '375'});">
                Contact </a>
-               </c:when>
-               </c:choose>
-               <button data-modal-open="modal-menu" aria-label="Open Menu" class="button button_color_primary button_icon">
+                    <button data-modal-open="modal-menu" aria-label="Open Menu" class="button button_color_primary button_icon">
                   <svg role="img" class="icon">
+                     <use xlink:href="#icon-menu"></use>
                   </svg>
                   <span>Menu</span>
                </button>
+                </div>
             </div>
-         </div>
             <div class="section section_toolbar">
                 <div class="section__container">
                     <div class="grid">
                         <div class="grid__item">
-                     <ul class="menu toolbar-cta">
-                     <c:choose> 
-                     <c:when test="${isAdmin==false && isGuest==false}">
-                        <li class="menu__item">
-                           <a class="menu__link" href="mailto:petcareclientservices@gmail.com" onclick="gtag('event', 'Click', {'event_category' : 'Toolbar CTA', 'event_label' : 'Call Us button', 'event_value' : '375'})">
-                              <svg role="img" class="icon icon_size_small">
-                              </svg>
-                              <span>Call Us</span> 
-                           </a>
-                        </li>
-                        <li class="menu__item">
-                           <a class="menu__link" href="/services" onclick="gtag('event', 'Click', {'event_category' : 'Toolbar CTA', 'event_label' : 'Request an Appointment button', 'event_value' : '375'})">
-                              <svg role="img" class="icon icon_size_small">
+                            <ul class="menu toolbar-cta">
+                                <li class="menu__item">
+                                    <a class="menu__link" href="mailto:petcareclientservices@gmail.com" onclick="gtag('event', 'Click', {'event_category' : 'Toolbar CTA', 'event_label' : 'Call Us button', 'event_value' : '375'})">
+                                        <svg role="img" class="icon icon_size_small">
                                  <use xlink:href="site/templates/dist/svg/symbols.svg#icon-chevron-right"></use>
                               </svg>
-                              <span>Request an Appointment</span> 
-                           </a>
-                        </li>
-                        </c:when> 
-                        <c:when test="${isGuest==true}">
-                        <li class="menu__item">
-                           <a class="menu__link" href="mailto:petcareclientservices@gmail.com" onclick="gtag('event', 'Click', {'event_category' : 'Toolbar CTA', 'event_label' : 'Call Us button', 'event_value' : '375'})">
-                              <svg role="img" class="icon icon_size_small">
+                                        <span>Call Us</span>
+                                    </a>
+                                </li>
+                                <li class="menu__item">
+                                    <a class="menu__link" href="/services" onclick="gtag('event', 'Click', {'event_category' : 'Toolbar CTA', 'event_label' : 'Request an Appointment button', 'event_value' : '375'})">
+                                        <svg role="img" class="icon icon_size_small">
                                  <use xlink:href="site/templates/dist/svg/symbols.svg#icon-chevron-right"></use>
                               </svg>
-                              <span>Call Us</span> 
-                           </a>
-                        </li>
-                        <li class="menu__item">
-                           <a class="menu__link" href="/login" onclick="gtag('event', 'Click', {'event_category' : 'Toolbar CTA', 'event_label' : 'Request an Appointment button', 'event_value' : '375'})">
-                              <svg role="img" class="icon icon_size_small">
-                                 <use xlink:href="site/templates/dist/svg/symbols.svg#icon-chevron-right"></use>
-                              </svg>
-                              <span>Request an Appointment</span> 
-                           </a>
-                        </li>
-                        </c:when> 
-                         <c:when test="${isAdmin==true}">  
-						<li class="menu__item"><a class="menu__link" href="/editservice">
-                           Edit Services </a>
-                        </li>		      
-	                 	 <li class="menu__item"><a class="menu__link" href="/editappointment">
-                           Edit Appointments </a>
-                           </li>
-                            <li class="menu__item"><a class="menu__link" href="/editcategory">
-                           Edit Categories </a>
-                           </li>
-                           <li class="menu__item"><a class="menu__link" href="/admin">
-                           Admin Page </a>
-                           </li>
-                           </c:when>  	
-				    	</c:choose> 
-				    	<c:choose>
-				    	<c:when test="${isAdmin!=true && isGuest==false}"> 
-				    	<li class="menu__item">
-                           <a class="menu__link" href="mailto:petcareclientservices@gmail.com" onclick="gtag('event', 'Click', {'event_category' : 'Toolbar CTA', 'event_label' : 'Call Us button', 'event_value' : '375'})">
-                              <svg role="img" class="icon icon_size_small">
-                                 <use xlink:href="site/templates/dist/svg/symbols.svg#icon-chevron-right"></use>
-                              </svg>
-                              <span>Call Us</span> 
-                           </a>
-                        </li>
-                        <li class="menu__item">
-                           <a class="menu__link" href="/services" onclick="gtag('event', 'Click', {'event_category' : 'Toolbar CTA', 'event_label' : 'Request an Appointment button', 'event_value' : '375'})">
-                              <svg role="img" class="icon icon_size_small">
-                                 <use xlink:href="site/templates/dist/svg/symbols.svg#icon-chevron-right"></use>
-                              </svg>
-                              <span>Request an Appointment</span> 
-                           </a>
-                        </li>
-				    	<li class="menu__item"><a class="menu__link" href="/profile">
-                           Profile Page </a>
-                           </li>
-                           </c:when>  	
-				    	</c:choose>	
-                     </ul>
-                  </div>
+                                        <span>Request an Appointment</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
             <header class="section section_size_sm section_header" id="header">
-            <div class="section__container">
-                <div class="header">
-                    <div class="header__item"><a href="" class="logo"> <img alt="Pet Care Center" src="/images/logo.jpg"></a></div>
-                    <div class="header__item level">
-                        <ul class="header__menu menu">
-                        <li class="menu__item"><a class="menu__link" href="/home">
-                            Home </a>
-                        </li>
-                        <li class="menu__item dropdown on-hover menu__link dropdown__trigger">
-                            Services
-                            <ul class="dropdown__menu">
-                                <li class="dropdown__item"><a class="dropdown__link flex-justify-between" href="https://petcarecenterinc.com/services/wellness-prevention/"><span>Wellness &amp; Prevention</span></a></li>
-                                <li class="dropdown__item"><a class="dropdown__link flex-justify-between" href="https://petcarecenterinc.com/services/testing-diagnosis/"><span>Testing &amp; Diagnosis</span></a></li>
-                                <li class="dropdown__item"><a class="dropdown__link flex-justify-between" href="https://petcarecenterinc.com/services/specialized-care/"><span>Specialized Care</span></a></li>
-                                <li class="dropdown__item"><a class="dropdown__link flex-justify-between" href="https://petcarecenterinc.com/services/surgical-procedures/"><span>Surgical Procedures</span></a></li>
-                                <li class="dropdown__item"><a class="dropdown__link flex-justify-between" href="https://petcarecenterinc.com/services/urgent-care/"><span>Urgent Care</span></a></li>
-                                <li class="dropdown__item"><a class="dropdown__link flex-justify-between" href="https://petcarecenterinc.com/services/pet-boarding/"><span>Pet Boarding</span></a></li>
-                                <li class="dropdown__item"><a class="dropdown__link flex-justify-between" href="https://petcarecenterinc.com/services/grooming/"><span>Grooming</span></a></li>
-                            </ul>
-                        </li>
-                        <li class="menu__item"><a class="menu__link" href="/ourteam">
-                            Our Team </a>
-                        </li>
-                        <li class="menu__item dropdown on-hover">
-                            <a class="menu__link dropdown__trigger" href="/about">
-                            About Us </a>
-                        </li>
-                               <c:choose>  
+                <div class="section__container">
+                    <div class="header">
+                        <div class="header__item">
+                            <a href="" class="logo"> <img alt="Pet Care Center" src="/images/logo.jpg"></a>
+                        </div>
+                        <div class="header__item level">
+                            <ul class="header__menu menu">
+                                <li class="menu__item"><a class="menu__link" href="/home"> Home </a>
+                                </li>
+                                <li class="menu__item dropdown on-hover menu__link dropdown__trigger">
+                                    Services
+                                    <ul class="dropdown__menu">
+                                        <li class="dropdown__item"><a class="dropdown__link flex-justify-between" href="#"><span>Wellness &amp; Prevention</span></a></li>
+                                        <li class="dropdown__item"><a class="dropdown__link flex-justify-between" href="#"><span>Testing &amp; Diagnosis</span></a></li>
+                                        <li class="dropdown__item"><a class="dropdown__link flex-justify-between" href="#"><span>Specialized Care</span></a></li>
+                                        <li class="dropdown__item"><a class="dropdown__link flex-justify-between" href="#"><span>Surgical Procedures</span></a></li>
+                                        <li class="dropdown__item"><a class="dropdown__link flex-justify-between" href="#"><span>Urgent Care</span></a></li>
+                                        <li class="dropdown__item"><a class="dropdown__link flex-justify-between" href="#"><span>Pet Boarding</span></a></li>
+                                        <li class="dropdown__item"><a class="dropdown__link flex-justify-between" href="#"><span>Grooming</span></a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu__item"><a class="menu__link" href="/ourteam">
+                           Our Team </a>
+                                </li>
+                                <li class="menu__item dropdown on-hover">
+                                    <a class="menu__link dropdown__trigger" href="/about">
+                           About Us </a>
+                                </li>
+                    <c:choose>  
 				    <c:when test="${isGuest==true}">  
 						<li class="menu__item"><a class="menu__link" href="/login">
                            Login </a>
@@ -240,23 +182,19 @@
                            Logout </a>
 				    </c:when>  		
 	                </c:choose>	
-                        </ul>
-                        <c:choose>
-                     <c:when test="${isAdmin!=true && isGuest==false}">
-                        <a class="header__action button display-none display-block-lg button_color_accent" href="/services" onclick="gtag('event', 'Click', {'event_category' : 'Header CTA', 'event_label' : 'Request an Appointment button', 'event_value' : '375'});">
-                        Request an Appointment </a> <a class="header__action button display-none display-block-lg button_color_primary" href="/about" onclick="gtag('event', 'Click', {'event_category' : 'Header CTA', 'event_label' : 'Contact button', 'event_value' : '375'});">
-                        Contact </a>
-                        </c:when>
-                        </c:choose>
-                        <button data-modal-open="modal-menu" aria-label="menu" class="header__toggle button button_outline_primary button_icon">
+                            </ul>
+                            <a class="header__action button display-none display-block-lg button_color_accent" href="/services" onclick="gtag('event', 'Click', {'event_category' : 'Header CTA', 'event_label' : 'Request an Appointment button', 'event_value' : '375'});">
+                     Request an Appointment </a> <a class="header__action button display-none display-block-lg button_color_primary" href="/about" onclick="gtag('event', 'Click', {'event_category' : 'Header CTA', 'event_label' : 'Contact button', 'event_value' : '375'});">
+                     Contact </a>
+                            <button data-modal-open="modal-menu" aria-label="menu" class="header__toggle button button_outline_primary button_icon">
                         <svg role="img" class="icon">
-                            <use xlink:href="site/templates/dist/svg/symbols.svg#icon-menu"></use>
+                           <use xlink:href="site/templates/dist/svg/symbols.svg#icon-menu"></use>
                         </svg>
                         <span>Menu</span>
-                        </button>
+                     </button>
+                        </div>
                     </div>
                 </div>
-            </div>
             </header>
 
 

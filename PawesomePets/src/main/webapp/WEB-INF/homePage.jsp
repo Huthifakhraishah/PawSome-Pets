@@ -59,11 +59,10 @@
                <div class="grid">
                   <div class="grid__item">
                      <ul class="menu toolbar-cta">
-                     <c:choose> 
-                     <c:when test="${isAdmin==false && isGuest==false}">
                         <li class="menu__item">
                            <a class="menu__link" href="mailto:petcareclientservices@gmail.com" onclick="gtag('event', 'Click', {'event_category' : 'Toolbar CTA', 'event_label' : 'Call Us button', 'event_value' : '375'})">
                               <svg role="img" class="icon icon_size_small">
+                                 <use xlink:href="site/templates/dist/svg/symbols.svg#icon-chevron-right"></use>
                               </svg>
                               <span>Call Us</span> 
                            </a>
@@ -71,63 +70,11 @@
                         <li class="menu__item">
                            <a class="menu__link" href="/services" onclick="gtag('event', 'Click', {'event_category' : 'Toolbar CTA', 'event_label' : 'Request an Appointment button', 'event_value' : '375'})">
                               <svg role="img" class="icon icon_size_small">
+                                 <use xlink:href="site/templates/dist/svg/symbols.svg#icon-chevron-right"></use>
                               </svg>
                               <span>Request an Appointment</span> 
                            </a>
                         </li>
-                        </c:when> 
-                        <c:when test="${isGuest==true}">
-                        <li class="menu__item">
-                           <a class="menu__link" href="mailto:petcareclientservices@gmail.com" onclick="gtag('event', 'Click', {'event_category' : 'Toolbar CTA', 'event_label' : 'Call Us button', 'event_value' : '375'})">
-                              <svg role="img" class="icon icon_size_small">
-                              </svg>
-                              <span>Call Us</span> 
-                           </a>
-                        </li>
-                        <li class="menu__item">
-                           <a class="menu__link" href="/login" onclick="gtag('event', 'Click', {'event_category' : 'Toolbar CTA', 'event_label' : 'Request an Appointment button', 'event_value' : '375'})">
-                              <svg role="img" class="icon icon_size_small">
-                              </svg>
-                              <span>Request an Appointment</span> 
-                           </a>
-                        </li>
-                        </c:when> 
-                         <c:when test="${isAdmin==true}">  
-						<li class="menu__item"><a class="menu__link" href="/editservice">
-                           Edit Services </a>
-                        </li>		      
-	                 	 <li class="menu__item"><a class="menu__link" href="/editappointment">
-                           Edit Appointments </a>
-                           </li>
-                            <li class="menu__item"><a class="menu__link" href="/editcategory">
-                           Edit Categories </a>
-                           </li>
-                           <li class="menu__item"><a class="menu__link" href="/admin">
-                           Admin Page </a>
-                           </li>
-                           </c:when>  	
-				    	</c:choose> 
-				    	<c:choose>
-				    	<c:when test="${isAdmin!=true && isGuest==false}"> 
-				    	<li class="menu__item">
-                           <a class="menu__link" href="mailto:petcareclientservices@gmail.com" onclick="gtag('event', 'Click', {'event_category' : 'Toolbar CTA', 'event_label' : 'Call Us button', 'event_value' : '375'})">
-                              <svg role="img" class="icon icon_size_small">
-                              </svg>
-                              <span>Call Us</span> 
-                           </a>
-                        </li>
-                        <li class="menu__item">
-                           <a class="menu__link" href="/services" onclick="gtag('event', 'Click', {'event_category' : 'Toolbar CTA', 'event_label' : 'Request an Appointment button', 'event_value' : '375'})">
-                              <svg role="img" class="icon icon_size_small">
-                              </svg>
-                              <span>Request an Appointment</span> 
-                           </a>
-                        </li>
-				    	<li class="menu__item"><a class="menu__link" href="/profile">
-                           Profile Page </a>
-                           </li>
-                           </c:when>  	
-				    	</c:choose>	
                      </ul>
                   </div>
                </div>
@@ -173,16 +120,12 @@
 				    </c:when>  		
 	                </c:choose>	
                      </ul>
-                      <c:choose> 
-                     <c:when test="${isAdmin!=true && isGuest==false}">
                      <a class="header__action button display-none display-block-lg button_color_accent" href="/services" onclick="gtag('event', 'Click', {'event_category' : 'Header CTA', 'event_label' : 'Request an Appointment button', 'event_value' : '375'});">
                      Request an Appointment </a> <a class="header__action button display-none display-block-lg button_color_primary" href="/about" onclick="gtag('event', 'Click', {'event_category' : 'Header CTA', 'event_label' : 'Contact button', 'event_value' : '375'});">
                      Contact </a>
-                     </c:when>
-                      </c:choose>	
-                       
                      <button data-modal-open="modal-menu" aria-label="menu" class="header__toggle button button_outline_primary button_icon">
                         <svg role="img" class="icon">
+                           <use xlink:href="site/templates/dist/svg/symbols.svg#icon-menu"></use>
                         </svg>
                         <span>Menu</span>
                      </button>
@@ -223,7 +166,14 @@
             <div class="section__container">
                <div class="grid grid_stack_md">
                   <div class="grid__item grid__item_fill">
-                     
+                     <a class="card card_link text-align-center" href="https://petcarecenterinc.com/patient-resources/patient-forms/">
+                        <div class="card__body gap-y">
+                           <svg role="img" class="icon icon_size_lg">
+                              <use xlink:href="site/templates/dist/svg/symbols.svg#icon-clipboard"></use>
+                           </svg>
+                           <h3 class="card__title">Patient Forms</h3>
+                        </div>
+                     </a>
                   </div>
                </div>
             </div>
@@ -282,15 +232,12 @@
          <div class="sticky-navbar onscroll is-active" data-trigger="#header">
             <div class="sticky-navbar__item"><a href="" class="logo"> <img alt="Pet Care Center" src="/images/logo-small.jpg"></a></div>
             <div class="sticky-navbar__item">
-            <c:choose>
-            <c:when test="${isAdmin!=true && isGuest==false}">
                <a class="header__action button button_color_accent" href="/services" onclick="gtag('event', 'Click', {'event_category' : 'Sticky Nav CTA', 'event_label' : 'Request an Appointment button', 'event_value' : '375'});">
                Request an Appointment </a> <a class="header__action button button_color_primary" href="/about" onclick="gtag('event', 'Click', {'event_category' : 'Sticky Nav CTA', 'event_label' : 'Contact button', 'event_value' : '375'});">
                Contact </a>
-               </c:when>
-               </c:choose>
                <button data-modal-open="modal-menu" aria-label="Open Menu" class="button button_color_primary button_icon">
                   <svg role="img" class="icon">
+                     <use xlink:href="site/templates/dist/svg/symbols.svg#icon-menu"></use>
                   </svg>
                   <span>Menu</span>
                </button>
@@ -299,6 +246,7 @@
          <div class="sticky-toolbar sticky-toolbar_pos_br onscroll is-active" data-trigger="#header">
             <a class="button button_color_primary button_icon scrollto" href="#top" aria-label="Back to top">
                <svg role="img" class="icon">
+                  <use xlink:href="site/templates/dist/svg/symbols.svg#icon-arrow-up"></use>
                </svg>
                <span>Top</span> 
             </a>
@@ -311,6 +259,7 @@
                   <h3 id="modal-menu-title" class="dialog__title mb-0">Menu</h3>
                   <button data-modal-close="" aria-label="Close menu" class="dialog__close icon-action icon-action_color_fade">
                      <svg role="img" class="icon">
+                        <use xlink:href="site/templates/dist/svg/symbols.svg#icon-x"></use>
                      </svg>
                   </button>
                </div>
@@ -347,6 +296,7 @@
                   <li class="menu__item">
                      <a class="menu__link" href="tel:5048872999" onclick="gtag('event', 'Click', {'event_category' : 'Phone Call', 'event_label' : 'Modal Menu', 'event_value' : '500' });">
                         <svg role="img" class="icon icon_size_small">
+                           <use xlink:href="site/templates/dist/svg/symbols.svg#icon-phone"></use>
                         </svg>
                         <span>(504) 887-2999</span> 
                      </a>
@@ -354,6 +304,7 @@
                   <li class="menu__item">
                      <a class="menu__link" href="mailto:petcareclientservices@gmail.com">
                         <svg role="img" class="icon icon_size_small">
+                           <use xlink:href="site/templates/dist/svg/symbols.svg#icon-send"></use>
                         </svg>
                         <span>Email Us</span> 
                      </a>
