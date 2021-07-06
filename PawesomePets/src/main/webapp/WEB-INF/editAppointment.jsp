@@ -6,13 +6,13 @@
 
 <!DOCTYPE html>
 <html lang="en">
-    <head>
+<head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
       <link rel="canonical" href="https://petcarecenterinc.com/">
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>Pet Care Center - Chalmette, Jefferson, Metairie, New Orleans, and Slidell</title>
+      <title>Pawsome Pets</title>
       <meta name="description" content="Comprehensive&nbsp;veterinary care, urgent pet care, pet boarding, and grooming in Chalmette, Jefferson, Metairie, New Orleans, and Slidell, LA.">
       <link rel="preload" href=/css/styles.css" as="style">
       <link rel="preconnect" href="https://www.googletagmanager.com/">
@@ -48,8 +48,10 @@
          <div class="section section_toolbar">
             <div class="section__container">
                <div class="grid">
-                  <div class="grid__item">
+                   <div class="grid__item">
                      <ul class="menu toolbar-cta">
+                     <c:choose> 
+                     <c:when test="${isAdmin==false}">
                         <li class="menu__item">
                            <a class="menu__link" href="mailto:petcareclientservices@gmail.com" onclick="gtag('event', 'Click', {'event_category' : 'Toolbar CTA', 'event_label' : 'Call Us button', 'event_value' : '375'})">
                               <svg role="img" class="icon icon_size_small">
@@ -66,6 +68,22 @@
                               <span>Request an Appointment</span> 
                            </a>
                         </li>
+                        </c:when> 
+                         <c:when test="${isAdmin==true}">  
+						<li class="menu__item"><a class="menu__link" href="/editservice">
+                           Edit Services </a>
+                        </li>		      
+	                 	 <li class="menu__item"><a class="menu__link" href="/editappointment">
+                           Edit Appointments </a>
+                           </li>
+                            <li class="menu__item"><a class="menu__link" href="/editcategory">
+                           Edit Categories </a>
+                           </li>
+                           <li class="menu__item"><a class="menu__link" href="/admin">
+                           Admin Page </a>
+                           </li>
+				    	</c:when>  	
+				    	</c:choose> 	
                      </ul>
                   </div>
                </div>
@@ -103,9 +121,13 @@
                            Logout </a>
                         </li>
                      </ul>
+                     <c:choose>
+                     <c:when test="${isAdmin!=true && isGuest==false}">
                      <a class="header__action button display-none display-block-lg button_color_accent" href="/services" onclick="gtag('event', 'Click', {'event_category' : 'Header CTA', 'event_label' : 'Request an Appointment button', 'event_value' : '375'});">
                      Request an Appointment </a> <a class="header__action button display-none display-block-lg button_color_primary" href="/about" onclick="gtag('event', 'Click', {'event_category' : 'Header CTA', 'event_label' : 'Contact button', 'event_value' : '375'});">
                      Contact </a>
+                     </c:when>
+                     </c:choose>
                      <button data-modal-open="modal-menu" aria-label="menu" class="header__toggle button button_outline_primary button_icon">
                         <svg role="img" class="icon">
                            <use xlink:href="site/templates/dist/svg/symbols.svg#icon-menu"></use>
@@ -117,15 +139,15 @@
             </div>
          </header>
            <section class="section section_widget_highlight-grid section_theme_shade ">
-                <div class="sectioncontainer">
-                    <div class="sectionintro">
-                        <h2 class="sectiontitle">Edit Appointment</h2>
+                <div class="section__container">
+                    <div class="section__intro">
+                        <h2 class="section__title">Edit Appointment</h2>
                     </div><br>
                     <c:forEach items="${allappontment}" var="x">
-                    <form action="/action_page.php">
+                    <form action="/">
                     <div class="adminforms">
                         <div class="adminform">
-                            <h4 class="sectiontitle"> ${x.id} Appointment</h4><br>
+                            <h4 class="sectiontitle titleforthings"> ${x.appointment}</h4><br>
                                 <div class="form-group">
                                     <label for="appointment">Updated Appointment :</label>
                                     <input type="text" name="appointment">
@@ -195,9 +217,13 @@
          <div class="sticky-navbar onscroll is-active" data-trigger="#header">
             <div class="sticky-navbar__item"><a href="" class="logo"> <img alt="Pet Care Center" src="/images/logo-small.jpg"></a></div>
             <div class="sticky-navbar__item">
+            <c:choose>
+                     <c:when test="${isAdmin!=true && isGuest==false}">
                <a class="header__action button button_color_accent" href="/services" onclick="gtag('event', 'Click', {'event_category' : 'Sticky Nav CTA', 'event_label' : 'Request an Appointment button', 'event_value' : '375'});">
                Request an Appointment </a> <a class="header__action button button_color_primary" href="/about" onclick="gtag('event', 'Click', {'event_category' : 'Sticky Nav CTA', 'event_label' : 'Contact button', 'event_value' : '375'});">
                Contact </a>
+               </c:when>
+               </c:choose>
                <button data-modal-open="modal-menu" aria-label="Open Menu" class="button button_color_primary button_icon">
                   <svg role="img" class="icon">
                      <use xlink:href="site/templates/dist/svg/symbols.svg#icon-menu"></use>

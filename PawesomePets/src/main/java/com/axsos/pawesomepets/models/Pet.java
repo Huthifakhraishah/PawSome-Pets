@@ -35,9 +35,8 @@ public class Pet {
     @Size(min = 1, max = 20)
     private String gender;
     @NotNull
-    @Range(min = 5, max = 20)
     private Integer age;
-    // This will not allow the createdAt column to be updated after creation
+    private String links;
     @Column(updatable=false)
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date createdAt;
@@ -63,6 +62,18 @@ public class Pet {
  // CONSTRUCTOR
 	public Pet() {
 }
+	
+
+	public Pet(User user,@NotNull @Size(min = 2, max = 10) String name, @NotNull @Size(min = 1, max = 20) String gender,
+			@NotNull @Range(min = 5, max = 20) Integer age, Category category, String links) {
+		this.user = user;
+		this.name = name;
+		this.gender = gender;
+		this.age = age;
+		this.category = category;
+		this.links = links;
+	}
+
 
 	public Pet(Long id, @NotNull @Size(min = 2, max = 10) String name, @NotNull @Size(min = 1, max = 20) String gender,
 			@NotNull @Range(min = 5, max = 20) Integer age, List<PService> petservice, Category category, User user) {
@@ -142,6 +153,13 @@ public class Pet {
 		return user;
 	}
 
+	public String getLinks() {
+		return links;
+	}
+
+	public void setLinks(String links) {
+		this.links = links;
+	}
 
 	public void setUser(User user) {
 		this.user = user;

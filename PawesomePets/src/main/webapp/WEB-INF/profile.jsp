@@ -1,19 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>  
 <!DOCTYPE html>
-
-<html lang="en">
-
+<html>
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <link rel="canonical" href="https://petcarecenterinc.com/">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Services Page</title>
+    <title>Profile Page</title>
     <meta name="description" content="Comprehensive&nbsp;veterinary care, urgent pet care, pet boarding, and grooming in Chalmette, Jefferson, Metairie, New Orleans, and Slidell, LA.">
     <link rel="preload" href="/css/styles.css" as="style">
     <link rel="preconnect" href="https://www.googletagmanager.com/">
@@ -106,23 +102,7 @@
                     <div class="grid__item">
                      <ul class="menu toolbar-cta">
                      <c:choose> 
-                     <c:when test="${isAdmin==false && isGuest==false}">
-                        <li class="menu__item">
-                           <a class="menu__link" href="mailto:petcareclientservices@gmail.com" onclick="gtag('event', 'Click', {'event_category' : 'Toolbar CTA', 'event_label' : 'Call Us button', 'event_value' : '375'})">
-                              <svg role="img" class="icon icon_size_small">
-                              </svg>
-                              <span>Call Us</span> 
-                           </a>
-                        </li>
-                        <li class="menu__item">
-                           <a class="menu__link" href="/services" onclick="gtag('event', 'Click', {'event_category' : 'Toolbar CTA', 'event_label' : 'Request an Appointment button', 'event_value' : '375'})">
-                              <svg role="img" class="icon icon_size_small">
-                                 <use xlink:href="site/templates/dist/svg/symbols.svg#icon-chevron-right"></use>
-                              </svg>
-                              <span>Request an Appointment</span> 
-                           </a>
-                        </li>
-                        </c:when> 
+                      
                         <c:when test="${isGuest==true}">
                         <li class="menu__item">
                            <a class="menu__link" href="mailto:petcareclientservices@gmail.com" onclick="gtag('event', 'Click', {'event_category' : 'Toolbar CTA', 'event_label' : 'Call Us button', 'event_value' : '375'})">
@@ -241,123 +221,104 @@
                 </div>
             </div>
             </header>
-        <div class="section section_widget_providers section_theme_light serviceimg">
-            <div class="secton__container ">
-               <div class="section__intro">
-                  <h2 class="section__title">Your Full-Service Veterinarian</h2>
-               </div>
-
-               <div class="grid grid_tile flex-justify-center ">
-               <c:forEach items="${allPServices}" var="pservice">
-                  <div class="grid__item grid__item_fill imgmar2">
-                     <a href="/services/${pservice.id}" class="card card_provider-full card_link card_zoom card_tall text-align-center">
-                        <img class="lazy card__image loaded" src="${pservice.links}" data-was-processed="true">
-                        <div class="card__body gap-y-xs">
-                           <h3 class="card__title"><span><c:out value="${pservice.name}"/></span></h3>
+        <section class="section section_widget_highlight-grid section_theme_shade ">
+            <div class="section__container">
+                <div class="section__intro">
+                    <h2 class="section__title">Welcome <c:out value="${currentUser}"/> </h2>
+                </div><br>
+                <form action="/createPet" method="post">
+                    <div class="adminforms">
+                        <div class="adminform">
+                            <div class="form-group">
+                                <label for="pet">Pet Name :</label><br><br>
+                                <p class="errorMessagesInYellow"><c:out value="${petNameErrorMessage}"/></p>
+                                <input type="text" id="pet" name="name" placeholder="Pet Name">
+                            </div><br>
+                            <div class="appluibutton">
+                                <ul class="menu toolbar-cta">
+                                <p class="errorMessagesInYellow"><c:out value="${petGenderErrorMessage}"/></p>
+                                    <li class="menu__item">
+                                        Female <input type="radio" name="gender" value="female" style="color: white;" checked="checked">
+                                    </li>
+                                    <li class="menu__item">
+                                        Male <input type="radio" name="gender" value="male" style="color: white;">
+                                    </li>
+                                </ul>
+                            </div><br>
+                            <div class="form-group">
+                                <label for="age">Pet Age :</label><br>
+                                <p class="errorMessagesInYellow"><c:out value="${petAgeErrorMessage}"/></p>
+                                <input type="text" name="age" id="age" placeholder="Pet Age">
+                            </div><br>
+                            <div class="form-group">
+                                <label for="category">Select Pet Category :</label><br>
+                                <select id="category" name="category">
+                                <c:forEach items="${categories}" var="category">
+                                 <option value="${category.id}" name="category"><c:out value="${category.type}"/></option>
+                                 </c:forEach>
+                              </select>
+                            </div><br>
+                            <div class="form-group">
+                                <label for="piclink">Provid Picture :</label><br>
+                                <input type="text" id="piclink" name="links" placeholder="Provid picture url">
+                            </div><br>
                         </div>
-                     </a>
-                  </div>
-				</c:forEach>
-               
-               
-               </div>
-            </div>
-            </div>
-            <footer class="section section_footer">
-                <div class="section__container">
-                    <div class="grid grid_stack_lg">
-                        <div class="grid__item">
-                            <a href="" class="logo"> <img alt="Pet Care Center" src="/images/logo.jpg"></a>
-                        </div>
-                        <div class="grid__item grid__item_fill span-auto">
-                            <ul class="menu flex-wrap flex-justify-center">
-                                <li class="menu__item"><a class="menu__link" href="/home">
-                           Home </a>
-                                </li>
-                                <li class="menu__item"><a class="menu__link" href="/services">
-                           Services </a>
-                                </li>
-                                <li class="menu__item"><a class="menu__link" href="/ourteam">
-                          Our Team </a>
-                                </li>
-                                <li class="menu__item"><a class="menu__link" href="/about">
-                            About Us </a>
-                                </li>
-                                <c:choose>  
-				    <c:when test="${isGuest==true}">  
-						<li class="menu__item"><a class="menu__link" href="/login">
-                           Login </a>
-                                </li>		    
-	                </c:when>  
-	                  <c:when test="${isGuest==false}">  
-	                  <li class="menu__item"><a class="menu__link" href="/logout">
-                           Logout </a>
-				    </c:when>  		
-	                </c:choose>	
-                            </ul>
-                        </div>
+                    </div><br>
+                    <div class="petbutton">
+                        <ul class="menu toolbar-cta">
+                            <li class="menu__item">
+                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                                <input type="submit" value="Add Pet" class="button button_color_accent">
+                            </li>
+                        </ul>
                     </div>
-                    <hr class="sep margin-y-lg">
-                    <div class="grid grid_stack_lg">
-                        <div class="grid__item type footer__copyright">
-                            <p>Copyright © 2021 Pawsome Pets All rights reserved.
-                            </p>
-                        </div>
-                    </div>
+                </form>
+            </div>
+        </section>
+        <div class="section section_widget_providers section_theme_light">
+            <div class="secton__container">
+                <div class="section__intro">
+                    <h2 class="section__title">My Pets</h2>
                 </div>
-            </footer>
-            <div class="sticky-navbar onscroll is-active" data-trigger="#header">
-            <div class="sticky-navbar__item"><a href="" class="logo"> <img alt="Pet Care Center" src="/images/logo-small.jpg"></a></div>
-            <div class="sticky-navbar__item">
-              <c:choose>
-                     <c:when test="${isAdmin!=true && isGuest==false}">
-               <a class="header__action button button_color_accent" href="/services" onclick="gtag('event', 'Click', {'event_category' : 'Sticky Nav CTA', 'event_label' : 'Request an Appointment button', 'event_value' : '375'});">
-               Request an Appointment </a> <a class="header__action button button_color_primary" href="/about" onclick="gtag('event', 'Click', {'event_category' : 'Sticky Nav CTA', 'event_label' : 'Contact button', 'event_value' : '375'});">
-               Contact </a>
-               </c:when>
-               </c:choose>
-               <button data-modal-open="modal-menu" aria-label="Open Menu" class="button button_color_primary button_icon">
-                  <svg role="img" class="icon">
-                  </svg>
-                  <span>Menu</span>
-               </button>
-            </div>
-         </div>
-            <div class="sticky-toolbar sticky-toolbar_pos_br onscroll is-active" data-trigger="#header">
-                <a class="button button_color_primary button_icon scrollto" href="#top" aria-label="Back to top">
-                    <svg role="img" class="icon">
-                  <use xlink:href="site/templates/dist/svg/symbols.svg#icon-arrow-up"></use>
-               </svg>
-                    <span>Top</span>
-                </a>
+                
+                <div class="grid grid_tile flex-justify-center">
+                <c:forEach items="${currentUserPets}" var="pet">
+                    <div class="grid__item grid__item_fill ">
+                        <div class="card card_provider-full card_link card_zoom card_tall text-align-center">
+                            <img class="lazy card__image loaded" data-src="${pet.links}" alt="${pet.name}" src="${pet.links}" data-was-processed="true">
+                            <div class="card__body gap-y-xs">
+                                <h3 class="card__title"><span><c:out value="${pet.name}"/></span></h3>
+                            </div>
+                        </div>
+                    </div>
+                    </c:forEach>
+                    
+                   
+                    
+                </div>
             </div>
         </div>
-        <div data-modal="modal-menu" class="modal modal_pos_right is-closed">
-            <div data-modal-dialog="" role="dialog" aria-labelledby="modal-menu-title" class="modal__dialog dialog" tabindex="-1">
-                <div class="dialog__body">
-                    <div class="dialog__group">
-                        <h3 id="modal-menu-title" class="dialog__title mb-0">Menu</h3>
-                        <button data-modal-close="" aria-label="Close menu" class="dialog__close icon-action icon-action_color_fade">
-                     <svg role="img" class="icon">
-                        <use xlink:href="site/templates/dist/svg/symbols.svg#icon-x"></use>
-                     </svg>
-                  </button>
+        <footer class="section section_footer">
+            <div class="section__container">
+                <div class="grid grid_stack_lg">
+                    <div class="grid__item">
+                        <a href="" class="logo"> <img alt="Pet Care Center" src="/images/logo.jpg"></a>
                     </div>
-                    <div class="dialog__group">
-                        <ul class="menu menu_stack menu_theme_modal">
+                    <div class="grid__item grid__item_fill span-auto">
+                        <ul class="menu flex-wrap flex-justify-center">
                             <li class="menu__item"><a class="menu__link" href="/home">
-                        Home </a>
+                           Home </a>
                             </li>
                             <li class="menu__item"><a class="menu__link" href="/services">
-                        Services </a>
+                           Services </a>
                             </li>
                             <li class="menu__item"><a class="menu__link" href="/ourteam">
-                       Our Team </a>
+                          Our Team </a>
                             </li>
                             <li class="menu__item"><a class="menu__link" href="/about">
-                         About Us </a>
+                            About Us </a>
                             </li>
-                                        <c:choose>  
+                                          <c:choose>  
 				    <c:when test="${isGuest==true}">  
 						<li class="menu__item"><a class="menu__link" href="/login">
                            Login </a>
@@ -371,77 +332,152 @@
                         </ul>
                     </div>
                 </div>
-                <div class="dialog__footer">
+                <hr class="sep margin-y-lg">
+                <div class="grid grid_stack_lg">
+                    <div class="grid__item type footer__copyright">
+                        <p>Copyright © 2021 Pawsome Pets All rights reserved.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <div class="sticky-navbar onscroll is-active" data-trigger="#header">
+            <div class="sticky-navbar__item"><a href="" class="logo"> <img alt="Pet Care Center" src="/images/logo-small.jpg"></a></div>
+            <div class="sticky-navbar__item">
+            <c:choose>
+                     <c:when test="${isAdmin!=true && isGuest==false}">
+               <a class="header__action button button_color_accent" href="/services" onclick="gtag('event', 'Click', {'event_category' : 'Sticky Nav CTA', 'event_label' : 'Request an Appointment button', 'event_value' : '375'});">
+               Request an Appointment </a> <a class="header__action button button_color_primary" href="/about" onclick="gtag('event', 'Click', {'event_category' : 'Sticky Nav CTA', 'event_label' : 'Contact button', 'event_value' : '375'});">
+               Contact </a>
+               </c:when>
+               </c:choose>
+               <button data-modal-open="modal-menu" aria-label="Open Menu" class="button button_color_primary button_icon">
+                  <svg role="img" class="icon">
+                     <use xlink:href="site/templates/dist/svg/symbols.svg#icon-menu"></use>
+                  </svg>
+                  <span>Menu</span>
+               </button>
+            </div>
+         </div>
+        <div class="sticky-toolbar sticky-toolbar_pos_br onscroll is-active" data-trigger="#header">
+            <a class="button button_color_primary button_icon scrollto" href="#top" aria-label="Back to top">
+                <svg role="img" class="icon">
+                  <use xlink:href="site/templates/dist/svg/symbols.svg#icon-arrow-up"></use>
+               </svg>
+                <span>Top</span>
+            </a>
+        </div>
+    </div>
+    <div data-modal="modal-menu" class="modal modal_pos_right is-closed">
+        <div data-modal-dialog="" role="dialog" aria-labelledby="modal-menu-title" class="modal__dialog dialog" tabindex="-1">
+            <div class="dialog__body">
+                <div class="dialog__group">
+                    <h3 id="modal-menu-title" class="dialog__title mb-0">Menu</h3>
+                    <button data-modal-close="" aria-label="Close menu" class="dialog__close icon-action icon-action_color_fade">
+                     <svg role="img" class="icon">
+                        <use xlink:href="site/templates/dist/svg/symbols.svg#icon-x"></use>
+                     </svg>
+                  </button>
+                </div>
+                <div class="dialog__group">
                     <ul class="menu menu_stack menu_theme_modal">
-                        <li class="menu__item">
-                            <a class="menu__link" href="tel:5048872999" onclick="gtag('event', 'Click', {'event_category' : 'Phone Call', 'event_label' : 'Modal Menu', 'event_value' : '500' });">
-                                <svg role="img" class="icon icon_size_small">
-                           <use xlink:href="site/templates/dist/svg/symbols.svg#icon-phone"></use>
-                        </svg>
-                                <span>(504) 887-2999</span>
-                            </a>
+                        <li class="menu__item"><a class="menu__link" href="/home">
+                        Home </a>
                         </li>
-                        <li class="menu__item">
-                            <a class="menu__link" href="mailto:petcareclientservices@gmail.com">
-                                <svg role="img" class="icon icon_size_small">
-                           <use xlink:href="site/templates/dist/svg/symbols.svg#icon-send"></use>
-                        </svg>
-                                <span>Email Us</span>
-                            </a>
+                        <li class="menu__item"><a class="menu__link" href="/services">
+                        Services </a>
                         </li>
+                        <li class="menu__item"><a class="menu__link" href="/ourteam">
+                       Our Team </a>
+                        </li>
+                        <li class="menu__item"><a class="menu__link" href="/about">
+                         About Us </a>
+                        </li>
+                                    <c:choose>  
+				    <c:when test="${isGuest==true}">  
+						<li class="menu__item"><a class="menu__link" href="/login">
+                           Login </a>
+                                </li>		    
+	                </c:when>  
+	                  <c:when test="${isGuest==false}">  
+	                  <li class="menu__item"><a class="menu__link" href="/logout">
+                           Logout </a>
+				    </c:when>  		
+	                </c:choose>	
                     </ul>
                 </div>
             </div>
+            <div class="dialog__footer">
+                <ul class="menu menu_stack menu_theme_modal">
+                    <li class="menu__item">
+                        <a class="menu__link" href="tel:5048872999" onclick="gtag('event', 'Click', {'event_category' : 'Phone Call', 'event_label' : 'Modal Menu', 'event_value' : '500' });">
+                            <svg role="img" class="icon icon_size_small">
+                           <use xlink:href="site/templates/dist/svg/symbols.svg#icon-phone"></use>
+                        </svg>
+                            <span>(504) 887-2999</span>
+                        </a>
+                    </li>
+                    <li class="menu__item">
+                        <a class="menu__link" href="mailto:petcareclientservices@gmail.com">
+                            <svg role="img" class="icon icon_size_small">
+                           <use xlink:href="site/templates/dist/svg/symbols.svg#icon-send"></use>
+                        </svg>
+                            <span>Email Us</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <script src="/js/scripts.js"></script>
-        <script src="/js/svgxuse.js"></script>
-        <script type="text/javascript" id="">
-            ! function(b, e, f, g, a, c, d) {
-                b.fbq || (a = b.fbq = function() {
-                    a.callMethod ? a.callMethod.apply(a, arguments) : a.queue.push(arguments)
-                }, b._fbq || (b._fbq = a), a.push = a, a.loaded = !0, a.version = "2.0", a.queue = [], c = e.createElement(f), c.async = !0, c.src = g, d = e.getElementsByTagName(f)[0], d.parentNode.insertBefore(c, d))
-            }(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
-            fbq("init", "2805927892859774");
-            fbq("set", "agent", "tmgoogletagmanager", "2805927892859774");
-            fbq("track", "PageView");
+    </div>
+    <script src="/js/scripts.js"></script>
+    <script src="/js/svgxuse.js"></script>
+    <script type="text/javascript" id="">
+        ! function(b, e, f, g, a, c, d) {
+            b.fbq || (a = b.fbq = function() {
+                a.callMethod ? a.callMethod.apply(a, arguments) : a.queue.push(arguments)
+            }, b._fbq || (b._fbq = a), a.push = a, a.loaded = !0, a.version = "2.0", a.queue = [], c = e.createElement(f), c.async = !0, c.src = g, d = e.getElementsByTagName(f)[0], d.parentNode.insertBefore(c, d))
+        }(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+        fbq("init", "2805927892859774");
+        fbq("set", "agent", "tmgoogletagmanager", "2805927892859774");
+        fbq("track", "PageView");
+    </script>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2805927892859774&amp;ev=PageView&amp;noscript=1"></noscript>
+    <script type="text/javascript" id="">
+        adroll_adv_id = "EI6XV6ENDBHQDN6UH2XHJO";
+        adroll_pix_id = "626MR26XG5BI7C3RGEDH7B";
+        adroll_version = "2.0";
+        (function(a, e, c, d, b) {
+            a.__adroll_loaded = !0;
+            a.adroll = a.adroll || [];
+            a.adroll.f = ["setProperties", "identify", "track"];
+            var f = "https://s.adroll.com/j/" + adroll_adv_id + "/roundtrip.js";
+            for (b = 0; b < a.adroll.f.length; b++) a.adroll[a.adroll.f[b]] = a.adroll[a.adroll.f[b]] || function(g) {
+                return function() {
+                    a.adroll.push([g, arguments])
+                }
+            }(a.adroll.f[b]);
+            c = e.createElement("script");
+            d = e.getElementsByTagName("script")[0];
+            c.async = 1;
+            c.src = f;
+            d.parentNode.insertBefore(c, d)
+        })(window, document);
+        adroll.track("pageView");
+    </script>
+    <div style="display: none; visibility: hidden;">
+        <script type="text/javascript">
+            var _stk = "bd1fd58e5ef1e45c9c2648fe35b24c00c019b075";
+            (function() {
+                var a = document,
+                    b = a.createElement("script");
+                b.type = "text/javascript";
+                b.async = !0;
+                b.src = ("https:" == document.location.protocol ? "https://" : "http://") + "d31y97ze264gaa.cloudfront.net/assets/st/js/st.js";
+                a = a.getElementsByTagName("script")[0];
+                a.parentNode.insertBefore(b, a)
+            })();
         </script>
-        <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2805927892859774&amp;ev=PageView&amp;noscript=1"></noscript>
-        <script type="text/javascript" id="">
-            adroll_adv_id = "EI6XV6ENDBHQDN6UH2XHJO";
-            adroll_pix_id = "626MR26XG5BI7C3RGEDH7B";
-            adroll_version = "2.0";
-            (function(a, e, c, d, b) {
-                a.__adroll_loaded = !0;
-                a.adroll = a.adroll || [];
-                a.adroll.f = ["setProperties", "identify", "track"];
-                var f = "https://s.adroll.com/j/" + adroll_adv_id + "/roundtrip.js";
-                for (b = 0; b < a.adroll.f.length; b++) a.adroll[a.adroll.f[b]] = a.adroll[a.adroll.f[b]] || function(g) {
-                    return function() {
-                        a.adroll.push([g, arguments])
-                    }
-                }(a.adroll.f[b]);
-                c = e.createElement("script");
-                d = e.getElementsByTagName("script")[0];
-                c.async = 1;
-                c.src = f;
-                d.parentNode.insertBefore(c, d)
-            })(window, document);
-            adroll.track("pageView");
-        </script>
-        <div style="display: none; visibility: hidden;">
-            <script type="text/javascript">
-                var _stk = "bd1fd58e5ef1e45c9c2648fe35b24c00c019b075";
-                (function() {
-                    var a = document,
-                        b = a.createElement("script");
-                    b.type = "text/javascript";
-                    b.async = !0;
-                    b.src = ("https:" == document.location.protocol ? "https://" : "http://") + "d31y97ze264gaa.cloudfront.net/assets/st/js/st.js";
-                    a = a.getElementsByTagName("script")[0];
-                    a.parentNode.insertBefore(b, a)
-                })();
-            </script>
-        </div>
+    </div>
 </body>
 
 </html>
