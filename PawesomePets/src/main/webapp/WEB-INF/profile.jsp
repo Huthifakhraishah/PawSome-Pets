@@ -1,13 +1,15 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>  
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <link rel="canonical" href="https://petcarecenterinc.com/">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Pet Care Center - Chalmette, Jefferson, Metairie, New Orleans, and Slidell</title>
+    <title>Profile Page</title>
     <meta name="description" content="Comprehensive&nbsp;veterinary care, urgent pet care, pet boarding, and grooming in Chalmette, Jefferson, Metairie, New Orleans, and Slidell, LA.">
     <link rel="preload" href="/css/styles.css" as="style">
     <link rel="preconnect" href="https://www.googletagmanager.com/">
@@ -100,7 +102,7 @@
                     <div class="grid__item">
                         <ul class="menu toolbar-cta">
                             <li class="menu__item">
-                                <a class="menu__link" href="https://petcarecenterinc.com/locations/" onclick="gtag('event', 'Click', {'event_category' : 'Toolbar CTA', 'event_label' : 'Call Us button', 'event_value' : '375'})">
+                                <a class="menu__link" href="mailto:petcareclientservices@gmail.com/" onclick="gtag('event', 'Click', {'event_category' : 'Toolbar CTA', 'event_label' : 'Call Us button', 'event_value' : '375'})">
                                     <svg role="img" class="icon icon_size_small">
                                  <use xlink:href="site/templates/dist/svg/symbols.svg#icon-chevron-right"></use>
                               </svg>
@@ -108,7 +110,7 @@
                                 </a>
                             </li>
                             <li class="menu__item">
-                                <a class="menu__link" href="https://petcarecenterinc.com/make-an-appointment/" onclick="gtag('event', 'Click', {'event_category' : 'Toolbar CTA', 'event_label' : 'Request an Appointment button', 'event_value' : '375'})">
+                                <a class="menu__link" href="/services" onclick="gtag('event', 'Click', {'event_category' : 'Toolbar CTA', 'event_label' : 'Request an Appointment button', 'event_value' : '375'})">
                                     <svg role="img" class="icon icon_size_small">
                                  <use xlink:href="site/templates/dist/svg/symbols.svg#icon-chevron-right"></use>
                               </svg>
@@ -128,7 +130,7 @@
                     </div>
                     <div class="header__item level">
                         <ul class="header__menu menu">
-                            <li class="menu__item"><a class="menu__link" href="https://www.google.com/">
+                            <li class="menu__item"><a class="menu__link" href="/home">
                            Home </a>
                             </li>
                             <li class="menu__item dropdown on-hover menu__link dropdown__trigger">
@@ -143,19 +145,27 @@
                                     <li class="dropdown__item"><a class="dropdown__link flex-justify-between" href="https://petcarecenterinc.com/services/grooming/"><span>Grooming</span></a></li>
                                 </ul>
                             </li>
-                            <li class="menu__item"><a class="menu__link" href="/ourteam/">
+                            <li class="menu__item"><a class="menu__link" href="/ourteam">
                            Our Team </a>
                             </li>
                             <li class="menu__item dropdown on-hover">
-                                <a class="menu__link dropdown__trigger" href="/about-us/">
+                                <a class="menu__link dropdown__trigger" href="/about">
                            About Us </a>
                             </li>
-                            <li class="menu__item"><a class="menu__link" href="/login/">
+                                         <c:choose>  
+				    <c:when test="${isGuest==true}">  
+						<li class="menu__item"><a class="menu__link" href="/login">
                            Login </a>
-                            </li>
+                                </li>		    
+	                </c:when>  
+	                  <c:when test="${isGuest==false}">  
+	                  <li class="menu__item"><a class="menu__link" href="/logout">
+                           Logout </a>
+				    </c:when>  		
+	                </c:choose>	
                         </ul>
-                        <a class="header__action button display-none display-block-lg button_color_accent" href="https://petcarecenterinc.com/locations/" onclick="gtag('event', 'Click', {'event_category' : 'Header CTA', 'event_label' : 'Request an Appointment button', 'event_value' : '375'});">
-                     Request an Appointment </a> <a class="header__action button display-none display-block-lg button_color_primary" href="https://petcarecenterinc.com/contact/" onclick="gtag('event', 'Click', {'event_category' : 'Header CTA', 'event_label' : 'Contact button', 'event_value' : '375'});">
+                        <a class="header__action button display-none display-block-lg button_color_accent" href="/services" onclick="gtag('event', 'Click', {'event_category' : 'Header CTA', 'event_label' : 'Request an Appointment button', 'event_value' : '375'});">
+                     Request an Appointment </a> <a class="header__action button display-none display-block-lg button_color_primary" href="/about" onclick="gtag('event', 'Click', {'event_category' : 'Header CTA', 'event_label' : 'Contact button', 'event_value' : '375'});">
                      Contact </a>
                         <button data-modal-open="modal-menu" aria-label="menu" class="header__toggle button button_outline_primary button_icon">
                         <svg role="img" class="icon">
@@ -170,45 +180,50 @@
         <section class="section section_widget_highlight-grid section_theme_shade ">
             <div class="section__container">
                 <div class="section__intro">
-                    <h2 class="section__title">Welcome Username </h2>
+                    <h2 class="section__title">Welcome <c:out value="${currentUser}"/> </h2>
                 </div><br>
-                <form action="/action_page.php">
+                <form action="/createPet" method="post">
                     <div class="adminforms">
                         <div class="adminform">
                             <div class="form-group">
-                                <label for="pet">Pet Name :</label><br>
-                                <input type="text" name="pet" placeholder="Pet Name">
+                                <label for="pet">Pet Name :</label><br><br>
+                                <p><c:out value="${petNameErrorMessage}"/></p>
+                                <input type="text" id="pet" name="name" placeholder="Pet Name">
                             </div><br>
                             <div class="appluibutton">
                                 <ul class="menu toolbar-cta">
+                                <p><c:out value="${petGenderErrorMessage}"/></p>
                                     <li class="menu__item">
-                                        Female <input type="radio" name="drone" value="female" style="color: white;">
+                                        Female <input type="radio" name="gender" value="female" style="color: white;">
                                     </li>
                                     <li class="menu__item">
-                                        Male <input type="radio" name="drone" value="male" style="color: white;">
+                                        Male <input type="radio" name="gender" value="male" style="color: white;">
                                     </li>
                                 </ul>
                             </div><br>
                             <div class="form-group">
                                 <label for="age">Pet Age :</label><br>
-                                <input type="text" name="age" placeholder="Pet Age">
+                                <p><c:out value="${petAgeErrorMessage}"/></p>
+                                <input type="number" name="age" id="age" placeholder="Pet Age">
                             </div><br>
                             <div class="form-group">
                                 <label for="category">Select Pet Category :</label><br>
-                                <select name="category">
-                                 <option value="cat">Cat</option>
-                                 <option value="dog">Dog</option>
+                                <select id="category" name="category">
+                                <c:forEach items="${categories}" var="category">
+                                 <option value="${category.id}" name="category"><c:out value="${category.type}"/></option>
+                                 </c:forEach>
                               </select>
                             </div><br>
                             <div class="form-group">
                                 <label for="piclink">Provid Picture :</label><br>
-                                <input type="text" name="piclink" placeholder="Provid picture url">
+                                <input type="text" id="piclink" name="links" placeholder="Provid picture url">
                             </div><br>
                         </div>
                     </div><br>
                     <div class="petbutton">
                         <ul class="menu toolbar-cta">
                             <li class="menu__item">
+                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                                 <input type="submit" value="Add Pet" class="button button_color_accent">
                             </li>
                         </ul>
@@ -221,40 +236,20 @@
                 <div class="section__intro">
                     <h2 class="section__title">My Pets</h2>
                 </div>
+                <c:forEach items="${currentUserPets}" var="pet">
                 <div class="grid grid_tile flex-justify-center">
                     <div class="grid__item grid__item_fill ">
                         <a href="https://petcarecenterinc.com/about-us/team/dr-erica-capshaw-brooks/" class="card card_provider-full card_link card_zoom card_tall text-align-center">
-                            <img class="lazy card__image loaded" data-src="/site/assets/files/8168/dr__erica_capshaw_brooks.244x288n.jpg" alt="Erica Capshaw Brooks, DVM" src="/images/dr__erica_capshaw_brooks.jpg" data-was-processed="true">
+                            <img class="lazy card__image loaded" data-src="${pet.links}" alt="${pet.name}" src="${pet.links}" data-was-processed="true">
                             <div class="card__body gap-y-xs">
-                                <h3 class="card__title"><span>Erica Capshaw Brooks, DVM</span></h3>
+                                <h3 class="card__title"><span><c:out value="${pet.name}"/></span></h3>
                             </div>
                         </a>
                     </div>
-                    <div class="grid__item grid__item_fill ">
-                        <a href="https://petcarecenterinc.com/about-us/team/dr-alexandra-carter/" class="card card_provider-full card_link card_zoom card_tall text-align-center">
-                            <img class="lazy card__image loaded" data-src="/site/assets/files/8212/dr__alexandra_carter.244x288n.jpg" alt="Alexandra Carter, DVM" src="/images/dr__alexandra_carter.jpg" data-was-processed="true">
-                            <div class="card__body gap-y-xs">
-                                <h3 class="card__title"><span>Alexandra Carter, DVM</span></h3>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="grid__item grid__item_fill ">
-                        <a href="https://petcarecenterinc.com/about-us/team/dr-kristen-rought/" class="card card_provider-full card_link card_zoom card_tall text-align-center">
-                            <img class="lazy card__image loaded" data-src="/site/assets/files/8201/dr__kristin_ballard.244x288n.jpg" alt="Kristen Rought, DVM" src="/images/dr__kristin_ballard.jpg" data-was-processed="true">
-                            <div class="card__body gap-y-xs">
-                                <h3 class="card__title"><span>Kristen Rought, DVM</span></h3>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="grid__item grid__item_fill ">
-                        <a href="https://petcarecenterinc.com/about-us/team/dr-tiffany-killian/" class="card card_provider-full card_link card_zoom card_tall text-align-center">
-                            <img class="lazy card__image loaded" data-src="/site/assets/files/6561/tiffany_killian-1.244x288n.jpeg" alt="Tiffany Killian, DVM" src="Pet%20Care%20Center%20-%20Chalmette,%20Jefferson,%20Metairie,%20New%20Orleans,%20and%20Slidell_files/tiffany_killian-1.jpeg"
-                                data-was-processed="true">
-                            <div class="card__body gap-y-xs">
-                                <h3 class="card__title"><span>Tiffany Killian, DVM</span></h3>
-                            </div>
-                        </a>
-                    </div>
+                    </c:forEach>
+                    
+                   
+                    
                 </div>
             </div>
         </div>
@@ -266,28 +261,36 @@
                     </div>
                     <div class="grid__item grid__item_fill span-auto">
                         <ul class="menu flex-wrap flex-justify-center">
-                            <li class="menu__item"><a class="menu__link" href="/home/">
+                            <li class="menu__item"><a class="menu__link" href="/home">
                            Home </a>
                             </li>
-                            <li class="menu__item"><a class="menu__link" href="/services/">
+                            <li class="menu__item"><a class="menu__link" href="/services">
                            Services </a>
                             </li>
-                            <li class="menu__item"><a class="menu__link" href="/ourteam/">
+                            <li class="menu__item"><a class="menu__link" href="/ourteam">
                           Our Team </a>
                             </li>
-                            <li class="menu__item"><a class="menu__link" href="/aboutus/">
+                            <li class="menu__item"><a class="menu__link" href="/about">
                             About Us </a>
                             </li>
-                            <li class="menu__item"><a class="menu__link" href="/login/">
+                                          <c:choose>  
+				    <c:when test="${isGuest==true}">  
+						<li class="menu__item"><a class="menu__link" href="/login">
                            Login </a>
-                            </li>
+                                </li>		    
+	                </c:when>  
+	                  <c:when test="${isGuest==false}">  
+	                  <li class="menu__item"><a class="menu__link" href="/logout">
+                           Logout </a>
+				    </c:when>  		
+	                </c:choose>	
                         </ul>
                     </div>
                 </div>
                 <hr class="sep margin-y-lg">
                 <div class="grid grid_stack_lg">
                     <div class="grid__item type footer__copyright">
-                        <p>Copyright Â© 2021 Pawsome Pets All rights reserved.
+                        <p>Copyright © 2021 Pawsome Pets All rights reserved.
                         </p>
                     </div>
                 </div>
@@ -298,8 +301,8 @@
                 <a href="" class="logo"> <img alt="Pet Care Center" src="/images/logo-small.jpg"></a>
             </div>
             <div class="sticky-navbar__item">
-                <a class="header__action button button_color_accent" href="https://petcarecenterinc.com/locations/" onclick="gtag('event', 'Click', {'event_category' : 'Sticky Nav CTA', 'event_label' : 'Request an Appointment button', 'event_value' : '375'});">
-               Request an Appointment </a> <a class="header__action button button_color_primary" href="https://petcarecenterinc.com/contact/" onclick="gtag('event', 'Click', {'event_category' : 'Sticky Nav CTA', 'event_label' : 'Contact button', 'event_value' : '375'});">
+                <a class="header__action button button_color_accent" href="/services" onclick="gtag('event', 'Click', {'event_category' : 'Sticky Nav CTA', 'event_label' : 'Request an Appointment button', 'event_value' : '375'});">
+               Request an Appointment </a> <a class="header__action button button_color_primary" href="/about" onclick="gtag('event', 'Click', {'event_category' : 'Sticky Nav CTA', 'event_label' : 'Contact button', 'event_value' : '375'});">
                Contact </a>
                 <button data-modal-open="modal-menu" aria-label="Open Menu" class="button button_color_primary button_icon">
                   <svg role="img" class="icon">
@@ -331,21 +334,29 @@
                 </div>
                 <div class="dialog__group">
                     <ul class="menu menu_stack menu_theme_modal">
-                        <li class="menu__item"><a class="menu__link" href="/home/">
+                        <li class="menu__item"><a class="menu__link" href="/home">
                         Home </a>
                         </li>
-                        <li class="menu__item"><a class="menu__link" href="/services/">
+                        <li class="menu__item"><a class="menu__link" href="/services">
                         Services </a>
                         </li>
-                        <li class="menu__item"><a class="menu__link" href="/ourteam/">
+                        <li class="menu__item"><a class="menu__link" href="/ourteam">
                        Our Team </a>
                         </li>
-                        <li class="menu__item"><a class="menu__link" href="/aboutus/">
+                        <li class="menu__item"><a class="menu__link" href="/about">
                          About Us </a>
                         </li>
-                        <li class="menu__item"><a class="menu__link" href="/login/">
-                        Login </a>
-                        </li>
+                                    <c:choose>  
+				    <c:when test="${isGuest==true}">  
+						<li class="menu__item"><a class="menu__link" href="/login">
+                           Login </a>
+                                </li>		    
+	                </c:when>  
+	                  <c:when test="${isGuest==false}">  
+	                  <li class="menu__item"><a class="menu__link" href="/logout">
+                           Logout </a>
+				    </c:when>  		
+	                </c:choose>	
                     </ul>
                 </div>
             </div>
