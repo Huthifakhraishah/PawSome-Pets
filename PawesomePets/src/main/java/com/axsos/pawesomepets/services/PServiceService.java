@@ -45,6 +45,7 @@ public class PServiceService {
 	}
 
 	public void deleteService(PService service) {
-		pserviceRepository.delete(service);
+		Long myServiceId=service.getId();
+		pserviceRepository.deleteService(myServiceId);
 	}
 }

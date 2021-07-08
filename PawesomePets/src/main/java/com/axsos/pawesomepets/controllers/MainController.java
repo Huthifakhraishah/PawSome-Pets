@@ -29,6 +29,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.axsos.pawesomepets.models.Appointment;
 import com.axsos.pawesomepets.models.Category;
 import com.axsos.pawesomepets.models.PService;
+import com.axsos.pawesomepets.models.Pet;
 import com.axsos.pawesomepets.models.Role;
 import com.axsos.pawesomepets.models.ServicehasPet;
 import com.axsos.pawesomepets.models.User;
@@ -471,6 +472,8 @@ public class MainController {
 	public String deleteService(@PathVariable("id") Long id) {
 		PService myService = pserviceService.findServiceById(id);
 		if (myService != null) {
+			servicehasPethasAppointmentService.delete(servicehasPetService.findByAnId(id));
+			servicehasPetService.delete(id);
 			pserviceService.deleteService(myService);
 			return "redirect:/editservice";
 		} else {
@@ -514,7 +517,9 @@ public class MainController {
 	public String deleteCategory(@PathVariable("id") Long id) {
 		Category myCategory = categoryService.findCategoryById(id);
 		if (myCategory != null) {
-			petService.delete(id);
+			servicehasPethasAppointmentService.deleteByServicehasPet(servicehasPetService.findByPets(petService.findByCategoryId(id))); //????????
+			servicehasPetService.deleteByPet(petService.findByCategoryId(id));
+			petService.deleteByCategoryId(id);
 			categoryService.deleteCategory(id);
 			return "redirect:/editcategory";
 		} else {
@@ -557,6 +562,7 @@ public class MainController {
 	public String deleteAppointment(@PathVariable("id") Long id) {
 		Appointment myAppointment = appointmentService.findAppointmentById(id);
 		if (myAppointment != null) {
+			servicehasPethasAppointmentService.deleteByAppointmentId(id);
 			appointmentService.deleteAppointment(myAppointment);
 			return "redirect:/editappointment";
 		} else {
@@ -614,11 +620,43 @@ public class MainController {
 		} else {
 			model.addAttribute("isGuest", true);
 		}
+	
 		model.addAttribute("currentUser",currentUser.getFullName());
 		model.addAttribute("currentUserPets",currentUser.getPets());
 		List<Category> categories=categoryService.findAll();
 		model.addAttribute("categories",categories);
 		return "profile.jsp";
+	}
+	
+	@RequestMapping("/pet/{id}")
+	public String petInfo(@PathVariable(value="id") Long id,Model model,Principal principal) {
+		if (principal != null) {
+			User currentUser = userService.findByUsername(principal.getName());
+			List<Role> allRolesForCurrentUser = currentUser.getRoles();
+			List<Long> allRolesIdsForCurrentUser = new ArrayList<Long>();
+			for (Role role : allRolesForCurrentUser) {
+				allRolesIdsForCurrentUser.add(role.getId());
+			}
+			if (allRolesIdsForCurrentUser.get(0) == 2) {
+				model.addAttribute("isAdmin", true);
+			} 
+			for (Role role : allRolesForCurrentUser) {
+				allRolesIdsForCurrentUser.add(role.getId());
+			}
+			if (allRolesIdsForCurrentUser.get(0) == 2 || allRolesIdsForCurrentUser.get(0) == 1) {
+				model.addAttribute("isGuest", false);
+			}
+		} else {
+			model.addAttribute("isGuest", true);
+			model.addAttribute("isAdmin", false);
+		}
+		Pet myPet=petService.findPetById(id);
+		model.addAttribute("myPet",myPet);
+		List<PService> allServices=pserviceService.findAll();
+		model.addAttribute("allServices", allServices);
+		List<PService> myPetServices=myPet.getPetservice();
+		model.addAttribute("myPetServices",myPetServices);
+		return "petInfo.jsp";
 	}
 	
 	

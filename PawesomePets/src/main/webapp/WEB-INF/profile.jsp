@@ -100,25 +100,60 @@
             <div class="section__container">
                 <div class="grid">
                     <div class="grid__item">
-                        <ul class="menu toolbar-cta">
-                            <li class="menu__item">
-                                <a class="menu__link" href="mailto:petcareclientservices@gmail.com/" onclick="gtag('event', 'Click', {'event_category' : 'Toolbar CTA', 'event_label' : 'Call Us button', 'event_value' : '375'})">
-                                    <svg role="img" class="icon icon_size_small">
-                                 <use xlink:href="site/templates/dist/svg/symbols.svg#icon-chevron-right"></use>
+                     <ul class="menu toolbar-cta">
+                     <c:choose> 
+                        <c:when test="${isGuest==true}">
+                        <li class="menu__item">
+                           <a class="menu__link" href="mailto:petcareclientservices@gmail.com" onclick="gtag('event', 'Click', {'event_category' : 'Toolbar CTA', 'event_label' : 'Call Us button', 'event_value' : '375'})">
+                              <svg role="img" class="icon icon_size_small">
+                              
                               </svg>
-                                    <span>Call Us</span>
-                                </a>
-                            </li>
-                            <li class="menu__item">
-                                <a class="menu__link" href="/services" onclick="gtag('event', 'Click', {'event_category' : 'Toolbar CTA', 'event_label' : 'Request an Appointment button', 'event_value' : '375'})">
-                                    <svg role="img" class="icon icon_size_small">
-                                 <use xlink:href="site/templates/dist/svg/symbols.svg#icon-chevron-right"></use>
+                              <span>Call Us</span> 
+                           </a>
+                        </li>
+                        <li class="menu__item">
+                           <a class="menu__link" href="/login" onclick="gtag('event', 'Click', {'event_category' : 'Toolbar CTA', 'event_label' : 'Request an Appointment button', 'event_value' : '375'})">
+                              <svg role="img" class="icon icon_size_small">
+                                 
                               </svg>
-                                    <span>Request an Appointment</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+                              <span>Request an Appointment</span> 
+                           </a>
+                        </li>
+                        </c:when> 
+                         <c:when test="${isAdmin==true}">  
+						<li class="menu__item"><a class="menu__link" href="/editservice">
+                           Edit Services </a>
+                        </li>		      
+	                 	 <li class="menu__item"><a class="menu__link" href="/editappointment">
+                           Edit Appointments </a>
+                           </li>
+                            <li class="menu__item"><a class="menu__link" href="/editcategory">
+                           Edit Categories </a>
+                           </li>
+                           <li class="menu__item"><a class="menu__link" href="/admin">
+                           Admin Page </a>
+                           </li>
+                           </c:when>  	
+				    	</c:choose> 
+				    	<c:choose>
+				    	<c:when test="${isAdmin!=true && isGuest==false}"> 
+				    	<li class="menu__item">
+                           <a class="menu__link" href="mailto:petcareclientservices@gmail.com" onclick="gtag('event', 'Click', {'event_category' : 'Toolbar CTA', 'event_label' : 'Call Us button', 'event_value' : '375'})">
+                              <span>Call Us</span> 
+                           </a>
+                        </li>
+                        <li class="menu__item">
+                           <a class="menu__link" href="/services" onclick="gtag('event', 'Click', {'event_category' : 'Toolbar CTA', 'event_label' : 'Request an Appointment button', 'event_value' : '375'})">
+                              <span>Request an Appointment</span> 
+                           </a>
+                        </li>
+				    	<li class="menu__item"><a class="menu__link" href="/profile">
+                           Profile Page </a>
+                           </li>
+                           </c:when>  	
+				    	</c:choose>	
+                     </ul>
+                  </div>
                 </div>
             </div>
         </div>
@@ -228,12 +263,14 @@
                 <div class="grid grid_tile flex-justify-center">
                 <c:forEach items="${currentUserPets}" var="pet">
                     <div class="grid__item grid__item_fill ">
-                        <div class="card card_provider-full card_link card_zoom card_tall text-align-center">
+                        <a href="/pet/${pet.id}" class="card card_provider-full card_link card_zoom card_tall text-align-center">
                             <img class="lazy card__image loaded" data-src="${pet.links}" alt="${pet.name}" src="${pet.links}" data-was-processed="true">
                             <div class="card__body gap-y-xs">
                                 <h3 class="card__title"><span><c:out value="${pet.name}"/></span></h3>
+                                <h3 class="card__title"><span><c:out value="${pet.age}"/></span></h3>
+                                <h3 class="card__title"><span><c:out value="${pet.gender}"/></span></h3>
                             </div>
-                        </div>
+                        </a>
                     </div>
                     </c:forEach>
                     
