@@ -36,4 +36,13 @@ public class PetService {
 	public Pet findPetById(Long id) {
 		return petRepository.findPetById(id);
 	}
+	
+	public void deleteByCategoryId(Long id) {
+		petRepository.deleteByCategoryId(id);
+	}
+	
+	public List<Pet> findByCategoryId(Long id) {
+		return petRepository.findByCategoryId(id);
+	}
+	
 }

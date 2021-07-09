@@ -20,4 +20,13 @@ public interface PetRepository extends CrudRepository<Pet, Long> {
 
 	@Query(value="SELECT * FROM pets WHERE pets.id=?1",nativeQuery=true)
 	public Pet findPetById(Long id);
+	
+	@Transactional
+	@Modifying
+	@Query(value="DELETE FROM pets WHERE pets.pets_category=?1",nativeQuery=true)
+	public void deleteByCategoryId(Long id);
+	
+	@Query(value="SELECT * FROM pets WHERE pets.pets_category=?1",nativeQuery=true)
+	public List<Pet> findByCategoryId(Long id);
+	
 }

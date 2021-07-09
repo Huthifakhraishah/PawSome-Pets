@@ -1,8 +1,10 @@
 package com.axsos.pawesomepets.services;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
-import com.axsos.pawesomepets.models.ServicehasPethasAppointment;
+import com.axsos.pawesomepets.models.ServicehasPet;
 import com.axsos.pawesomepets.repositories.ServicehasPethasAppointmentRepository;
 
 @Service
@@ -16,5 +18,16 @@ public class ServicehasPethasAppointmentService {
 		servicehasPethasAppointmentRepository.fillTable(serviceHasPetId, appointmentId);
 	}
 	
+	public void delete(List<ServicehasPet> myServicehasPet) {
+		servicehasPethasAppointmentRepository.delete(myServicehasPet);
+	}
+	
+	public void deleteByAppointmentId(Long id) {
+		servicehasPethasAppointmentRepository.deleteByAppointmentId(id);
+	}
+	
+	public void deleteByServicehasPet(List<ServicehasPet> ServicehasPets) {
+		servicehasPethasAppointmentRepository.deleteByServicehasPet(ServicehasPets);
+	}
 	
 }

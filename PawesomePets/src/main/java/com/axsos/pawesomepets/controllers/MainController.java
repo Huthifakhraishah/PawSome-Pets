@@ -472,6 +472,8 @@ public class MainController {
 	public String deleteService(@PathVariable("id") Long id) {
 		PService myService = pserviceService.findServiceById(id);
 		if (myService != null) {
+			servicehasPethasAppointmentService.delete(servicehasPetService.findByAnId(id));
+			servicehasPetService.delete(id);
 			pserviceService.deleteService(myService);
 			return "redirect:/editservice";
 		} else {
@@ -515,7 +517,9 @@ public class MainController {
 	public String deleteCategory(@PathVariable("id") Long id) {
 		Category myCategory = categoryService.findCategoryById(id);
 		if (myCategory != null) {
-			petService.delete(id);
+			servicehasPethasAppointmentService.deleteByServicehasPet(servicehasPetService.findByPets(petService.findByCategoryId(id))); //????????
+			servicehasPetService.deleteByPet(petService.findByCategoryId(id));
+			petService.deleteByCategoryId(id);
 			categoryService.deleteCategory(id);
 			return "redirect:/editcategory";
 		} else {
@@ -558,6 +562,7 @@ public class MainController {
 	public String deleteAppointment(@PathVariable("id") Long id) {
 		Appointment myAppointment = appointmentService.findAppointmentById(id);
 		if (myAppointment != null) {
+			servicehasPethasAppointmentService.deleteByAppointmentId(id);
 			appointmentService.deleteAppointment(myAppointment);
 			return "redirect:/editappointment";
 		} else {
